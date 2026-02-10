@@ -15,7 +15,6 @@ model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
-macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 clean-targets:         # directories to be removed by `dbt clean`
@@ -31,5 +30,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   banking_dbt:
+    # Config indicated by + and applies to all files under models/example/
     example:
-      +enabled: false
+      +materialized: view
