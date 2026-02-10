@@ -6,6 +6,9 @@ docker/logs/
 docker/minio/
 docker/plugins/
 docker/postgres/
+docker/dags/.env
+.env
+*.env
 
 # DBT cache
 banking_dbt/.dbt/
