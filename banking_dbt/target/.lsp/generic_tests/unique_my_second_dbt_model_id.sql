@@ -1,1 +1,0 @@
-{{ test_unique(column_name="id", model=get_where_subquery(ref('my_second_dbt_model'))) }}
