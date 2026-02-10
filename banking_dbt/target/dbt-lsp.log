@@ -1,0 +1,1658 @@
+==================== 2026-02-10T20:27:06.311539Z | 30deb27b-9a72-4f64-a0ec-4458d813cae5 ====================
+20:27:06.313712 [info ]: Starting dbt LSP server
+20:27:06.314602 [info ]: Connecting to LSP client on port 8001
+20:27:06.317809 [info ]: Successfully connected to LSP client
+20:27:06.317827 [info ]: Creating LSP service...
+20:27:06.418360 [info ]: Creating LSP server...
+20:27:06.418383 [info ]: Starting LSP server...
+20:27:06.884225 [info ]: Started loading project
+20:27:06.923281 [info ]: Loading ~/.dbt/profiles.yml
+20:27:07.078484 [debug]:    Started loading packages
+20:27:07.098495 [debug]:     Loaded [  0.02s] packages
+20:27:07.098926 [debug]:    Started loading internal packages
+20:27:07.162808 [debug]:     Loaded [  0.06s] internal packages
+20:27:07.170009 [info ]: Started parsing
+20:27:07.305967 [info ]: Loading ~/.dbt/profiles.yml
+20:27:07.717398 [info ]: Finished loading project [  0.83s]
+20:27:07.754774 [debug]: Finished parsing models\example\schema.yml [  0.02s]
+20:27:07.793176 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.03s]
+20:27:07.832054 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.04s]
+20:27:07.857349 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.03s]
+20:27:07.858527 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:27:07.859223 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:27:07.862653 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:27:07.866553 [info ]: Finished parsing [  0.70s]
+20:27:07.867773 [info ]: Cached model count updated: 2 models (estimate)
+20:27:07.867795 [info ]: Cached model count updated: 2 models (accurate)
+20:27:07.870291 [info ]: Started scheduling
+20:27:07.875166 [info ]: Finished scheduling [  0.00s]
+20:27:07.885276 [info ]: Started deferring state
+20:27:07.885317 [info ]: Finished deferring state [  0.00s]
+20:27:07.905256 [info ]: Started downloading schemas
+20:27:07.906594 [debug]: Started downloading relations
+20:27:07.907141 [debug]: Finished downloading relations [  0.00s]
+20:27:07.907178 [info ]: Finished downloading schemas [  0.00s]
+20:27:08.137446 [info ]: Started building task graph
+20:27:08.141965 [info ]: Finished building task graph [  0.00s]
+20:27:08.146891 [info ]: Started rendering (2 nodes)
+20:27:08.147580 [info ]: Started model analytics.my_first_dbt_model
+20:27:08.149022 [debug]: Started rendering model analytics.my_first_dbt_model
+20:27:08.155939 [debug]: Finished rendering [  0.01s] model analytics.my_first_dbt_model [success]
+20:27:08.156205 [info ]: Started analyzing (2 nodes)
+20:27:08.156229 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:27:08.291854 [info ]:  Succeeded [  0.14s] model analytics.my_first_dbt_model (table)
+20:27:08.291901 [debug]: Finished analyzing [  0.14s] model analytics.my_first_dbt_model [success]
+20:27:08.291930 [info ]: Started model analytics.my_second_dbt_model
+20:27:08.291945 [debug]: Started rendering model analytics.my_second_dbt_model
+20:27:08.293857 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:27:08.293885 [info ]: Finished rendering [  0.15s] (2 nodes, 0 skipped, 0 errors)
+20:27:08.293912 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:27:08.309380 [info ]:  Succeeded [  0.02s] model analytics.my_second_dbt_model (view)
+20:27:08.309417 [debug]: Finished analyzing [  0.02s] model analytics.my_second_dbt_model [success]
+20:27:08.309426 [info ]: Finished analyzing [  0.15s] (2 nodes, 0 skipped, 0 errors)
+20:27:08.314362 [info ]: Cached model count updated: 2 models (accurate)
+20:30:59.846893 [info ]: Started loading project
+20:30:59.848166 [info ]: Loading ~/.dbt/profiles.yml
+20:30:59.854224 [info ]: Finished loading project [  0.01s]
+20:30:59.854307 [info ]: Cached model count updated: 2 models (accurate)
+20:31:13.390719 [info ]: Started loading project
+20:31:13.391445 [info ]: Loading ~/.dbt/profiles.yml
+20:31:13.395500 [info ]: Started loading project
+20:31:13.396042 [info ]: Loading ~/.dbt/profiles.yml
+20:31:13.396109 [info ]: Finished loading project [  0.01s]
+20:31:13.417019 [debug]:    Started loading packages
+20:31:13.419741 [debug]:     Loaded [  0.00s] packages
+20:31:13.419768 [debug]:    Started loading internal packages
+20:31:13.436239 [debug]:     Loaded [  0.02s] internal packages
+20:31:13.436526 [info ]: Started parsing
+20:31:13.476249 [info ]: Finished loading project [  0.08s]
+20:31:13.477608 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:31:13.479217 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:31:13.479645 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:31:13.483944 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:31:13.484691 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:31:13.485314 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:31:13.485848 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:31:13.487956 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:31:13.488591 [info ]: Finished parsing [  0.05s]
+20:31:13.489022 [info ]: Cached model count updated: 3 models (estimate)
+20:31:13.489038 [info ]: Cached model count updated: 3 models (accurate)
+20:31:13.489064 [info ]: Started scheduling
+20:31:13.489136 [info ]: Finished scheduling [  0.00s]
+20:31:13.489829 [info ]: Started deferring state
+20:31:13.489853 [info ]: Finished deferring state [  0.00s]
+20:31:13.490684 [info ]: Started downloading schemas
+20:31:13.490722 [debug]: Started downloading relations
+20:31:13.490749 [debug]: Finished downloading relations [  0.00s]
+20:31:13.490765 [info ]: Finished downloading schemas [  0.00s]
+20:31:13.654620 [info ]: Started building task graph
+20:31:13.654712 [info ]: Finished building task graph [  0.00s]
+20:31:13.654874 [info ]: Started rendering (2 nodes)
+20:31:13.654900 [info ]: Started model analytics.my_first_dbt_model
+20:31:13.654920 [debug]: Started rendering model analytics.my_first_dbt_model
+20:31:13.656820 [info ]: Started analyzing (2 nodes)
+20:31:13.656829 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:31:13.656842 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:31:13.658530 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:31:13.658584 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:31:13.658630 [info ]: Started model analytics.my_second_dbt_model
+20:31:13.658650 [debug]: Started rendering model analytics.my_second_dbt_model
+20:31:13.660475 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:31:13.660488 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:31:13.660512 [info ]: Finished rendering [  0.01s] (2 nodes, 0 skipped, 0 errors)
+20:31:13.662166 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:31:13.662198 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:31:13.662206 [info ]: Finished analyzing [  0.01s] (2 nodes, 0 skipped, 0 errors)
+20:31:13.667526 [info ]: Cached model count updated: 3 models (accurate)
+20:31:29.383643 [info ]: Started loading project
+20:31:29.390182 [info ]: Loading ~/.dbt/profiles.yml
+20:31:29.396272 [info ]: Started loading project
+20:31:29.397110 [info ]: Loading ~/.dbt/profiles.yml
+20:31:29.397157 [info ]: Finished loading project [  0.01s]
+20:31:29.424711 [debug]:    Started loading packages
+20:31:29.429518 [debug]:     Loaded [  0.00s] packages
+20:31:29.429570 [debug]:    Started loading internal packages
+20:31:29.458029 [debug]:     Loaded [  0.03s] internal packages
+20:31:29.458525 [info ]: Started parsing
+20:31:29.511062 [info ]: Finished loading project [  0.11s]
+20:31:29.512527 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:31:29.514540 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:31:29.515112 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:31:29.515581 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:31:29.519891 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.00s]
+20:31:29.520800 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:31:29.521639 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:31:29.522353 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:31:29.525454 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:31:29.526061 [info ]: Finished parsing [  0.07s]
+20:31:29.526561 [info ]: Cached model count updated: 4 models (estimate)
+20:31:29.526578 [info ]: Cached model count updated: 4 models (accurate)
+20:31:29.526605 [info ]: Started scheduling
+20:31:29.526663 [info ]: Finished scheduling [  0.00s]
+20:31:29.527286 [info ]: Started deferring state
+20:31:29.527305 [info ]: Finished deferring state [  0.00s]
+20:31:29.527952 [info ]: Started downloading schemas
+20:31:29.527978 [debug]: Started downloading relations
+20:31:29.528001 [debug]: Finished downloading relations [  0.00s]
+20:31:29.528016 [info ]: Finished downloading schemas [  0.00s]
+20:31:29.727979 [info ]: Started building task graph
+20:31:29.728066 [info ]: Finished building task graph [  0.00s]
+20:31:29.728203 [info ]: Started rendering (2 nodes)
+20:31:29.728224 [info ]: Started model analytics.my_first_dbt_model
+20:31:29.728245 [debug]: Started rendering model analytics.my_first_dbt_model
+20:31:29.729804 [info ]: Started analyzing (2 nodes)
+20:31:29.729802 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:31:29.729837 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:31:29.731364 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:31:29.731409 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:31:29.731435 [info ]: Started model analytics.my_second_dbt_model
+20:31:29.731447 [debug]: Started rendering model analytics.my_second_dbt_model
+20:31:29.733103 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:31:29.733099 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:31:29.733129 [info ]: Finished rendering [  0.00s] (2 nodes, 0 skipped, 0 errors)
+20:31:29.734763 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:31:29.734799 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:31:29.734823 [info ]: Finished analyzing [  0.01s] (2 nodes, 0 skipped, 0 errors)
+20:31:29.739751 [info ]: Cached model count updated: 4 models (accurate)
+20:31:40.972565 [info ]: Started loading project
+20:31:40.973926 [info ]: Loading ~/.dbt/profiles.yml
+20:31:40.979101 [info ]: Started loading project
+20:31:40.979609 [info ]: Loading ~/.dbt/profiles.yml
+20:31:40.979659 [info ]: Finished loading project [  0.01s]
+20:31:41.004205 [debug]:    Started loading packages
+20:31:41.007211 [debug]:     Loaded [  0.00s] packages
+20:31:41.007236 [debug]:    Started loading internal packages
+20:31:41.022670 [debug]:     Loaded [  0.02s] internal packages
+20:31:41.022953 [info ]: Started parsing
+20:31:41.069381 [info ]: Finished loading project [  0.09s]
+20:31:41.070522 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:31:41.072217 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:31:41.072718 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:31:41.073074 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:31:41.073387 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.00s]
+20:31:41.077813 [debug]: Finished parsing models\example\staging\stg_transactions.sql [  0.00s]
+20:31:41.078446 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:31:41.079025 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:31:41.079542 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:31:41.081444 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:31:41.081841 [info ]: Finished parsing [  0.06s]
+20:31:41.082319 [info ]: Cached model count updated: 5 models (estimate)
+20:31:41.082334 [info ]: Cached model count updated: 5 models (accurate)
+20:31:41.082358 [info ]: Started scheduling
+20:31:41.082410 [info ]: Finished scheduling [  0.00s]
+20:31:41.082975 [info ]: Started deferring state
+20:31:41.083003 [info ]: Finished deferring state [  0.00s]
+20:31:41.083705 [info ]: Started downloading schemas
+20:31:41.083736 [debug]: Started downloading relations
+20:31:41.083755 [debug]: Finished downloading relations [  0.00s]
+20:31:41.083770 [info ]: Finished downloading schemas [  0.00s]
+20:31:41.244775 [info ]: Started building task graph
+20:31:41.244846 [info ]: Finished building task graph [  0.00s]
+20:31:41.244983 [info ]: Started rendering (2 nodes)
+20:31:41.245005 [info ]: Started model analytics.my_first_dbt_model
+20:31:41.245018 [debug]: Started rendering model analytics.my_first_dbt_model
+20:31:41.246414 [info ]: Started analyzing (2 nodes)
+20:31:41.246432 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:31:41.246462 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:31:41.247404 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:31:41.247428 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:31:41.247499 [info ]: Started model analytics.my_second_dbt_model
+20:31:41.247530 [debug]: Started rendering model analytics.my_second_dbt_model
+20:31:41.248981 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:31:41.248986 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:31:41.249004 [info ]: Finished rendering [  0.00s] (2 nodes, 0 skipped, 0 errors)
+20:31:41.250531 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:31:41.250560 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:31:41.250568 [info ]: Finished analyzing [  0.00s] (2 nodes, 0 skipped, 0 errors)
+20:31:41.254904 [info ]: Cached model count updated: 5 models (accurate)
+20:31:54.468787 [info ]: Started loading project
+20:31:54.469549 [info ]: Loading ~/.dbt/profiles.yml
+20:31:54.476137 [info ]: Started parsing
+20:31:54.495159 [info ]: Finished loading project [  0.03s]
+20:31:54.519049 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.02s]
+20:31:54.519573 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:31:54.522496 [info ]: Cached model count updated: 5 models (estimate)
+20:31:54.522528 [info ]: Cached model count updated: 5 models (accurate)
+20:31:54.522581 [info ]: Started scheduling
+20:31:54.522863 [info ]: Finished scheduling [  0.00s]
+20:31:54.523639 [info ]: Started deferring state
+20:31:54.523670 [info ]: Finished deferring state [  0.00s]
+20:31:54.524770 [info ]: Started downloading schemas
+20:31:54.524818 [debug]: Started downloading relations
+20:31:54.524844 [debug]: Finished downloading relations [  0.00s]
+20:31:54.524860 [info ]: Finished downloading schemas [  0.00s]
+20:31:54.685040 [info ]: Started building task graph
+20:31:54.685125 [info ]: Finished building task graph [  0.00s]
+20:31:54.689585 [info ]: Cached model count updated: 5 models (accurate)
+20:31:54.689643 [info ]: Finished parsing [  0.21s]
+20:31:54.740282 [info ]: Started loading project
+20:31:54.741043 [info ]: Loading ~/.dbt/profiles.yml
+20:31:54.749372 [info ]: Started parsing
+20:31:54.769655 [info ]: Finished loading project [  0.03s]
+20:31:54.772113 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:31:54.772286 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:31:54.773433 [info ]: Cached model count updated: 5 models (estimate)
+20:31:54.773447 [info ]: Cached model count updated: 5 models (accurate)
+20:31:54.773474 [info ]: Started scheduling
+20:31:54.773532 [info ]: Finished scheduling [  0.00s]
+20:31:54.773914 [info ]: Started deferring state
+20:31:54.773928 [info ]: Finished deferring state [  0.00s]
+20:31:54.774478 [info ]: Started downloading schemas
+20:31:54.774501 [debug]: Started downloading relations
+20:31:54.774515 [debug]: Finished downloading relations [  0.00s]
+20:31:54.774525 [info ]: Finished downloading schemas [  0.00s]
+20:31:54.954320 [info ]: Started building task graph
+20:31:54.954382 [info ]: Finished building task graph [  0.00s]
+20:31:54.954505 [info ]: Started rendering (1 nodes)
+20:31:54.954526 [info ]: Started model analytics.stg_accounts
+20:31:54.954540 [debug]: Started rendering model analytics.stg_accounts
+20:31:54.954611 [info ]: Finished parsing [  0.21s]
+20:31:54.955266 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: accounts
+(in models\example\staging\stg_accounts.sql:16:10)
+  --> models\example\staging\stg_accounts.sql:16:10
+20:31:54.955322 [info ]: Started analyzing (1 nodes)
+20:31:54.955335 [debug]: Started analyzing model analytics.stg_accounts
+20:31:54.955362 [info ]:     Failed [-------] model analytics.stg_accounts (view)
+20:31:54.955381 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [skipped]
+20:31:54.955387 [info ]: Finished analyzing [  0.00s] (1 nodes, 1 skipped, 0 errors)
+20:31:54.955452 [debug]: Incremental compilation - 1 nodes selected: {"model.banking_dbt.stg_accounts"}
+20:31:54.960684 [info ]: Cached model count updated: 5 models (accurate)
+20:31:54.960739 [debug]: Finished rendering [  0.01s] model analytics.stg_accounts [error]
+20:31:54.960765 [info ]: Finished rendering [  0.01s] (1 nodes, 0 skipped, 1 errors)
+20:32:04.338512 [info ]: Started loading project
+20:32:04.339315 [info ]: Loading ~/.dbt/profiles.yml
+20:32:04.344808 [info ]: Started parsing
+20:32:04.363892 [info ]: Finished loading project [  0.03s]
+20:32:04.365494 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:32:04.399909 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.03s]
+20:32:04.400409 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:32:04.400473 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\example\staging\stg_customers.sql:15:10
+20:32:04.403188 [info ]: Cached model count updated: 5 models (estimate)
+20:32:04.403220 [info ]: Cached model count updated: 5 models (accurate)
+20:32:04.403280 [info ]: Started scheduling
+20:32:04.403417 [info ]: Finished scheduling [  0.00s]
+20:32:04.404345 [info ]: Started deferring state
+20:32:04.404383 [info ]: Finished deferring state [  0.00s]
+20:32:04.405822 [info ]: Started downloading schemas
+20:32:04.405872 [debug]: Started downloading relations
+20:32:04.405910 [debug]: Finished downloading relations [  0.00s]
+20:32:04.405933 [info ]: Finished downloading schemas [  0.00s]
+20:32:04.613967 [info ]: Started building task graph
+20:32:04.614030 [info ]: Finished building task graph [  0.00s]
+20:32:04.614151 [info ]: Started rendering (1 nodes)
+20:32:04.614169 [info ]: Started model analytics.stg_customers
+20:32:04.614182 [debug]: Started rendering model analytics.stg_customers
+20:32:04.614257 [info ]: Finished parsing [  0.27s]
+20:32:04.614815 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: customers
+(in models\example\staging\stg_customers.sql:15:10)
+  --> models\example\staging\stg_customers.sql:15:10
+20:32:04.614856 [info ]: Started analyzing (1 nodes)
+20:32:04.614867 [debug]: Started analyzing model analytics.stg_customers
+20:32:04.614883 [info ]:     Failed [-------] model analytics.stg_customers (view)
+20:32:04.614901 [debug]: Finished analyzing [  0.00s] model analytics.stg_customers [skipped]
+20:32:04.614908 [info ]: Finished analyzing [  0.00s] (1 nodes, 1 skipped, 0 errors)
+20:32:04.614969 [debug]: Incremental compilation - 1 nodes selected: {"model.banking_dbt.stg_customers"}
+20:32:04.619824 [info ]: Cached model count updated: 5 models (accurate)
+20:32:04.619866 [debug]: Finished rendering [  0.01s] model analytics.stg_customers [error]
+20:32:04.619885 [info ]: Finished rendering [  0.01s] (1 nodes, 0 skipped, 1 errors)
+20:32:04.704327 [info ]: Started loading project
+20:32:04.705646 [info ]: Loading ~/.dbt/profiles.yml
+20:32:04.710117 [info ]: Finished loading project [  0.01s]
+20:32:04.710129 [info ]: Cached model count updated: 5 models (accurate)
+20:32:13.801572 [info ]: Started loading project
+20:32:13.802365 [info ]: Loading ~/.dbt/profiles.yml
+20:32:13.808682 [info ]: Started parsing
+20:32:13.830843 [info ]: Finished loading project [  0.03s]
+20:32:13.832419 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:32:13.833044 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.00s]
+20:32:13.857664 [debug]: Finished parsing models\example\staging\stg_transactions.sql [  0.02s]
+20:32:13.858214 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:32:13.858270 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\example\staging\stg_customers.sql:15:10
+20:32:13.858295 [error]: dbt1005: Source 'raw.transactions' not found in project. Searched for 'transactions'
+  --> models\example\staging\stg_transactions.sql:12:6
+20:32:13.861667 [info ]: Cached model count updated: 5 models (estimate)
+20:32:13.861705 [info ]: Cached model count updated: 5 models (accurate)
+20:32:13.861810 [info ]: Started scheduling
+20:32:13.862460 [info ]: Finished scheduling [  0.00s]
+20:32:13.863798 [info ]: Started deferring state
+20:32:13.863842 [info ]: Finished deferring state [  0.00s]
+20:32:13.867431 [info ]: Started downloading schemas
+20:32:13.867503 [debug]: Started downloading relations
+20:32:13.867540 [debug]: Finished downloading relations [  0.00s]
+20:32:13.867567 [info ]: Finished downloading schemas [  0.00s]
+20:32:14.071893 [info ]: Started building task graph
+20:32:14.071967 [info ]: Finished building task graph [  0.00s]
+20:32:14.072106 [info ]: Started rendering (1 nodes)
+20:32:14.072129 [info ]: Started model analytics.stg_transactions
+20:32:14.072144 [debug]: Started rendering model analytics.stg_transactions
+20:32:14.072221 [info ]: Finished parsing [  0.26s]
+20:32:14.073201 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: transactions
+(in models\example\staging\stg_transactions.sql:12:6)
+  --> models\example\staging\stg_transactions.sql:12:6
+20:32:14.073251 [info ]: Started analyzing (1 nodes)
+20:32:14.073262 [debug]: Started analyzing model analytics.stg_transactions
+20:32:14.073280 [info ]:     Failed [  0.00s] model analytics.stg_transactions (view)
+20:32:14.073305 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [skipped]
+20:32:14.073312 [info ]: Finished analyzing [  0.00s] (1 nodes, 1 skipped, 0 errors)
+20:32:14.073389 [debug]: Incremental compilation - 1 nodes selected: {"model.banking_dbt.stg_transactions"}
+20:32:14.078049 [info ]: Cached model count updated: 5 models (accurate)
+20:32:14.078102 [debug]: Finished rendering [  0.01s] model analytics.stg_transactions [error]
+20:32:14.078123 [info ]: Finished rendering [  0.01s] (1 nodes, 0 skipped, 1 errors)
+20:32:14.260030 [info ]: Started loading project
+20:32:14.260844 [info ]: Loading ~/.dbt/profiles.yml
+20:32:14.265047 [info ]: Cached model count updated: 5 models (accurate)
+20:32:14.265055 [info ]: Finished loading project [  0.01s]
+20:32:33.406757 [info ]: Started loading project
+20:32:33.407629 [info ]: Loading ~/.dbt/profiles.yml
+20:32:33.413635 [info ]: Started parsing
+20:32:33.438913 [info ]: Finished loading project [  0.03s]
+20:32:33.440684 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:32:33.441361 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.00s]
+20:32:33.443428 [debug]: Finished parsing models\example\staging\stg_transactions.sql [  0.00s]
+20:32:33.443705 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:32:33.443732 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\example\staging\stg_customers.sql:15:10
+20:32:33.443744 [error]: dbt1005: Source 'raw.transactions' not found in project. Searched for 'transactions'
+  --> models\example\staging\stg_transactions.sql:12:6
+20:32:33.444919 [info ]: Cached model count updated: 5 models (estimate)
+20:32:33.444934 [info ]: Cached model count updated: 5 models (accurate)
+20:32:33.444959 [info ]: Started scheduling
+20:32:33.445023 [info ]: Finished scheduling [  0.00s]
+20:32:33.445443 [info ]: Started deferring state
+20:32:33.445461 [info ]: Finished deferring state [  0.00s]
+20:32:33.446096 [info ]: Started downloading schemas
+20:32:33.446123 [debug]: Started downloading relations
+20:32:33.446142 [debug]: Finished downloading relations [  0.00s]
+20:32:33.446157 [info ]: Finished downloading schemas [  0.00s]
+20:32:33.628431 [info ]: Started building task graph
+20:32:33.628498 [info ]: Finished building task graph [  0.00s]
+20:32:33.628621 [info ]: Started rendering (1 nodes)
+20:32:33.628641 [info ]: Started model analytics.stg_transactions
+20:32:33.628656 [debug]: Started rendering model analytics.stg_transactions
+20:32:33.628718 [info ]: Finished parsing [  0.22s]
+20:32:33.629328 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: transactions
+(in models\example\staging\stg_transactions.sql:12:6)
+  --> models\example\staging\stg_transactions.sql:12:6
+20:32:33.629369 [info ]: Started analyzing (1 nodes)
+20:32:33.629381 [debug]: Started analyzing model analytics.stg_transactions
+20:32:33.629397 [info ]:     Failed [-------] model analytics.stg_transactions (view)
+20:32:33.629415 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [skipped]
+20:32:33.629422 [info ]: Finished analyzing [  0.00s] (1 nodes, 1 skipped, 0 errors)
+20:32:33.629491 [debug]: Incremental compilation - 1 nodes selected: {"model.banking_dbt.stg_transactions"}
+20:32:33.633116 [info ]: Cached model count updated: 5 models (accurate)
+20:32:33.633145 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [error]
+20:32:33.633163 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 1 errors)
+20:32:33.701128 [info ]: Started loading project
+20:32:33.702245 [info ]: Loading ~/.dbt/profiles.yml
+20:32:33.706152 [info ]: Finished loading project [  0.01s]
+20:32:33.706166 [info ]: Cached model count updated: 5 models (accurate)
+20:35:29.470181 [info ]: Started loading project
+20:35:29.471124 [info ]: Loading ~/.dbt/profiles.yml
+20:35:29.475840 [info ]: Started loading project
+20:35:29.476435 [info ]: Loading ~/.dbt/profiles.yml
+20:35:29.476475 [info ]: Finished loading project [  0.01s]
+20:35:29.500936 [debug]:    Started loading packages
+20:35:29.504439 [debug]:     Loaded [  0.00s] packages
+20:35:29.504498 [debug]:    Started loading internal packages
+20:35:29.520809 [debug]:     Loaded [  0.02s] internal packages
+20:35:29.521173 [info ]: Started parsing
+20:35:29.565958 [info ]: Finished loading project [  0.09s]
+20:35:29.567351 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:35:29.567505 [debug]: Finished parsing models\example\staging\sources.yaml [  0.00s]
+20:35:29.569399 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:35:29.569976 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:35:29.570558 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:35:29.571159 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.00s]
+20:35:29.575211 [debug]: Finished parsing models\example\staging\stg_transactions.sql [  0.00s]
+20:35:29.576149 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:35:29.576835 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:35:29.577568 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:35:29.579798 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:35:29.580438 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:35:29.580473 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\example\staging\stg_customers.sql:15:10
+20:35:29.580485 [error]: dbt1005: Source 'raw.transactions' not found in project. Searched for 'transactions'
+  --> models\example\staging\stg_transactions.sql:12:6
+20:35:29.581183 [info ]: Cached model count updated: 5 models (estimate)
+20:35:29.581203 [info ]: Cached model count updated: 5 models (accurate)
+20:35:29.581241 [info ]: Started scheduling
+20:35:29.581340 [info ]: Finished scheduling [  0.00s]
+20:35:29.582086 [info ]: Started deferring state
+20:35:29.582112 [info ]: Finished deferring state [  0.00s]
+20:35:29.582863 [info ]: Started downloading schemas
+20:35:29.582899 [debug]: Started downloading relations
+20:35:29.582925 [debug]: Finished downloading relations [  0.00s]
+20:35:29.582939 [info ]: Finished downloading schemas [  0.00s]
+20:35:29.822064 [info ]: Started building task graph
+20:35:29.822200 [info ]: Finished building task graph [  0.00s]
+20:35:29.822428 [info ]: Started rendering (5 nodes)
+20:35:29.822460 [info ]: Started model analytics.stg_transactions
+20:35:29.822475 [debug]: Started rendering model analytics.stg_transactions
+20:35:29.822504 [info ]: Started model analytics.stg_customers
+20:35:29.822515 [debug]: Started rendering model analytics.stg_customers
+20:35:29.822526 [info ]: Started model analytics.stg_accounts
+20:35:29.822532 [debug]: Started rendering model analytics.stg_accounts
+20:35:29.822541 [info ]: Started model analytics.my_first_dbt_model
+20:35:29.822546 [debug]: Started rendering model analytics.my_first_dbt_model
+20:35:29.822552 [info ]: Finished parsing [  0.30s]
+20:35:29.823739 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: transactions
+(in models\example\staging\stg_transactions.sql:12:6)
+  --> models\example\staging\stg_transactions.sql:12:6
+20:35:29.823895 [info ]: Started analyzing (5 nodes)
+20:35:29.823921 [debug]: Started analyzing model analytics.stg_transactions
+20:35:29.823975 [info ]:     Failed [  0.00s] model analytics.stg_transactions (view)
+20:35:29.824009 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [skipped]
+20:35:29.824118 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [error]
+20:35:29.824060 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: customers
+(in models\example\staging\stg_customers.sql:15:10)
+  --> models\example\staging\stg_customers.sql:15:10
+20:35:29.824193 [debug]: Started analyzing model analytics.stg_customers
+20:35:29.824216 [info ]:     Failed [  0.00s] model analytics.stg_customers (view)
+20:35:29.824233 [debug]: Finished analyzing [  0.00s] model analytics.stg_customers [skipped]
+20:35:29.824272 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: accounts
+(in models\example\staging\stg_accounts.sql:16:10)
+  --> models\example\staging\stg_accounts.sql:16:10
+20:35:29.824299 [debug]: Started analyzing model analytics.stg_accounts
+20:35:29.824313 [info ]:     Failed [  0.00s] model analytics.stg_accounts (view)
+20:35:29.824329 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [skipped]
+20:35:29.824327 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [error]
+20:35:29.824354 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [error]
+20:35:29.825108 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:35:29.825128 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:35:29.827785 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:35:29.827870 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:35:29.827935 [info ]: Started model analytics.my_second_dbt_model
+20:35:29.827956 [debug]: Started rendering model analytics.my_second_dbt_model
+20:35:29.830518 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:35:29.830549 [info ]: Finished rendering [  0.01s] (5 nodes, 0 skipped, 3 errors)
+20:35:29.830579 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:35:29.832790 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:35:29.832831 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:35:29.832861 [info ]: Finished analyzing [  0.01s] (5 nodes, 3 skipped, 0 errors)
+20:35:29.842053 [info ]: Cached model count updated: 5 models (accurate)
+20:35:41.158316 [info ]: Started loading project
+20:35:41.159477 [info ]: Loading ~/.dbt/profiles.yml
+20:35:41.166506 [info ]: Started loading project
+20:35:41.167501 [info ]: Loading ~/.dbt/profiles.yml
+20:35:41.167557 [info ]: Finished loading project [  0.01s]
+20:35:41.194044 [debug]:    Started loading packages
+20:35:41.199379 [debug]:     Loaded [  0.01s] packages
+20:35:41.199412 [debug]:    Started loading internal packages
+20:35:41.221749 [debug]:     Loaded [  0.02s] internal packages
+20:35:41.222101 [info ]: Started parsing
+20:35:41.285720 [info ]: Finished loading project [  0.12s]
+20:35:41.288004 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:35:41.290669 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:35:41.291378 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:35:41.292533 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:35:41.293840 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.00s]
+20:35:41.301121 [debug]: Finished parsing models\example\staging\stg_transactions.sql [  0.01s]
+20:35:41.302435 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:35:41.303476 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:35:41.304728 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:35:41.308695 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:35:41.309339 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:35:41.309383 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\example\staging\stg_customers.sql:15:10
+20:35:41.309402 [error]: dbt1005: Source 'raw.transactions' not found in project. Searched for 'transactions'
+  --> models\example\staging\stg_transactions.sql:12:6
+20:35:41.310165 [info ]: Cached model count updated: 5 models (estimate)
+20:35:41.310186 [info ]: Cached model count updated: 5 models (accurate)
+20:35:41.310221 [info ]: Started scheduling
+20:35:41.310302 [info ]: Finished scheduling [  0.00s]
+20:35:41.311217 [info ]: Started deferring state
+20:35:41.311248 [info ]: Finished deferring state [  0.00s]
+20:35:41.312219 [info ]: Started downloading schemas
+20:35:41.312260 [debug]: Started downloading relations
+20:35:41.312286 [debug]: Finished downloading relations [  0.00s]
+20:35:41.312311 [info ]: Finished downloading schemas [  0.00s]
+20:35:41.508433 [info ]: Started building task graph
+20:35:41.508535 [info ]: Finished building task graph [  0.00s]
+20:35:41.508673 [info ]: Started rendering (5 nodes)
+20:35:41.508692 [info ]: Started model analytics.stg_transactions
+20:35:41.508704 [debug]: Started rendering model analytics.stg_transactions
+20:35:41.508728 [info ]: Started model analytics.stg_customers
+20:35:41.508738 [debug]: Started rendering model analytics.stg_customers
+20:35:41.508749 [info ]: Started model analytics.stg_accounts
+20:35:41.508754 [debug]: Started rendering model analytics.stg_accounts
+20:35:41.508763 [info ]: Started model analytics.my_first_dbt_model
+20:35:41.508771 [debug]: Started rendering model analytics.my_first_dbt_model
+20:35:41.508769 [info ]: Finished parsing [  0.29s]
+20:35:41.509555 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: customers
+(in models\example\staging\stg_customers.sql:15:10)
+  --> models\example\staging\stg_customers.sql:15:10
+20:35:41.509597 [info ]: Started analyzing (5 nodes)
+20:35:41.509610 [debug]: Started analyzing model analytics.stg_customers
+20:35:41.509630 [info ]:     Failed [-------] model analytics.stg_customers (view)
+20:35:41.509651 [debug]: Finished analyzing [  0.00s] model analytics.stg_customers [skipped]
+20:35:41.509682 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: accounts
+(in models\example\staging\stg_accounts.sql:16:10)
+  --> models\example\staging\stg_accounts.sql:16:10
+20:35:41.509705 [debug]: Started analyzing model analytics.stg_accounts
+20:35:41.509704 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [error]
+20:35:41.509718 [info ]:     Failed [-------] model analytics.stg_accounts (view)
+20:35:41.509743 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [skipped]
+20:35:41.509778 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: transactions
+(in models\example\staging\stg_transactions.sql:12:6)
+  --> models\example\staging\stg_transactions.sql:12:6
+20:35:41.509799 [debug]: Started analyzing model analytics.stg_transactions
+20:35:41.509805 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [error]
+20:35:41.509812 [info ]:     Failed [  0.00s] model analytics.stg_transactions (view)
+20:35:41.509826 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [skipped]
+20:35:41.509850 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [error]
+20:35:41.510361 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:35:41.510378 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:35:41.511624 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:35:41.511657 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:35:41.511683 [info ]: Started model analytics.my_second_dbt_model
+20:35:41.511694 [debug]: Started rendering model analytics.my_second_dbt_model
+20:35:41.514043 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:35:41.514080 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:35:41.514108 [info ]: Finished rendering [  0.01s] (5 nodes, 0 skipped, 3 errors)
+20:35:41.515895 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:35:41.515933 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:35:41.515949 [info ]: Finished analyzing [  0.01s] (5 nodes, 3 skipped, 0 errors)
+20:35:41.522132 [info ]: Cached model count updated: 5 models (accurate)
+20:35:51.905721 [info ]: Started loading project
+20:35:51.906540 [info ]: Loading ~/.dbt/profiles.yml
+20:35:51.911494 [info ]: Started loading project
+20:35:51.912424 [info ]: Loading ~/.dbt/profiles.yml
+20:35:51.912474 [info ]: Finished loading project [  0.01s]
+20:35:51.932726 [debug]:    Started loading packages
+20:35:51.936896 [debug]:     Loaded [  0.00s] packages
+20:35:51.936946 [debug]:    Started loading internal packages
+20:35:51.952927 [debug]:     Loaded [  0.02s] internal packages
+20:35:51.953359 [info ]: Started parsing
+20:35:52.000066 [info ]: Finished loading project [  0.09s]
+20:35:52.001357 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:35:52.001485 [debug]: Finished parsing models\sources.yml [  0.00s]
+20:35:52.003596 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:35:52.004287 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:35:52.005044 [debug]: Finished parsing models\example\staging\stg_accounts.sql [  0.00s]
+20:35:52.005650 [debug]: Finished parsing models\example\staging\stg_customers.sql [  0.00s]
+20:35:52.010058 [debug]: Finished parsing models\example\staging\stg_transactions.sql [  0.00s]
+20:35:52.010867 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:35:52.011604 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:35:52.012593 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:35:52.014681 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:35:52.015086 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\example\staging\stg_accounts.sql:16:10
+20:35:52.015117 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\example\staging\stg_customers.sql:15:10
+20:35:52.015128 [error]: dbt1005: Source 'raw.transactions' not found in project. Searched for 'transactions'
+  --> models\example\staging\stg_transactions.sql:12:6
+20:35:52.015670 [info ]: Cached model count updated: 5 models (estimate)
+20:35:52.015683 [info ]: Cached model count updated: 5 models (accurate)
+20:35:52.015708 [info ]: Started scheduling
+20:35:52.015770 [info ]: Finished scheduling [  0.00s]
+20:35:52.016303 [info ]: Started deferring state
+20:35:52.016323 [info ]: Finished deferring state [  0.00s]
+20:35:52.016966 [info ]: Started downloading schemas
+20:35:52.016990 [debug]: Started downloading relations
+20:35:52.017010 [debug]: Finished downloading relations [  0.00s]
+20:35:52.017022 [info ]: Finished downloading schemas [  0.00s]
+20:35:52.189295 [info ]: Started building task graph
+20:35:52.189394 [info ]: Finished building task graph [  0.00s]
+20:35:52.189563 [info ]: Started rendering (5 nodes)
+20:35:52.189585 [info ]: Started model analytics.stg_transactions
+20:35:52.189598 [debug]: Started rendering model analytics.stg_transactions
+20:35:52.189624 [info ]: Started model analytics.stg_customers
+20:35:52.189633 [debug]: Started rendering model analytics.stg_customers
+20:35:52.189644 [info ]: Started model analytics.stg_accounts
+20:35:52.189650 [debug]: Started rendering model analytics.stg_accounts
+20:35:52.189658 [info ]: Started model analytics.my_first_dbt_model
+20:35:52.189665 [debug]: Started rendering model analytics.my_first_dbt_model
+20:35:52.189662 [info ]: Finished parsing [  0.24s]
+20:35:52.190450 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: customers
+(in models\example\staging\stg_customers.sql:15:10)
+  --> models\example\staging\stg_customers.sql:15:10
+20:35:52.190498 [info ]: Started analyzing (5 nodes)
+20:35:52.190509 [debug]: Started analyzing model analytics.stg_customers
+20:35:52.190530 [info ]:     Failed [-------] model analytics.stg_customers (view)
+20:35:52.190551 [debug]: Finished analyzing [  0.00s] model analytics.stg_customers [skipped]
+20:35:52.190577 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [error]
+20:35:52.190617 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: accounts
+(in models\example\staging\stg_accounts.sql:16:10)
+  --> models\example\staging\stg_accounts.sql:16:10
+20:35:52.190636 [debug]: Started analyzing model analytics.stg_accounts
+20:35:52.190650 [info ]:     Failed [-------] model analytics.stg_accounts (view)
+20:35:52.190659 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [skipped]
+20:35:52.190675 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [error]
+20:35:52.190706 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: transactions
+(in models\example\staging\stg_transactions.sql:12:6)
+  --> models\example\staging\stg_transactions.sql:12:6
+20:35:52.190721 [debug]: Started analyzing model analytics.stg_transactions
+20:35:52.190731 [info ]:     Failed [  0.00s] model analytics.stg_transactions (view)
+20:35:52.190744 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [skipped]
+20:35:52.190757 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [error]
+20:35:52.191448 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:35:52.191463 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:35:52.192654 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:35:52.192699 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:35:52.192721 [info ]: Started model analytics.my_second_dbt_model
+20:35:52.192733 [debug]: Started rendering model analytics.my_second_dbt_model
+20:35:52.194289 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:35:52.194318 [info ]: Finished rendering [  0.00s] (5 nodes, 0 skipped, 3 errors)
+20:35:52.194357 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:35:52.196447 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:35:52.196484 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:35:52.196493 [info ]: Finished analyzing [  0.01s] (5 nodes, 3 skipped, 0 errors)
+20:35:52.201558 [info ]: Cached model count updated: 5 models (accurate)
+20:36:06.763863 [info ]: Started loading project
+20:36:06.764735 [info ]: Loading ~/.dbt/profiles.yml
+20:36:06.769029 [info ]: Started loading project
+20:36:06.769652 [info ]: Loading ~/.dbt/profiles.yml
+20:36:06.769688 [info ]: Finished loading project [  0.01s]
+20:36:06.790297 [debug]:    Started loading packages
+20:36:06.793077 [debug]:     Loaded [  0.00s] packages
+20:36:06.793101 [debug]:    Started loading internal packages
+20:36:06.809498 [debug]:     Loaded [  0.02s] internal packages
+20:36:06.809774 [info ]: Started parsing
+20:36:06.851736 [info ]: Finished loading project [  0.08s]
+20:36:06.853136 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:36:06.853309 [debug]: Finished parsing models\sources.yml [  0.00s]
+20:36:06.855445 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:36:06.855929 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:36:06.856459 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:36:06.856935 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:36:06.861910 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.01s]
+20:36:06.862882 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:36:06.863524 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:36:06.864087 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:36:06.866048 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:36:06.866440 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\staging\stg_accounts.sql:16:10
+20:36:06.866468 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\staging\stg_customers.sql:15:10
+20:36:06.866478 [error]: dbt1005: Source 'raw.transactions' not found in project. Searched for 'transactions'
+  --> models\staging\stg_transactions.sql:12:6
+20:36:06.866970 [info ]: Cached model count updated: 5 models (estimate)
+20:36:06.866982 [info ]: Cached model count updated: 5 models (accurate)
+20:36:06.867016 [info ]: Started scheduling
+20:36:06.867081 [info ]: Finished scheduling [  0.00s]
+20:36:06.867636 [info ]: Started deferring state
+20:36:06.867655 [info ]: Finished deferring state [  0.00s]
+20:36:06.868276 [info ]: Started downloading schemas
+20:36:06.868304 [debug]: Started downloading relations
+20:36:06.868323 [debug]: Finished downloading relations [  0.00s]
+20:36:06.868338 [info ]: Finished downloading schemas [  0.00s]
+20:36:07.047408 [info ]: Started building task graph
+20:36:07.047498 [info ]: Finished building task graph [  0.00s]
+20:36:07.047627 [info ]: Started rendering (5 nodes)
+20:36:07.047646 [info ]: Started model analytics.stg_transactions
+20:36:07.047662 [debug]: Started rendering model analytics.stg_transactions
+20:36:07.047684 [info ]: Started model analytics.stg_customers
+20:36:07.047693 [debug]: Started rendering model analytics.stg_customers
+20:36:07.047703 [info ]: Started model analytics.stg_accounts
+20:36:07.047709 [debug]: Started rendering model analytics.stg_accounts
+20:36:07.047716 [info ]: Started model analytics.my_first_dbt_model
+20:36:07.047724 [debug]: Started rendering model analytics.my_first_dbt_model
+20:36:07.047722 [info ]: Finished parsing [  0.24s]
+20:36:07.048465 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: customers
+(in models\staging\stg_customers.sql:15:10)
+  --> models\staging\stg_customers.sql:15:10
+20:36:07.048503 [info ]: Started analyzing (5 nodes)
+20:36:07.048516 [debug]: Started analyzing model analytics.stg_customers
+20:36:07.048530 [info ]:     Failed [-------] model analytics.stg_customers (view)
+20:36:07.048548 [debug]: Finished analyzing [  0.00s] model analytics.stg_customers [skipped]
+20:36:07.048569 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: transactions
+(in models\staging\stg_transactions.sql:12:6)
+  --> models\staging\stg_transactions.sql:12:6
+20:36:07.048583 [debug]: Started analyzing model analytics.stg_transactions
+20:36:07.048592 [info ]:     Failed [-------] model analytics.stg_transactions (view)
+20:36:07.048603 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [skipped]
+20:36:07.048614 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: accounts
+(in models\staging\stg_accounts.sql:16:10)
+  --> models\staging\stg_accounts.sql:16:10
+20:36:07.048624 [debug]: Started analyzing model analytics.stg_accounts
+20:36:07.048638 [info ]:     Failed [-------] model analytics.stg_accounts (view)
+20:36:07.048646 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [skipped]
+20:36:07.048661 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [error]
+20:36:07.048658 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [error]
+20:36:07.048651 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [error]
+20:36:07.049155 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:36:07.049152 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:36:07.050423 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:36:07.050451 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:36:07.050470 [info ]: Started model analytics.my_second_dbt_model
+20:36:07.050482 [debug]: Started rendering model analytics.my_second_dbt_model
+20:36:07.051854 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:36:07.051872 [info ]: Finished rendering [  0.00s] (5 nodes, 0 skipped, 3 errors)
+20:36:07.051886 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:36:07.053058 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:36:07.053091 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:36:07.053098 [info ]: Finished analyzing [  0.00s] (5 nodes, 3 skipped, 0 errors)
+20:36:07.058415 [info ]: Cached model count updated: 5 models (accurate)
+20:36:20.944109 [info ]: Started loading project
+20:36:20.944997 [info ]: Loading ~/.dbt/profiles.yml
+20:36:20.949662 [info ]: Started loading project
+20:36:20.950335 [info ]: Loading ~/.dbt/profiles.yml
+20:36:20.950374 [info ]: Finished loading project [  0.01s]
+20:36:20.973993 [debug]:    Started loading packages
+20:36:20.977333 [debug]:     Loaded [  0.00s] packages
+20:36:20.977367 [debug]:    Started loading internal packages
+20:36:20.995285 [debug]:     Loaded [  0.02s] internal packages
+20:36:20.995631 [info ]: Started parsing
+20:36:21.036444 [info ]: Finished loading project [  0.09s]
+20:36:21.040327 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:36:21.040615 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:36:21.043380 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:36:21.044251 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:36:21.045464 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:36:21.046590 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:36:21.051999 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.01s]
+20:36:21.052727 [debug]: Finished parsing target\generic_tests\unique_my_first_dbt_model_id.sql [  0.00s]
+20:36:21.053713 [debug]: Finished parsing target\generic_tests\not_null_my_first_dbt_model_id.sql [  0.00s]
+20:36:21.054776 [debug]: Finished parsing target\generic_tests\unique_my_second_dbt_model_id.sql [  0.00s]
+20:36:21.056940 [debug]: Finished parsing target\generic_tests\not_null_my_second_dbt_model_id.sql [  0.00s]
+20:36:21.057447 [error]: dbt1005: Source 'raw.accounts' not found in project. Searched for 'accounts'
+  --> models\staging\stg_accounts.sql:16:10
+20:36:21.057476 [error]: dbt1005: Source 'raw.customers' not found in project. Searched for 'customers'
+  --> models\staging\stg_customers.sql:15:10
+20:36:21.057486 [error]: dbt1005: Source 'raw.transactions' not found in project. Searched for 'transactions'
+  --> models\staging\stg_transactions.sql:12:6
+20:36:21.058037 [info ]: Cached model count updated: 5 models (estimate)
+20:36:21.058048 [info ]: Cached model count updated: 5 models (accurate)
+20:36:21.058072 [info ]: Started scheduling
+20:36:21.058138 [info ]: Finished scheduling [  0.00s]
+20:36:21.058806 [info ]: Started deferring state
+20:36:21.058825 [info ]: Finished deferring state [  0.00s]
+20:36:21.059625 [info ]: Started downloading schemas
+20:36:21.059667 [debug]: Started downloading relations
+20:36:21.059694 [debug]: Finished downloading relations [  0.00s]
+20:36:21.059716 [info ]: Finished downloading schemas [  0.00s]
+20:36:21.237431 [info ]: Started building task graph
+20:36:21.237528 [info ]: Finished building task graph [  0.00s]
+20:36:21.237673 [info ]: Started rendering (5 nodes)
+20:36:21.237692 [info ]: Started model analytics.stg_transactions
+20:36:21.237707 [debug]: Started rendering model analytics.stg_transactions
+20:36:21.237742 [info ]: Started model analytics.stg_customers
+20:36:21.237752 [debug]: Started rendering model analytics.stg_customers
+20:36:21.237762 [info ]: Started model analytics.stg_accounts
+20:36:21.237770 [debug]: Started rendering model analytics.stg_accounts
+20:36:21.237778 [info ]: Started model analytics.my_first_dbt_model
+20:36:21.237787 [debug]: Started rendering model analytics.my_first_dbt_model
+20:36:21.237783 [info ]: Finished parsing [  0.24s]
+20:36:21.238654 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: customers
+(in models\staging\stg_customers.sql:15:10)
+  --> models\staging\stg_customers.sql:15:10
+20:36:21.238707 [info ]: Started analyzing (5 nodes)
+20:36:21.238719 [debug]: Started analyzing model analytics.stg_customers
+20:36:21.238744 [info ]:     Failed [-------] model analytics.stg_customers (view)
+20:36:21.238768 [debug]: Finished analyzing [  0.00s] model analytics.stg_customers [skipped]
+20:36:21.238800 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: accounts
+(in models\staging\stg_accounts.sql:16:10)
+  --> models\staging\stg_accounts.sql:16:10
+20:36:21.238827 [debug]: Started analyzing model analytics.stg_accounts
+20:36:21.238836 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [error]
+20:36:21.238845 [info ]:     Failed [  0.00s] model analytics.stg_accounts (view)
+20:36:21.238859 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [skipped]
+20:36:21.238882 [error]: dbt1501: Failed to render SQL not a key type: Source not found for source name: raw, table name: transactions
+(in models\staging\stg_transactions.sql:12:6)
+  --> models\staging\stg_transactions.sql:12:6
+20:36:21.238913 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [error]
+20:36:21.238917 [debug]: Started analyzing model analytics.stg_transactions
+20:36:21.238931 [info ]:     Failed [  0.00s] model analytics.stg_transactions (view)
+20:36:21.238947 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [skipped]
+20:36:21.238971 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [error]
+20:36:21.239707 [debug]: Finished rendering [  0.00s] model analytics.my_first_dbt_model [success]
+20:36:21.239751 [debug]: Started analyzing model analytics.my_first_dbt_model
+20:36:21.240960 [info ]:  Succeeded [  0.00s] model analytics.my_first_dbt_model (table)
+20:36:21.240991 [debug]: Finished analyzing [  0.00s] model analytics.my_first_dbt_model [success]
+20:36:21.241014 [info ]: Started model analytics.my_second_dbt_model
+20:36:21.241025 [debug]: Started rendering model analytics.my_second_dbt_model
+20:36:21.242534 [debug]: Finished rendering [  0.00s] model analytics.my_second_dbt_model [success]
+20:36:21.242536 [debug]: Started analyzing model analytics.my_second_dbt_model
+20:36:21.242559 [info ]: Finished rendering [  0.00s] (5 nodes, 0 skipped, 3 errors)
+20:36:21.243821 [info ]:  Succeeded [  0.00s] model analytics.my_second_dbt_model (view)
+20:36:21.243852 [debug]: Finished analyzing [  0.00s] model analytics.my_second_dbt_model [success]
+20:36:21.243860 [info ]: Finished analyzing [  0.01s] (5 nodes, 3 skipped, 0 errors)
+20:36:21.248496 [info ]: Cached model count updated: 5 models (accurate)
+20:36:29.049117 [info ]: Started loading project
+20:36:29.049849 [info ]: Loading ~/.dbt/profiles.yml
+20:36:29.080922 [info ]: Started parsing
+20:36:29.101220 [info ]: Finished loading project [  0.05s]
+20:36:29.102034 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:36:29.104976 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:36:29.105805 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:36:29.108157 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:36:29.108809 [info ]: Finished parsing [  0.03s]
+20:36:29.110019 [info ]: Cached model count updated: 5 models (estimate)
+20:36:29.110035 [info ]: Cached model count updated: 5 models (accurate)
+20:36:29.110075 [info ]: Started scheduling
+20:36:29.110220 [info ]: Finished scheduling [  0.00s]
+20:36:29.110928 [info ]: Started deferring state
+20:36:29.110948 [info ]: Finished deferring state [  0.00s]
+20:36:29.111519 [info ]: Started downloading schemas
+20:36:29.111808 [debug]: Started downloading relations
+20:36:29.111833 [debug]: Finished downloading relations [  0.00s]
+20:36:31.787601 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."ACCOUNTS"
+20:36:32.279485 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."CUSTOMERS"
+20:36:33.284839 [info ]: Cached model count updated: 5 models (accurate)
+20:36:33.322209 [info ]: Started loading project
+20:36:33.323007 [info ]: Loading ~/.dbt/profiles.yml
+20:36:33.329055 [info ]: Started parsing
+20:36:33.348513 [info ]: Finished loading project [  0.03s]
+20:36:33.349261 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:36:33.350639 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:36:33.351189 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:36:33.353265 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:36:33.353543 [info ]: Finished parsing [  0.02s]
+20:36:33.354646 [info ]: Cached model count updated: 5 models (estimate)
+20:36:33.354661 [info ]: Cached model count updated: 5 models (accurate)
+20:36:33.354688 [info ]: Started scheduling
+20:36:33.354788 [info ]: Finished scheduling [  0.00s]
+20:36:33.355187 [info ]: Started deferring state
+20:36:33.355202 [info ]: Finished deferring state [  0.00s]
+20:36:33.355762 [info ]: Started downloading schemas
+20:36:33.355802 [debug]: Started downloading relations
+20:36:33.355819 [debug]: Finished downloading relations [  0.00s]
+20:36:33.357440 [info ]: Finished downloading schemas [  4.25s]
+20:36:34.208654 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."ACCOUNTS"
+20:36:34.316759 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."CUSTOMERS"
+20:36:34.406712 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."TRANSACTIONS"
+20:36:34.819652 [info ]: Downloaded BANKING.RAW.accounts (schema)
+20:36:34.822336 [info ]: Downloaded BANKING.RAW.customers (schema)
+20:36:34.823639 [info ]: Downloaded BANKING.RAW.transactions (schema)
+20:36:35.036101 [info ]: Started building task graph
+20:36:35.037171 [info ]: Finished building task graph [  0.00s]
+20:36:35.037340 [info ]: Started rendering (3 nodes)
+20:36:35.037362 [info ]: Started model analytics.stg_transactions
+20:36:35.037375 [debug]: Started rendering model analytics.stg_transactions
+20:36:35.037399 [info ]: Started model analytics.stg_customers
+20:36:35.037409 [debug]: Started rendering model analytics.stg_customers
+20:36:35.037419 [info ]: Started model analytics.stg_accounts
+20:36:35.037424 [debug]: Started rendering model analytics.stg_accounts
+20:36:35.037437 [info ]: Finished downloading schemas [  1.68s]
+20:36:35.039571 [info ]: Started analyzing (3 nodes)
+20:36:35.039643 [debug]: Started analyzing model analytics.stg_accounts
+20:36:35.039683 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [success]
+20:36:35.039545 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [success]
+20:36:35.039707 [debug]: Started analyzing model analytics.stg_customers
+20:36:35.040199 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:36:35.040222 [info ]: Finished rendering [  0.00s] (3 nodes, 0 skipped, 0 errors)
+20:36:35.040240 [debug]: Started analyzing model analytics.stg_transactions
+20:36:35.081297 [info ]:  Succeeded [  0.04s] model analytics.stg_transactions (view)
+20:36:35.081333 [debug]: Finished analyzing [  0.04s] model analytics.stg_transactions [success]
+20:36:35.086389 [info ]:  Succeeded [  0.05s] model analytics.stg_accounts (view)
+20:36:35.086424 [debug]: Finished analyzing [  0.05s] model analytics.stg_accounts [success]
+20:36:35.086740 [info ]:  Succeeded [  0.05s] model analytics.stg_customers (view)
+20:36:35.086769 [debug]: Finished analyzing [  0.05s] model analytics.stg_customers [success]
+20:36:35.086778 [info ]: Finished analyzing [  0.05s] (3 nodes, 0 skipped, 0 errors)
+20:36:35.086863 [debug]: Incremental compilation - 3 nodes selected: {"model.banking_dbt.stg_accounts", "model.banking_dbt.stg_customers", "model.banking_dbt.stg_transactions"}
+20:36:35.091615 [info ]: Cached model count updated: 5 models (accurate)
+20:45:11.833022 [info ]: Started loading project
+20:45:11.871154 [info ]: Loading ~/.dbt/profiles.yml
+20:45:11.878687 [info ]: Started loading project
+20:45:11.879311 [info ]: Loading ~/.dbt/profiles.yml
+20:45:11.879475 [info ]: Finished loading project [  0.05s]
+20:45:11.899504 [info ]: Loading ~/.dbt/profiles.yml
+20:45:11.924150 [debug]:    Started loading packages
+20:45:11.929096 [debug]:     Loaded [  0.00s] packages
+20:45:11.929131 [debug]:    Started loading internal packages
+20:45:11.944226 [debug]:     Loaded [  0.02s] internal packages
+20:45:11.944504 [info ]: Started parsing
+20:45:11.980235 [info ]: Finished loading project [  0.10s]
+20:45:11.981602 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:45:11.981943 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:45:11.984524 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:45:11.985035 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:45:11.985583 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:45:11.986001 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:45:11.988968 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:45:11.989414 [info ]: Finished parsing [  0.04s]
+20:45:11.989907 [info ]: Cached model count updated: 5 models (estimate)
+20:45:11.989924 [info ]: Cached model count updated: 3 models (accurate)
+20:45:11.989948 [info ]: Started scheduling
+20:45:11.990029 [info ]: Finished scheduling [  0.00s]
+20:45:11.990501 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:45:11.990627 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:45:11.990696 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:45:11.991463 [info ]: Started deferring state
+20:45:11.991494 [info ]: Finished deferring state [  0.00s]
+20:45:11.992412 [info ]: Started downloading schemas
+20:45:11.992484 [debug]: Started downloading relations
+20:45:11.992519 [debug]: Finished downloading relations [  0.00s]
+20:45:13.465193 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."ACCOUNTS"
+20:45:14.038751 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."CUSTOMERS"
+20:45:15.094280 [info ]: Started loading project
+20:45:15.095381 [info ]: Loading ~/.dbt/profiles.yml
+20:45:15.105179 [info ]: Finished downloading schemas [  3.11s]
+20:45:15.114744 [debug]:    Started loading packages
+20:45:15.117500 [debug]:     Loaded [  0.00s] packages
+20:45:15.117523 [debug]:    Started loading internal packages
+20:45:15.131291 [debug]:     Loaded [  0.01s] internal packages
+20:45:15.131531 [info ]: Started parsing
+20:45:15.166332 [info ]: Finished loading project [  0.07s]
+20:45:15.168772 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:45:15.169042 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:45:15.170679 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:45:15.171146 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:45:15.171641 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:45:15.172254 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:45:15.174744 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:45:15.175072 [info ]: Finished parsing [  0.04s]
+20:45:15.175533 [info ]: Cached model count updated: 5 models (estimate)
+20:45:15.175548 [info ]: Cached model count updated: 3 models (accurate)
+20:45:15.175566 [info ]: Started scheduling
+20:45:15.175618 [info ]: Finished scheduling [  0.00s]
+20:45:15.175655 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:45:15.175702 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:45:15.175729 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:45:15.176185 [info ]: Started deferring state
+20:45:15.176200 [info ]: Finished deferring state [  0.00s]
+20:45:15.176755 [info ]: Started downloading schemas
+20:45:15.176793 [debug]: Started downloading relations
+20:45:15.176808 [debug]: Finished downloading relations [  0.00s]
+20:45:15.857074 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."ACCOUNTS"
+20:45:15.952208 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."CUSTOMERS"
+20:45:16.243211 [debug]: Query executed on node unknown:
+describe table "BANKING"."RAW"."TRANSACTIONS"
+20:45:16.318247 [info ]: Downloaded BANKING.RAW.accounts (schema)
+20:45:16.319352 [info ]: Downloaded BANKING.RAW.customers (schema)
+20:45:16.320000 [info ]: Downloaded BANKING.RAW.transactions (schema)
+20:45:16.481774 [info ]: Started building task graph
+20:45:16.482160 [info ]: Finished building task graph [  0.00s]
+20:45:16.482365 [info ]: Started rendering (3 nodes)
+20:45:16.482393 [info ]: Started model analytics.stg_transactions
+20:45:16.482413 [debug]: Started rendering model analytics.stg_transactions
+20:45:16.482441 [info ]: Started model analytics.stg_customers
+20:45:16.482451 [debug]: Started rendering model analytics.stg_customers
+20:45:16.482462 [info ]: Started model analytics.stg_accounts
+20:45:16.482467 [debug]: Started rendering model analytics.stg_accounts
+20:45:16.482513 [info ]: Finished downloading schemas [  1.31s]
+20:45:16.484939 [info ]: Started analyzing (3 nodes)
+20:45:16.484959 [debug]: Started analyzing model analytics.stg_customers
+20:45:16.484976 [debug]: Started analyzing model analytics.stg_transactions
+20:45:16.484994 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:45:16.485063 [debug]: Started analyzing model analytics.stg_accounts
+20:45:16.487720 [debug]: Finished rendering [  0.01s] model analytics.stg_customers [success]
+20:45:16.487752 [debug]: Finished rendering [  0.01s] model analytics.stg_accounts [success]
+20:45:16.487758 [info ]: Finished rendering [  0.01s] (3 nodes, 0 skipped, 0 errors)
+20:45:16.488817 [info ]:  Succeeded [  0.01s] model analytics.stg_transactions (view)
+20:45:16.488847 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [success]
+20:45:16.490829 [info ]:  Succeeded [  0.01s] model analytics.stg_accounts (view)
+20:45:16.490883 [debug]: Finished analyzing [  0.01s] model analytics.stg_accounts [success]
+20:45:16.491933 [info ]:  Succeeded [  0.01s] model analytics.stg_customers (view)
+20:45:16.491976 [debug]: Finished analyzing [  0.01s] model analytics.stg_customers [success]
+20:45:16.492008 [info ]: Finished analyzing [  0.01s] (3 nodes, 0 skipped, 0 errors)
+20:45:16.496718 [info ]: Cached model count updated: 3 models (accurate)
+20:45:16.652145 [info ]: Loading ~/.dbt/profiles.yml
+20:50:51.385970 [info ]: Started loading project
+20:50:51.388229 [info ]: Loading ~/.dbt/profiles.yml
+20:50:51.394455 [info ]: Started loading project
+20:50:51.395168 [info ]: Loading ~/.dbt/profiles.yml
+20:50:51.395248 [info ]: Finished loading project [  0.01s]
+20:50:51.449379 [debug]:    Started loading packages
+20:50:51.453257 [debug]:     Loaded [  0.00s] packages
+20:50:51.453295 [debug]:    Started loading internal packages
+20:50:51.472795 [debug]:     Loaded [  0.02s] internal packages
+20:50:51.473200 [info ]: Started parsing
+20:50:51.514178 [info ]: Finished loading project [  0.12s]
+20:50:51.516309 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:50:51.516655 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:50:51.518645 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:50:51.519154 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:50:51.519882 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:50:51.520424 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:50:51.523061 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:50:51.523827 [info ]: Finished parsing [  0.05s]
+20:50:51.524362 [info ]: Cached model count updated: 5 models (estimate)
+20:50:51.524378 [info ]: Cached model count updated: 3 models (accurate)
+20:50:51.524405 [info ]: Started scheduling
+20:50:51.524487 [info ]: Finished scheduling [  0.00s]
+20:50:51.524545 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:50:51.524650 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:50:51.524723 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:50:51.525359 [info ]: Started deferring state
+20:50:51.525381 [info ]: Finished deferring state [  0.00s]
+20:50:51.526141 [info ]: Started downloading schemas
+20:50:51.526196 [debug]: Started downloading relations
+20:50:51.526228 [debug]: Finished downloading relations [  0.00s]
+20:50:51.526245 [info ]: Finished downloading schemas [  0.00s]
+20:50:51.713123 [info ]: Started building task graph
+20:50:51.713277 [info ]: Finished building task graph [  0.00s]
+20:50:51.713702 [info ]: Started rendering (3 nodes)
+20:50:51.713863 [info ]: Started model analytics.stg_transactions
+20:50:51.713890 [debug]: Started rendering model analytics.stg_transactions
+20:50:51.713921 [info ]: Started model analytics.stg_customers
+20:50:51.713934 [debug]: Started rendering model analytics.stg_customers
+20:50:51.713956 [info ]: Started model analytics.stg_accounts
+20:50:51.713969 [debug]: Started rendering model analytics.stg_accounts
+20:50:51.717263 [info ]: Started analyzing (3 nodes)
+20:50:51.717297 [debug]: Started analyzing model analytics.stg_transactions
+20:50:51.717288 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:50:51.717376 [debug]: Started analyzing model analytics.stg_accounts
+20:50:51.717402 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [success]
+20:50:51.717405 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [success]
+20:50:51.717415 [debug]: Started analyzing model analytics.stg_customers
+20:50:51.717420 [info ]: Finished rendering [  0.00s] (3 nodes, 0 skipped, 0 errors)
+20:50:51.733359 [info ]:  Succeeded [  0.02s] model analytics.stg_transactions (view)
+20:50:51.733400 [debug]: Finished analyzing [  0.02s] model analytics.stg_transactions [success]
+20:50:51.733531 [info ]:  Succeeded [  0.02s] model analytics.stg_customers (view)
+20:50:51.733558 [debug]: Finished analyzing [  0.02s] model analytics.stg_customers [success]
+20:50:51.733788 [info ]:  Succeeded [  0.02s] model analytics.stg_accounts (view)
+20:50:51.733829 [debug]: Finished analyzing [  0.02s] model analytics.stg_accounts [success]
+20:50:51.733842 [info ]: Finished analyzing [  0.02s] (3 nodes, 0 skipped, 0 errors)
+20:50:51.738782 [info ]: Cached model count updated: 3 models (accurate)
+20:50:59.676938 [info ]: Started loading project
+20:50:59.678063 [info ]: Loading ~/.dbt/profiles.yml
+20:50:59.683222 [info ]: Started loading project
+20:50:59.683892 [info ]: Loading ~/.dbt/profiles.yml
+20:50:59.683970 [info ]: Finished loading project [  0.01s]
+20:50:59.704396 [debug]:    Started loading packages
+20:50:59.707654 [debug]:     Loaded [  0.00s] packages
+20:50:59.707685 [debug]:    Started loading internal packages
+20:50:59.722308 [debug]:     Loaded [  0.01s] internal packages
+20:50:59.722574 [info ]: Started parsing
+20:50:59.792078 [info ]: Finished loading project [  0.11s]
+20:50:59.793707 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:50:59.794043 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:50:59.819861 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.02s]
+20:50:59.823604 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:50:59.824141 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:50:59.824772 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:50:59.825307 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:50:59.828877 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:50:59.830020 [info ]: Finished parsing [  0.11s]
+20:50:59.830782 [info ]: Cached model count updated: 5 models (estimate)
+20:50:59.830813 [info ]: Cached model count updated: 3 models (accurate)
+20:50:59.831154 [info ]: Started scheduling
+20:50:59.831431 [info ]: Finished scheduling [  0.00s]
+20:50:59.831524 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+20:50:59.831625 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:50:59.831709 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:50:59.831760 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:50:59.832498 [info ]: Started deferring state
+20:50:59.832522 [info ]: Finished deferring state [  0.00s]
+20:50:59.833517 [info ]: Started downloading schemas
+20:50:59.833575 [debug]: Started downloading relations
+20:50:59.833597 [debug]: Finished downloading relations [  0.00s]
+20:51:00.851370 [debug]: Query executed on node unknown:
+describe table "BANKING"."ANALYTICS"."ACCOUNTS_SNAPSHOT"
+20:51:01.898666 [info ]: Started loading project
+20:51:01.900543 [info ]: Loading ~/.dbt/profiles.yml
+20:51:01.928487 [debug]:    Started loading packages
+20:51:01.932673 [debug]:     Loaded [  0.00s] packages
+20:51:01.932714 [debug]:    Started loading internal packages
+20:51:01.947524 [info ]: Finished downloading schemas [  2.11s]
+20:51:01.950478 [debug]:     Loaded [  0.02s] internal packages
+20:51:01.950773 [info ]: Started parsing
+20:51:01.985408 [info ]: Finished loading project [  0.09s]
+20:51:01.986686 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:51:01.987085 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:51:01.990811 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:51:01.992226 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:51:01.992909 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:51:01.993500 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:51:01.994208 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:51:01.997134 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:51:01.997564 [info ]: Finished parsing [  0.05s]
+20:51:01.998045 [info ]: Cached model count updated: 5 models (estimate)
+20:51:01.998060 [info ]: Cached model count updated: 3 models (accurate)
+20:51:01.998081 [info ]: Started scheduling
+20:51:01.998151 [info ]: Finished scheduling [  0.00s]
+20:51:01.998194 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+20:51:01.998264 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:51:01.998318 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:51:01.998359 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:51:01.999351 [info ]: Started deferring state
+20:51:01.999371 [info ]: Finished deferring state [  0.00s]
+20:51:02.000105 [info ]: Started downloading schemas
+20:51:02.000157 [debug]: Started downloading relations
+20:51:02.000178 [debug]: Finished downloading relations [  0.00s]
+20:51:03.086203 [debug]: Query executed on node unknown:
+describe table "BANKING"."ANALYTICS"."ACCOUNTS_SNAPSHOT"
+20:51:04.220123 [info ]: Finished downloading schemas [  2.22s]
+20:51:04.482945 [info ]: Started building task graph
+20:51:04.483205 [info ]: Finished building task graph [  0.00s]
+20:51:04.483547 [info ]: Started rendering (4 nodes)
+20:51:04.483578 [info ]: Started model analytics.stg_transactions
+20:51:04.483595 [debug]: Started rendering model analytics.stg_transactions
+20:51:04.483624 [info ]: Started model analytics.stg_customers
+20:51:04.483634 [debug]: Started rendering model analytics.stg_customers
+20:51:04.483660 [info ]: Started model analytics.stg_accounts
+20:51:04.483672 [debug]: Started rendering model analytics.stg_accounts
+20:51:04.488552 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:51:04.488585 [info ]: Started analyzing (4 nodes)
+20:51:04.488595 [debug]: Started analyzing model analytics.stg_transactions
+20:51:04.489038 [debug]: Started analyzing model analytics.stg_customers
+20:51:04.489061 [debug]: Started analyzing model analytics.stg_accounts
+20:51:04.489423 [debug]: Finished rendering [  0.01s] model analytics.stg_accounts [success]
+20:51:04.489478 [debug]: Finished rendering [  0.01s] model analytics.stg_customers [success]
+20:51:04.496846 [info ]:  Succeeded [  0.01s] model analytics.stg_transactions (view)
+20:51:04.496913 [debug]: Finished analyzing [  0.01s] model analytics.stg_transactions [success]
+20:51:04.503187 [info ]:  Succeeded [  0.02s] model analytics.stg_accounts (view)
+20:51:04.503272 [debug]: Finished analyzing [  0.01s] model analytics.stg_accounts [success]
+20:51:04.503898 [info ]: Started snapshot ANALYTICS.accounts_snapshot
+20:51:04.503965 [debug]: Started rendering snapshot ANALYTICS.accounts_snapshot
+20:51:04.505007 [info ]:  Succeeded [  0.02s] model analytics.stg_customers (view)
+20:51:04.505096 [debug]: Finished analyzing [  0.02s] model analytics.stg_customers [success]
+20:51:04.521031 [debug]: Started analyzing snapshot ANALYTICS.accounts_snapshot
+20:51:04.521033 [debug]: Finished rendering [  0.02s] snapshot ANALYTICS.accounts_snapshot [success]
+20:51:04.521062 [info ]: Finished rendering [  0.04s] (4 nodes, 0 skipped, 0 errors)
+20:51:04.527331 [info ]:  Succeeded [  0.02s] snapshot ANALYTICS.accounts_snapshot (table)
+20:51:04.527422 [debug]: Finished analyzing [  0.01s] snapshot ANALYTICS.accounts_snapshot [success]
+20:51:04.527449 [info ]: Finished analyzing [  0.04s] (4 nodes, 0 skipped, 0 errors)
+20:51:04.537234 [info ]: Cached model count updated: 3 models (accurate)
+20:51:15.641497 [info ]: Started loading project
+20:51:15.642479 [info ]: Loading ~/.dbt/profiles.yml
+20:51:15.648065 [info ]: Started loading project
+20:51:15.648837 [info ]: Loading ~/.dbt/profiles.yml
+20:51:15.648885 [info ]: Finished loading project [  0.01s]
+20:51:15.671742 [debug]:    Started loading packages
+20:51:15.675222 [debug]:     Loaded [  0.00s] packages
+20:51:15.675253 [debug]:    Started loading internal packages
+20:51:15.690687 [debug]:     Loaded [  0.02s] internal packages
+20:51:15.690966 [info ]: Started parsing
+20:51:15.730238 [info ]: Finished loading project [  0.08s]
+20:51:15.732080 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:51:15.732510 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:51:15.737560 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:51:15.738828 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:51:15.739261 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:51:15.740259 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:51:15.741438 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:51:15.745642 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:51:15.746193 [info ]: Finished parsing [  0.06s]
+20:51:15.746848 [info ]: Cached model count updated: 5 models (estimate)
+20:51:15.746875 [info ]: Cached model count updated: 3 models (accurate)
+20:51:15.746899 [info ]: Started scheduling
+20:51:15.746970 [info ]: Finished scheduling [  0.00s]
+20:51:15.747015 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+20:51:15.747076 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:51:15.747120 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:51:15.747161 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:51:15.747736 [info ]: Started deferring state
+20:51:15.747759 [info ]: Finished deferring state [  0.00s]
+20:51:15.748496 [info ]: Started downloading schemas
+20:51:15.748576 [debug]: Started downloading relations
+20:51:15.748604 [debug]: Finished downloading relations [  0.00s]
+20:51:15.748621 [info ]: Finished downloading schemas [  0.00s]
+20:51:15.924199 [info ]: Started building task graph
+20:51:15.924296 [info ]: Finished building task graph [  0.00s]
+20:51:15.924441 [info ]: Started rendering (4 nodes)
+20:51:15.924462 [info ]: Started model analytics.stg_transactions
+20:51:15.924474 [debug]: Started rendering model analytics.stg_transactions
+20:51:15.924491 [info ]: Started model analytics.stg_customers
+20:51:15.924733 [debug]: Started rendering model analytics.stg_customers
+20:51:15.924888 [info ]: Started model analytics.stg_accounts
+20:51:15.924903 [debug]: Started rendering model analytics.stg_accounts
+20:51:15.926625 [info ]: Started analyzing (4 nodes)
+20:51:15.926641 [debug]: Started analyzing model analytics.stg_accounts
+20:51:15.926750 [debug]: Started analyzing model analytics.stg_transactions
+20:51:15.926763 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:51:15.926772 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [success]
+20:51:15.926785 [debug]: Started analyzing model analytics.stg_customers
+20:51:15.926786 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [success]
+20:51:15.930869 [info ]:  Succeeded [  0.01s] model analytics.stg_transactions (view)
+20:51:15.930921 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [success]
+20:51:15.931179 [info ]:  Succeeded [  0.01s] model analytics.stg_customers (view)
+20:51:15.931209 [debug]: Finished analyzing [  0.00s] model analytics.stg_customers [success]
+20:51:15.931600 [info ]:  Succeeded [  0.01s] model analytics.stg_accounts (view)
+20:51:15.931625 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [success]
+20:51:15.931648 [info ]: Started snapshot ANALYTICS.accounts_snapshot
+20:51:15.931663 [debug]: Started rendering snapshot ANALYTICS.accounts_snapshot
+20:51:15.933664 [debug]: Finished rendering [  0.00s] snapshot ANALYTICS.accounts_snapshot [success]
+20:51:15.933669 [debug]: Started analyzing snapshot ANALYTICS.accounts_snapshot
+20:51:15.933691 [info ]: Finished rendering [  0.01s] (4 nodes, 0 skipped, 0 errors)
+20:51:15.936463 [info ]:  Succeeded [  0.00s] snapshot ANALYTICS.accounts_snapshot (table)
+20:51:15.936494 [debug]: Finished analyzing [  0.00s] snapshot ANALYTICS.accounts_snapshot [success]
+20:51:15.936501 [info ]: Finished analyzing [  0.01s] (4 nodes, 0 skipped, 0 errors)
+20:51:15.941675 [info ]: Cached model count updated: 3 models (accurate)
+20:51:21.610428 [info ]: Started loading project
+20:51:21.611256 [info ]: Loading ~/.dbt/profiles.yml
+20:51:21.616271 [info ]: Started loading project
+20:51:21.617144 [info ]: Loading ~/.dbt/profiles.yml
+20:51:21.617196 [info ]: Finished loading project [  0.01s]
+20:51:21.636798 [debug]:    Started loading packages
+20:51:21.639850 [debug]:     Loaded [  0.00s] packages
+20:51:21.639877 [debug]:    Started loading internal packages
+20:51:21.657976 [debug]:     Loaded [  0.02s] internal packages
+20:51:21.658286 [info ]: Started parsing
+20:51:21.709924 [info ]: Finished loading project [  0.09s]
+20:51:21.715075 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:51:21.716123 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:51:21.721864 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:51:21.739166 [debug]: Finished parsing target\snapshots\customers_snapshot.sql [  0.02s]
+20:51:21.741469 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:51:21.741920 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:51:21.742572 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:51:21.743173 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:51:21.746144 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:51:21.746882 [info ]: Finished parsing [  0.09s]
+20:51:21.747460 [info ]: Cached model count updated: 5 models (estimate)
+20:51:21.747477 [info ]: Cached model count updated: 3 models (accurate)
+20:51:21.747506 [info ]: Started scheduling
+20:51:21.747593 [info ]: Finished scheduling [  0.00s]
+20:51:21.747725 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+20:51:21.747803 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.customers_snapshot") and interval: None
+20:51:21.747874 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:51:21.747926 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:51:21.747969 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:51:21.748761 [info ]: Started deferring state
+20:51:21.748784 [info ]: Finished deferring state [  0.00s]
+20:51:21.749815 [info ]: Started downloading schemas
+20:51:21.749896 [debug]: Started downloading relations
+20:51:21.749921 [debug]: Finished downloading relations [  0.00s]
+20:51:22.701175 [debug]: Query executed on node unknown:
+describe table "BANKING"."ANALYTICS"."CUSTOMERS_SNAPSHOT"
+20:51:23.706457 [info ]: Started loading project
+20:51:23.707557 [info ]: Loading ~/.dbt/profiles.yml
+20:51:23.730675 [debug]:    Started loading packages
+20:51:23.735204 [debug]:     Loaded [  0.00s] packages
+20:51:23.735259 [debug]:    Started loading internal packages
+20:51:23.754738 [debug]:     Loaded [  0.02s] internal packages
+20:51:23.755023 [info ]: Started parsing
+20:51:23.769259 [info ]: Finished downloading schemas [  2.02s]
+20:51:23.798211 [info ]: Finished loading project [  0.09s]
+20:51:23.800496 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:51:23.801304 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:51:23.809944 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:51:23.811067 [debug]: Finished parsing target\snapshots\customers_snapshot.sql [  0.00s]
+20:51:23.813245 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:51:23.813796 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:51:23.814492 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:51:23.815604 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:51:23.818751 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:51:23.819413 [info ]: Finished parsing [  0.06s]
+20:51:23.820293 [info ]: Cached model count updated: 5 models (estimate)
+20:51:23.820312 [info ]: Cached model count updated: 3 models (accurate)
+20:51:23.820333 [info ]: Started scheduling
+20:51:23.820400 [info ]: Finished scheduling [  0.00s]
+20:51:23.820441 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+20:51:23.820495 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.customers_snapshot") and interval: None
+20:51:23.820539 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:51:23.820587 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:51:23.820627 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:51:23.821139 [info ]: Started deferring state
+20:51:23.821158 [info ]: Finished deferring state [  0.00s]
+20:51:23.821827 [info ]: Started downloading schemas
+20:51:23.821903 [debug]: Started downloading relations
+20:51:23.821931 [debug]: Finished downloading relations [  0.00s]
+20:51:24.945271 [debug]: Query executed on node unknown:
+describe table "BANKING"."ANALYTICS"."CUSTOMERS_SNAPSHOT"
+20:51:26.274163 [info ]: Finished downloading schemas [  2.45s]
+20:51:26.463116 [info ]: Started building task graph
+20:51:26.463228 [info ]: Finished building task graph [  0.00s]
+20:51:26.463376 [info ]: Started rendering (5 nodes)
+20:51:26.463396 [info ]: Started model analytics.stg_transactions
+20:51:26.463407 [debug]: Started rendering model analytics.stg_transactions
+20:51:26.463424 [info ]: Started model analytics.stg_customers
+20:51:26.463430 [debug]: Started rendering model analytics.stg_customers
+20:51:26.463447 [info ]: Started model analytics.stg_accounts
+20:51:26.463453 [debug]: Started rendering model analytics.stg_accounts
+20:51:26.465521 [info ]: Started analyzing (5 nodes)
+20:51:26.465546 [debug]: Started analyzing model analytics.stg_transactions
+20:51:26.465856 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:51:26.466266 [debug]: Started analyzing model analytics.stg_customers
+20:51:26.466513 [debug]: Started analyzing model analytics.stg_accounts
+20:51:26.467356 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [success]
+20:51:26.467415 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [success]
+20:51:26.474283 [info ]:  Succeeded [  0.01s] model analytics.stg_customers (view)
+20:51:26.474346 [debug]: Finished analyzing [  0.01s] model analytics.stg_customers [success]
+20:51:26.474389 [info ]: Started snapshot ANALYTICS.customers_snapshot
+20:51:26.474427 [debug]: Started rendering snapshot ANALYTICS.customers_snapshot
+20:51:26.476350 [info ]:  Succeeded [  0.01s] model analytics.stg_accounts (view)
+20:51:26.476411 [debug]: Finished analyzing [  0.01s] model analytics.stg_accounts [success]
+20:51:26.476454 [info ]: Started snapshot ANALYTICS.accounts_snapshot
+20:51:26.476478 [debug]: Started rendering snapshot ANALYTICS.accounts_snapshot
+20:51:26.476867 [info ]:  Succeeded [  0.01s] model analytics.stg_transactions (view)
+20:51:26.476924 [debug]: Finished analyzing [  0.01s] model analytics.stg_transactions [success]
+20:51:26.479291 [debug]: Started analyzing snapshot ANALYTICS.customers_snapshot
+20:51:26.479780 [debug]: Finished rendering [  0.01s] snapshot ANALYTICS.customers_snapshot [success]
+20:51:26.481693 [debug]: Started analyzing snapshot ANALYTICS.accounts_snapshot
+20:51:26.481736 [debug]: Finished rendering [  0.01s] snapshot ANALYTICS.accounts_snapshot [success]
+20:51:26.481773 [info ]: Finished rendering [  0.02s] (5 nodes, 0 skipped, 0 errors)
+20:51:26.483201 [info ]:  Succeeded [  0.01s] snapshot ANALYTICS.customers_snapshot (table)
+20:51:26.483270 [debug]: Finished analyzing [  0.00s] snapshot ANALYTICS.customers_snapshot [success]
+20:51:26.485448 [info ]:  Succeeded [  0.01s] snapshot ANALYTICS.accounts_snapshot (table)
+20:51:26.485506 [debug]: Finished analyzing [  0.00s] snapshot ANALYTICS.accounts_snapshot [success]
+20:51:26.485521 [info ]: Finished analyzing [  0.02s] (5 nodes, 0 skipped, 0 errors)
+20:51:26.494908 [info ]: Cached model count updated: 3 models (accurate)
+20:57:03.617825 [info ]: Started loading project
+20:57:03.618818 [info ]: Loading ~/.dbt/profiles.yml
+20:57:03.624255 [info ]: Cached model count updated: 3 models (accurate)
+20:57:03.624299 [info ]: Finished loading project [  0.01s]
+20:57:18.945833 [info ]: Started loading project
+20:57:18.946636 [info ]: Loading ~/.dbt/profiles.yml
+20:57:18.950849 [info ]: Finished loading project [  0.01s]
+20:57:18.950891 [info ]: Cached model count updated: 3 models (accurate)
+20:57:25.995215 [info ]: Started loading project
+20:57:25.996151 [info ]: Loading ~/.dbt/profiles.yml
+20:57:26.000910 [info ]: Finished loading project [  0.01s]
+20:57:26.000982 [info ]: Cached model count updated: 3 models (accurate)
+20:57:45.552616 [info ]: Started loading project
+20:57:45.553433 [info ]: Loading ~/.dbt/profiles.yml
+20:57:45.559084 [info ]: Started loading project
+20:57:45.559687 [info ]: Loading ~/.dbt/profiles.yml
+20:57:45.559878 [info ]: Finished loading project [  0.01s]
+20:57:45.584462 [debug]:    Started loading packages
+20:57:45.587631 [debug]:     Loaded [  0.00s] packages
+20:57:45.587656 [debug]:    Started loading internal packages
+20:57:45.605157 [debug]:     Loaded [  0.02s] internal packages
+20:57:45.605438 [info ]: Started parsing
+20:57:45.649277 [info ]: Finished loading project [  0.09s]
+20:57:45.650712 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:57:45.651031 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:57:45.655483 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:57:45.655952 [debug]: Finished parsing target\snapshots\customers_snapshot.sql [  0.00s]
+20:57:45.658049 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:57:45.658619 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:57:45.659015 [debug]: Finished parsing models\marts\dimensions\dim_accounts.sql [  0.00s]
+20:57:45.659521 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:57:45.659990 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:57:45.662817 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:57:45.664740 [info ]: Finished parsing [  0.06s]
+20:57:45.665439 [info ]: Cached model count updated: 6 models (estimate)
+20:57:45.665454 [info ]: Cached model count updated: 4 models (accurate)
+20:57:45.665511 [info ]: Started scheduling
+20:57:45.665601 [info ]: Finished scheduling [  0.00s]
+20:57:45.665666 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.customers_snapshot") and interval: None
+20:57:45.665769 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+20:57:45.665838 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:57:45.665908 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:57:45.665978 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:57:45.666560 [info ]: Started deferring state
+20:57:45.666579 [info ]: Finished deferring state [  0.00s]
+20:57:45.667267 [info ]: Started downloading schemas
+20:57:45.667337 [debug]: Started downloading relations
+20:57:45.667364 [debug]: Finished downloading relations [  0.00s]
+20:57:45.667379 [info ]: Finished downloading schemas [  0.00s]
+20:57:45.839296 [info ]: Started building task graph
+20:57:45.839421 [info ]: Finished building task graph [  0.00s]
+20:57:45.839647 [info ]: Started rendering (5 nodes)
+20:57:45.839672 [info ]: Started model analytics.stg_transactions
+20:57:45.839692 [debug]: Started rendering model analytics.stg_transactions
+20:57:45.839712 [info ]: Started model analytics.stg_customers
+20:57:45.839721 [debug]: Started rendering model analytics.stg_customers
+20:57:45.839737 [info ]: Started model analytics.stg_accounts
+20:57:45.839745 [debug]: Started rendering model analytics.stg_accounts
+20:57:45.842074 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:57:45.842081 [info ]: Started analyzing (5 nodes)
+20:57:45.842100 [debug]: Started analyzing model analytics.stg_transactions
+20:57:45.842118 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [success]
+20:57:45.842130 [debug]: Started analyzing model analytics.stg_accounts
+20:57:45.842141 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [success]
+20:57:45.842181 [debug]: Started analyzing model analytics.stg_customers
+20:57:45.847412 [info ]:  Succeeded [  0.01s] model analytics.stg_transactions (view)
+20:57:45.847445 [debug]: Finished analyzing [  0.01s] model analytics.stg_transactions [success]
+20:57:45.847549 [info ]:  Succeeded [  0.01s] model analytics.stg_customers (view)
+20:57:45.847574 [debug]: Finished analyzing [  0.01s] model analytics.stg_customers [success]
+20:57:45.847619 [info ]: Started snapshot ANALYTICS.customers_snapshot
+20:57:45.847717 [debug]: Started rendering snapshot ANALYTICS.customers_snapshot
+20:57:45.847773 [info ]:  Succeeded [  0.01s] model analytics.stg_accounts (view)
+20:57:45.847788 [debug]: Finished analyzing [  0.01s] model analytics.stg_accounts [success]
+20:57:45.847804 [info ]: Started snapshot ANALYTICS.accounts_snapshot
+20:57:45.847814 [debug]: Started rendering snapshot ANALYTICS.accounts_snapshot
+20:57:45.849799 [debug]: Started analyzing snapshot ANALYTICS.customers_snapshot
+20:57:45.849842 [debug]: Finished rendering [  0.00s] snapshot ANALYTICS.accounts_snapshot [success]
+20:57:45.849863 [debug]: Started analyzing snapshot ANALYTICS.accounts_snapshot
+20:57:45.849894 [debug]: Finished rendering [  0.00s] snapshot ANALYTICS.customers_snapshot [success]
+20:57:45.849916 [info ]: Finished rendering [  0.01s] (5 nodes, 0 skipped, 0 errors)
+20:57:45.851952 [info ]:  Succeeded [  0.00s] snapshot ANALYTICS.customers_snapshot (table)
+20:57:45.851989 [debug]: Finished analyzing [  0.00s] snapshot ANALYTICS.customers_snapshot [success]
+20:57:45.852081 [info ]:  Succeeded [  0.00s] snapshot ANALYTICS.accounts_snapshot (table)
+20:57:45.852111 [debug]: Finished analyzing [  0.00s] snapshot ANALYTICS.accounts_snapshot [success]
+20:57:45.852119 [info ]: Finished analyzing [  0.01s] (5 nodes, 0 skipped, 0 errors)
+20:57:45.856575 [info ]: Cached model count updated: 4 models (accurate)
+20:58:01.371302 [info ]: Started loading project
+20:58:01.372201 [info ]: Loading ~/.dbt/profiles.yml
+20:58:01.378230 [info ]: Started loading project
+20:58:01.378951 [info ]: Loading ~/.dbt/profiles.yml
+20:58:01.378993 [info ]: Finished loading project [  0.01s]
+20:58:01.401350 [debug]:    Started loading packages
+20:58:01.405175 [debug]:     Loaded [  0.00s] packages
+20:58:01.405209 [debug]:    Started loading internal packages
+20:58:01.422652 [debug]:     Loaded [  0.02s] internal packages
+20:58:01.422949 [info ]: Started parsing
+20:58:01.463166 [info ]: Finished loading project [  0.08s]
+20:58:01.464622 [debug]: Finished parsing models\example\schema.yml [  0.00s]
+20:58:01.464979 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+20:58:01.469471 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:58:01.470057 [debug]: Finished parsing target\snapshots\customers_snapshot.sql [  0.00s]
+20:58:01.471737 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.00s]
+20:58:01.472187 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+20:58:01.472576 [debug]: Finished parsing models\marts\dimensions\dim_accounts.sql [  0.00s]
+20:58:01.472855 [debug]: Finished parsing models\marts\facts\dim_customers.sql [  0.00s]
+20:58:01.473437 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+20:58:01.473987 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+20:58:01.477596 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.00s]
+20:58:01.478051 [info ]: Finished parsing [  0.06s]
+20:58:01.478761 [info ]: Cached model count updated: 7 models (estimate)
+20:58:01.478775 [info ]: Cached model count updated: 5 models (accurate)
+20:58:01.478802 [info ]: Started scheduling
+20:58:01.478874 [info ]: Finished scheduling [  0.00s]
+20:58:01.478918 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+20:58:01.479305 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.customers_snapshot") and interval: None
+20:58:01.479419 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+20:58:01.479481 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+20:58:01.479526 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+20:58:01.480067 [info ]: Started deferring state
+20:58:01.480088 [info ]: Finished deferring state [  0.00s]
+20:58:01.480790 [info ]: Started downloading schemas
+20:58:01.480846 [debug]: Started downloading relations
+20:58:01.480872 [debug]: Finished downloading relations [  0.00s]
+20:58:01.480888 [info ]: Finished downloading schemas [  0.00s]
+20:58:01.658735 [info ]: Started building task graph
+20:58:01.658843 [info ]: Finished building task graph [  0.00s]
+20:58:01.658995 [info ]: Started rendering (5 nodes)
+20:58:01.659017 [info ]: Started model analytics.stg_transactions
+20:58:01.659031 [debug]: Started rendering model analytics.stg_transactions
+20:58:01.659053 [info ]: Started model analytics.stg_customers
+20:58:01.659060 [debug]: Started rendering model analytics.stg_customers
+20:58:01.659076 [info ]: Started model analytics.stg_accounts
+20:58:01.659085 [debug]: Started rendering model analytics.stg_accounts
+20:58:01.661006 [info ]: Started analyzing (5 nodes)
+20:58:01.661028 [debug]: Started analyzing model analytics.stg_customers
+20:58:01.661442 [debug]: Started analyzing model analytics.stg_transactions
+20:58:01.661621 [debug]: Started analyzing model analytics.stg_accounts
+20:58:01.662148 [debug]: Finished rendering [  0.00s] model analytics.stg_customers [success]
+20:58:01.662197 [debug]: Finished rendering [  0.00s] model analytics.stg_transactions [success]
+20:58:01.662274 [debug]: Finished rendering [  0.00s] model analytics.stg_accounts [success]
+20:58:01.665184 [info ]:  Succeeded [  0.01s] model analytics.stg_transactions (view)
+20:58:01.665218 [debug]: Finished analyzing [  0.00s] model analytics.stg_transactions [success]
+20:58:01.666113 [info ]:  Succeeded [  0.01s] model analytics.stg_customers (view)
+20:58:01.666142 [debug]: Finished analyzing [  0.01s] model analytics.stg_customers [success]
+20:58:01.666166 [info ]: Started snapshot ANALYTICS.customers_snapshot
+20:58:01.666177 [debug]: Started rendering snapshot ANALYTICS.customers_snapshot
+20:58:01.666396 [info ]:  Succeeded [  0.01s] model analytics.stg_accounts (view)
+20:58:01.666420 [debug]: Finished analyzing [  0.00s] model analytics.stg_accounts [success]
+20:58:01.666442 [info ]: Started snapshot ANALYTICS.accounts_snapshot
+20:58:01.666453 [debug]: Started rendering snapshot ANALYTICS.accounts_snapshot
+20:58:01.667896 [debug]: Finished rendering [  0.00s] snapshot ANALYTICS.accounts_snapshot [success]
+20:58:01.667814 [debug]: Started analyzing snapshot ANALYTICS.accounts_snapshot
+20:58:01.667931 [debug]: Finished rendering [  0.00s] snapshot ANALYTICS.customers_snapshot [success]
+20:58:01.667943 [info ]: Finished rendering [  0.01s] (5 nodes, 0 skipped, 0 errors)
+20:58:01.667955 [debug]: Started analyzing snapshot ANALYTICS.customers_snapshot
+20:58:01.669625 [info ]:  Succeeded [  0.00s] snapshot ANALYTICS.customers_snapshot (table)
+20:58:01.669656 [debug]: Finished analyzing [  0.00s] snapshot ANALYTICS.customers_snapshot [success]
+20:58:01.669792 [info ]:  Succeeded [  0.00s] snapshot ANALYTICS.accounts_snapshot (table)
+20:58:01.669820 [debug]: Finished analyzing [  0.00s] snapshot ANALYTICS.accounts_snapshot [success]
+20:58:01.669827 [info ]: Finished analyzing [  0.01s] (5 nodes, 0 skipped, 0 errors)
+20:58:01.673998 [info ]: Cached model count updated: 5 models (accurate)
+20:58:10.486931 [info ]: Started loading project
+20:58:10.488421 [info ]: Loading ~/.dbt/profiles.yml
+20:58:10.495923 [info ]: Started parsing
+20:58:10.523067 [info ]: Finished loading project [  0.04s]
+20:58:10.528577 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:58:10.529114 [debug]: Finished parsing target\snapshots\customers_snapshot.sql [  0.00s]
+20:58:10.531586 [debug]: Finished parsing models\marts\facts\dim_customers.sql [  0.00s]
+20:58:10.531922 [info ]: Finished parsing [  0.04s]
+20:58:10.534666 [info ]: Cached model count updated: 7 models (estimate)
+20:58:10.534703 [info ]: Cached model count updated: 5 models (accurate)
+20:58:10.534819 [info ]: Started scheduling
+20:58:10.535633 [info ]: Finished scheduling [  0.00s]
+20:58:10.536771 [info ]: Started deferring state
+20:58:10.536791 [info ]: Finished deferring state [  0.00s]
+20:58:10.537398 [info ]: Started downloading schemas
+20:58:10.537443 [debug]: Started downloading relations
+20:58:10.537471 [debug]: Finished downloading relations [  0.00s]
+20:58:10.537486 [info ]: Finished downloading schemas [  0.00s]
+20:58:10.772964 [info ]: Started building task graph
+20:58:10.773073 [info ]: Finished building task graph [  0.00s]
+20:58:10.773251 [info ]: Started rendering (1 nodes)
+20:58:10.773279 [info ]: Started model analytics.dim_customers
+20:58:10.773300 [debug]: Started rendering model analytics.dim_customers
+20:58:10.775289 [debug]: Finished rendering [  0.00s] model analytics.dim_customers [success]
+20:58:10.775312 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+20:58:10.775333 [info ]: Started analyzing (1 nodes)
+20:58:10.775342 [debug]: Started analyzing model analytics.dim_customers
+20:58:10.811341 [info ]:  Succeeded [  0.04s] model analytics.dim_customers (table)
+20:58:10.811381 [debug]: Finished analyzing [  0.04s] model analytics.dim_customers [success]
+20:58:10.811389 [info ]: Finished analyzing [  0.04s] (1 nodes, 0 skipped, 0 errors)
+20:58:10.811547 [debug]: Incremental compilation - 1 nodes selected: {"model.banking_dbt.dim_customers"}
+20:58:10.815826 [info ]: Cached model count updated: 5 models (accurate)
+20:58:10.946484 [info ]: Started loading project
+20:58:10.947507 [info ]: Loading ~/.dbt/profiles.yml
+20:58:10.954496 [info ]: Finished loading project [  0.01s]
+20:58:10.954526 [info ]: Cached model count updated: 5 models (accurate)
+20:58:21.063956 [info ]: Started loading project
+20:58:21.064760 [info ]: Loading ~/.dbt/profiles.yml
+20:58:21.071256 [info ]: Started parsing
+20:58:21.088942 [info ]: Finished loading project [  0.02s]
+20:58:21.092739 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.00s]
+20:58:21.093259 [debug]: Finished parsing target\snapshots\customers_snapshot.sql [  0.00s]
+20:58:21.117247 [debug]: Finished parsing models\marts\dimensions\dim_accounts.sql [  0.02s]
+20:58:21.117572 [info ]: Finished parsing [  0.05s]
+20:58:21.119477 [info ]: Cached model count updated: 7 models (estimate)
+20:58:21.119497 [info ]: Cached model count updated: 5 models (accurate)
+20:58:21.119534 [info ]: Started scheduling
+20:58:21.119640 [info ]: Finished scheduling [  0.00s]
+20:58:21.121225 [info ]: Started deferring state
+20:58:21.121252 [info ]: Finished deferring state [  0.00s]
+20:58:21.122062 [info ]: Started downloading schemas
+20:58:21.122115 [debug]: Started downloading relations
+20:58:21.122143 [debug]: Finished downloading relations [  0.00s]
+20:58:21.122161 [info ]: Finished downloading schemas [  0.00s]
+20:58:21.288231 [info ]: Started building task graph
+20:58:21.288312 [info ]: Finished building task graph [  0.00s]
+20:58:21.288430 [info ]: Started rendering (1 nodes)
+20:58:21.288449 [info ]: Started model analytics.dim_accounts
+20:58:21.288464 [debug]: Started rendering model analytics.dim_accounts
+20:58:21.290059 [info ]: Started analyzing (1 nodes)
+20:58:21.290058 [debug]: Finished rendering [  0.00s] model analytics.dim_accounts [success]
+20:58:21.290079 [debug]: Started analyzing model analytics.dim_accounts
+20:58:21.290077 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+20:58:21.295610 [info ]:  Succeeded [  0.01s] model analytics.dim_accounts (table)
+20:58:21.295671 [debug]: Finished analyzing [  0.01s] model analytics.dim_accounts [success]
+20:58:21.295688 [info ]: Finished analyzing [  0.01s] (1 nodes, 0 skipped, 0 errors)
+20:58:21.295818 [debug]: Incremental compilation - 1 nodes selected: {"model.banking_dbt.dim_accounts"}
+20:58:21.302399 [info ]: Cached model count updated: 5 models (accurate)
+20:58:21.688238 [info ]: Started loading project
+20:58:21.688960 [info ]: Loading ~/.dbt/profiles.yml
+20:58:21.695285 [info ]: Finished loading project [  0.01s]
+20:58:21.695317 [info ]: Cached model count updated: 5 models (accurate)
+21:38:16.337795 [info ]: Started loading project
+21:38:16.450668 [info ]: Loading ~/.dbt/profiles.yml
+21:38:16.515452 [info ]: Started loading project
+21:38:16.516694 [info ]: Loading ~/.dbt/profiles.yml
+21:38:16.517878 [info ]: Finished loading project [  0.18s]
+21:38:16.575439 [debug]:    Started loading packages
+21:38:16.581390 [debug]:     Loaded [  0.01s] packages
+21:38:16.581602 [debug]:    Started loading internal packages
+21:38:16.582271 [debug]:     Failed [  0.00s] internal packages (error: Operation cancelled)
+21:38:16.584364 [info ]: Finished loading project [  0.07s]
+21:38:16.731069 [info ]: Started loading project
+21:38:16.733224 [info ]: Loading ~/.dbt/profiles.yml
+21:38:16.764078 [debug]:    Started loading packages
+21:38:16.770751 [debug]:     Loaded [  0.01s] packages
+21:38:16.770787 [debug]:    Started loading internal packages
+21:38:16.790018 [debug]:     Loaded [  0.02s] internal packages
+21:38:16.795019 [info ]: Started parsing
+21:38:16.899512 [info ]: Finished loading project [  0.17s]
+21:38:16.924693 [debug]: Finished parsing models\example\schema.yml [  0.01s]
+21:38:16.926074 [debug]: Finished parsing models\staging\sources.yml [  0.00s]
+21:38:16.981096 [debug]: Finished parsing target\snapshots\accounts_snapshot.sql [  0.04s]
+21:38:16.982453 [debug]: Finished parsing target\snapshots\customers_snapshot.sql [  0.00s]
+21:38:16.996244 [debug]: Finished parsing models\example\my_first_dbt_model.sql [  0.01s]
+21:38:16.999593 [debug]: Finished parsing models\example\my_second_dbt_model.sql [  0.00s]
+21:38:17.002587 [debug]: Finished parsing models\marts\dimensions\dim_accounts.sql [  0.00s]
+21:38:17.004294 [debug]: Finished parsing models\marts\facts\dim_customers.sql [  0.00s]
+21:38:17.006011 [debug]: Finished parsing models\staging\stg_accounts.sql [  0.00s]
+21:38:17.007468 [debug]: Finished parsing models\staging\stg_customers.sql [  0.00s]
+21:38:17.022171 [debug]: Finished parsing models\staging\stg_transactions.sql [  0.01s]
+21:38:17.032111 [info ]: Finished parsing [  0.24s]
+21:38:17.036285 [info ]: Cached model count updated: 7 models (estimate)
+21:38:17.036641 [info ]: Cached model count updated: 5 models (accurate)
+21:38:17.040316 [info ]: Started scheduling
+21:38:17.048882 [info ]: Finished scheduling [  0.01s]
+21:38:17.056060 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.accounts_snapshot") and interval: None
+21:38:17.056451 [debug]: Initializing schema store with entry: Selected("snapshot.banking_dbt.customers_snapshot") and interval: None
+21:38:17.056973 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "ACCOUNTS" }) and interval: None
+21:38:17.057337 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "CUSTOMERS" }) and interval: None
+21:38:17.057449 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "BANKING", schema: "RAW", table: "TRANSACTIONS" }) and interval: None
+21:38:17.069101 [info ]: Started deferring state
+21:38:17.069191 [info ]: Finished deferring state [  0.00s]
+21:38:17.110235 [info ]: Started downloading schemas
+21:38:17.112240 [debug]: Started downloading relations
+21:38:17.113633 [debug]: Finished downloading relations [  0.00s]
+21:38:17.113672 [info ]: Finished downloading schemas [  0.00s]
+21:38:17.324263 [info ]: Started building task graph
+21:38:17.329173 [info ]: Loading ~/.dbt/profiles.yml
+21:38:17.329233 [info ]: Finished building task graph [  0.00s]
+21:38:17.337799 [info ]: Started rendering (7 nodes)
+21:38:17.339120 [info ]: Started model analytics.stg_transactions
+21:38:17.340915 [debug]: Started rendering model analytics.stg_transactions
+21:38:17.340965 [info ]: Started model analytics.stg_customers
+21:38:17.340979 [debug]: Started rendering model analytics.stg_customers
+21:38:17.341002 [info ]: Started model analytics.stg_accounts
+21:38:17.341257 [debug]: Started rendering model analytics.stg_accounts
+21:38:17.355006 [debug]: Finished rendering [  0.01s] model analytics.stg_accounts [success]
+21:38:17.355400 [info ]: Started analyzing (7 nodes)
+21:38:17.355440 [debug]: Started analyzing model analytics.stg_accounts
+21:38:17.355471 [debug]: Finished rendering [  0.01s] model analytics.stg_transactions [success]
+21:38:17.355667 [debug]: Started analyzing model analytics.stg_transactions
+21:38:17.355705 [debug]: Finished rendering [  0.01s] model analytics.stg_customers [success]
+21:38:17.355726 [debug]: Started analyzing model analytics.stg_customers
+21:38:17.489542 [info ]:  Succeeded [  0.15s] model analytics.stg_transactions (view)
+21:38:17.489759 [debug]: Finished analyzing [  0.13s] model analytics.stg_transactions [success]
+21:38:17.495706 [info ]:  Succeeded [  0.15s] model analytics.stg_accounts (view)
+21:38:17.495761 [debug]: Finished analyzing [  0.14s] model analytics.stg_accounts [success]
+21:38:17.495846 [info ]: Started snapshot ANALYTICS.accounts_snapshot
+21:38:17.495875 [debug]: Started rendering snapshot ANALYTICS.accounts_snapshot
+21:38:17.495909 [info ]:  Succeeded [  0.15s] model analytics.stg_customers (view)
+21:38:17.495961 [debug]: Finished analyzing [  0.14s] model analytics.stg_customers [success]
+21:38:17.495980 [info ]: Started snapshot ANALYTICS.customers_snapshot
+21:38:17.495991 [debug]: Started rendering snapshot ANALYTICS.customers_snapshot
+21:38:17.502028 [debug]: Finished rendering [  0.01s] snapshot ANALYTICS.customers_snapshot [success]
+21:38:17.502114 [debug]: Started analyzing snapshot ANALYTICS.customers_snapshot
+21:38:17.502166 [debug]: Finished rendering [  0.01s] snapshot ANALYTICS.accounts_snapshot [success]
+21:38:17.502249 [debug]: Started analyzing snapshot ANALYTICS.accounts_snapshot
+21:38:17.510607 [info ]:  Succeeded [  0.01s] snapshot ANALYTICS.accounts_snapshot (table)
+21:38:17.510646 [debug]: Finished analyzing [  0.01s] snapshot ANALYTICS.accounts_snapshot [success]
+21:38:17.510891 [info ]: Started model analytics.dim_accounts
+21:38:17.510920 [debug]: Started rendering model analytics.dim_accounts
+21:38:17.511004 [info ]:  Succeeded [  0.01s] snapshot ANALYTICS.customers_snapshot (table)
+21:38:17.511042 [debug]: Finished analyzing [  0.01s] snapshot ANALYTICS.customers_snapshot [success]
+21:38:17.511078 [info ]: Started model analytics.dim_customers
+21:38:17.511100 [debug]: Started rendering model analytics.dim_customers
+21:38:17.513799 [debug]: Finished rendering [  0.00s] model analytics.dim_accounts [success]
+21:38:17.513888 [debug]: Started analyzing model analytics.dim_accounts
+21:38:17.514553 [debug]: Finished rendering [  0.00s] model analytics.dim_customers [success]
+21:38:17.514587 [info ]: Finished rendering [  0.18s] (7 nodes, 0 skipped, 0 errors)
+21:38:17.514630 [debug]: Started analyzing model analytics.dim_customers
+21:38:17.533032 [info ]:  Succeeded [  0.02s] model analytics.dim_customers (table)
+21:38:17.533107 [debug]: Finished analyzing [  0.02s] model analytics.dim_customers [success]
+21:38:17.533980 [info ]:  Succeeded [  0.02s] model analytics.dim_accounts (table)
+21:38:17.534027 [debug]: Finished analyzing [  0.02s] model analytics.dim_accounts [success]
+21:38:17.534040 [info ]: Finished analyzing [  0.18s] (7 nodes, 0 skipped, 0 errors)
+21:38:17.548346 [info ]: Cached model count updated: 5 models (accurate)
