@@ -1,0 +1,13 @@
+banking_dbt:
+  outputs:
+    dev:
+      account: nec22435.us-east-1
+      database: banking
+      password: Sun@Rise#2026Spring
+      role: accountadmin
+      schema: analytics
+      threads: 4
+      type: snowflake
+      user: manojSowdari
+      warehouse: COMPUTE_WH
+  target: dev

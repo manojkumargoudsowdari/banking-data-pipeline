@@ -1,0 +1,1 @@
+{{ snapshot_accounts_snapshot() }}

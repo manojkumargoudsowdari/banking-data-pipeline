@@ -1,0 +1,73 @@
+[2026-02-10T21:40:14.412+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-10T21:40:14.446+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: SCD2_snapshots.dbt_run_marts scheduled__2026-02-09T00:00:00+00:00 [queued]>
+[2026-02-10T21:40:14.454+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: SCD2_snapshots.dbt_run_marts scheduled__2026-02-09T00:00:00+00:00 [queued]>
+[2026-02-10T21:40:14.455+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-02-10T21:40:14.469+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_run_marts> on 2026-02-09 00:00:00+00:00
+[2026-02-10T21:40:14.475+0000] {standard_task_runner.py:64} INFO - Started process 79762 to run task
+[2026-02-10T21:40:14.478+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'SCD2_snapshots', 'dbt_run_marts', 'scheduled__2026-02-09T00:00:00+00:00', '--job-id', '73', '--raw', '--subdir', 'DAGS_FOLDER/scd_snapshots.py', '--cfg-path', '/tmp/tmpfzmy62fs']
+[2026-02-10T21:40:14.481+0000] {standard_task_runner.py:91} INFO - Job 73: Subtask dbt_run_marts
+[2026-02-10T21:40:14.581+0000] {task_command.py:426} INFO - Running <TaskInstance: SCD2_snapshots.dbt_run_marts scheduled__2026-02-09T00:00:00+00:00 [running]> on host f0a140ed2a8b
+[2026-02-10T21:40:14.682+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='SCD2_snapshots' AIRFLOW_CTX_TASK_ID='dbt_run_marts' AIRFLOW_CTX_EXECUTION_DATE='2026-02-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-09T00:00:00+00:00'
+[2026-02-10T21:40:14.684+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-10T21:40:14.699+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-10T21:40:14.701+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/banking_dbt && dbt run --select marts --profiles-dir /home/***/.dbt']
+[2026-02-10T21:40:14.710+0000] {subprocess.py:86} INFO - Output:
+[2026-02-10T21:40:18.213+0000] {subprocess.py:93} INFO - [0m21:40:18  Running with dbt=1.11.3
+[2026-02-10T21:40:19.431+0000] {subprocess.py:93} INFO - [0m21:40:19  Registered adapter: snowflake=1.11.1
+[2026-02-10T21:40:19.686+0000] {subprocess.py:93} INFO - [0m21:40:19  Unable to do partial parsing because of a version mismatch
+[2026-02-10T21:40:22.397+0000] {subprocess.py:93} INFO - [0m21:40:22  Found 5 models, 2 snapshots, 3 sources, 522 macros
+[2026-02-10T21:40:22.408+0000] {subprocess.py:93} INFO - [0m21:40:22
+[2026-02-10T21:40:22.411+0000] {subprocess.py:93} INFO - [0m21:40:22  Concurrency: 4 threads (target='dev')
+[2026-02-10T21:40:22.415+0000] {subprocess.py:93} INFO - [0m21:40:22
+[2026-02-10T21:40:24.589+0000] {subprocess.py:93} INFO - [0m21:40:24  1 of 2 START sql table model analytics.dim_accounts ............................ [RUN]
+[2026-02-10T21:40:24.594+0000] {subprocess.py:93} INFO - [0m21:40:24  2 of 2 START sql table model analytics.dim_customers ........................... [RUN]
+[2026-02-10T21:40:25.603+0000] {subprocess.py:93} INFO - [0m21:40:25  2 of 2 OK created sql table model analytics.dim_customers ...................... [[32mSUCCESS 1[0m in 0.99s]
+[2026-02-10T21:40:25.846+0000] {subprocess.py:93} INFO - [0m21:40:25  1 of 2 OK created sql table model analytics.dim_accounts ....................... [[32mSUCCESS 1[0m in 1.24s]
+[2026-02-10T21:40:26.176+0000] {subprocess.py:93} INFO - [0m21:40:26
+[2026-02-10T21:40:26.187+0000] {subprocess.py:93} INFO - [0m21:40:26  Finished running 2 table models in 0 hours 0 minutes and 3.75 seconds (3.75s).
+[2026-02-10T21:40:26.483+0000] {subprocess.py:93} INFO - [0m21:40:26
+[2026-02-10T21:40:26.489+0000] {subprocess.py:93} INFO - [0m21:40:26  [32mCompleted successfully[0m
+[2026-02-10T21:40:26.492+0000] {subprocess.py:93} INFO - [0m21:40:26
+[2026-02-10T21:40:26.497+0000] {subprocess.py:93} INFO - [0m21:40:26  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[2026-02-10T21:40:27.584+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-02-10T21:40:27.587+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-10T21:40:27.619+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=SCD2_snapshots, task_id=dbt_run_marts, run_id=scheduled__2026-02-09T00:00:00+00:00, execution_date=20260209T000000, start_date=20260210T214014, end_date=20260210T214027
+[2026-02-10T21:40:27.657+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-02-10T21:40:27.681+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-10T21:40:27.683+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-02-10T21:43:44.317+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-10T21:43:44.355+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: SCD2_snapshots.dbt_run_marts scheduled__2026-02-09T00:00:00+00:00 [queued]>
+[2026-02-10T21:43:44.367+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: SCD2_snapshots.dbt_run_marts scheduled__2026-02-09T00:00:00+00:00 [queued]>
+[2026-02-10T21:43:44.369+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-02-10T21:43:44.385+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_run_marts> on 2026-02-09 00:00:00+00:00
+[2026-02-10T21:43:44.393+0000] {standard_task_runner.py:64} INFO - Started process 82191 to run task
+[2026-02-10T21:43:44.396+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'SCD2_snapshots', 'dbt_run_marts', 'scheduled__2026-02-09T00:00:00+00:00', '--job-id', '77', '--raw', '--subdir', 'DAGS_FOLDER/scd_snapshots.py', '--cfg-path', '/tmp/tmpou2xbpin']
+[2026-02-10T21:43:44.401+0000] {standard_task_runner.py:91} INFO - Job 77: Subtask dbt_run_marts
+[2026-02-10T21:43:44.485+0000] {task_command.py:426} INFO - Running <TaskInstance: SCD2_snapshots.dbt_run_marts scheduled__2026-02-09T00:00:00+00:00 [running]> on host f0a140ed2a8b
+[2026-02-10T21:43:44.599+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='SCD2_snapshots' AIRFLOW_CTX_TASK_ID='dbt_run_marts' AIRFLOW_CTX_EXECUTION_DATE='2026-02-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-09T00:00:00+00:00'
+[2026-02-10T21:43:44.600+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-10T21:43:44.618+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-10T21:43:44.621+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/banking_dbt && dbt run --select marts --profiles-dir /home/***/.dbt']
+[2026-02-10T21:43:44.631+0000] {subprocess.py:86} INFO - Output:
+[2026-02-10T21:43:47.049+0000] {subprocess.py:93} INFO - [0m21:43:47  Running with dbt=1.11.3
+[2026-02-10T21:43:48.113+0000] {subprocess.py:93} INFO - [0m21:43:48  Registered adapter: snowflake=1.11.1
+[2026-02-10T21:43:49.554+0000] {subprocess.py:93} INFO - [0m21:43:49  Found 5 models, 2 snapshots, 3 sources, 522 macros
+[2026-02-10T21:43:49.564+0000] {subprocess.py:93} INFO - [0m21:43:49
+[2026-02-10T21:43:49.567+0000] {subprocess.py:93} INFO - [0m21:43:49  Concurrency: 4 threads (target='dev')
+[2026-02-10T21:43:49.569+0000] {subprocess.py:93} INFO - [0m21:43:49
+[2026-02-10T21:43:51.623+0000] {subprocess.py:93} INFO - [0m21:43:51  1 of 2 START sql table model analytics.dim_accounts ............................ [RUN]
+[2026-02-10T21:43:51.627+0000] {subprocess.py:93} INFO - [0m21:43:51  2 of 2 START sql table model analytics.dim_customers ........................... [RUN]
+[2026-02-10T21:43:52.810+0000] {subprocess.py:93} INFO - [0m21:43:52  1 of 2 OK created sql table model analytics.dim_accounts ....................... [[32mSUCCESS 1[0m in 1.17s]
+[2026-02-10T21:43:52.822+0000] {subprocess.py:93} INFO - [0m21:43:52  2 of 2 OK created sql table model analytics.dim_customers ...................... [[32mSUCCESS 1[0m in 1.18s]
+[2026-02-10T21:43:53.138+0000] {subprocess.py:93} INFO - [0m21:43:53
+[2026-02-10T21:43:53.140+0000] {subprocess.py:93} INFO - [0m21:43:53  Finished running 2 table models in 0 hours 0 minutes and 3.57 seconds (3.57s).
+[2026-02-10T21:43:53.206+0000] {subprocess.py:93} INFO - [0m21:43:53
+[2026-02-10T21:43:53.208+0000] {subprocess.py:93} INFO - [0m21:43:53  [32mCompleted successfully[0m
+[2026-02-10T21:43:53.209+0000] {subprocess.py:93} INFO - [0m21:43:53
+[2026-02-10T21:43:53.210+0000] {subprocess.py:93} INFO - [0m21:43:53  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[2026-02-10T21:43:54.161+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-02-10T21:43:54.162+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-10T21:43:54.191+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=SCD2_snapshots, task_id=dbt_run_marts, run_id=scheduled__2026-02-09T00:00:00+00:00, execution_date=20260209T000000, start_date=20260210T214344, end_date=20260210T214354
+[2026-02-10T21:43:54.212+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-02-10T21:43:54.231+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-10T21:43:54.234+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
