@@ -1,103 +1,106 @@
-# Banking Data Pipeline - Repository Review
+# Banking Data Pipeline
 
-This repository contains a full-stack, end-to-end analytics pipeline for banking data that can feed Power BI.
+This repository documents a complete end-to-end banking analytics pipeline designed to move transactional data from an operational database into analytics-ready models for BI consumption.
 
-## What you built (high-level architecture)
+## End-to-End Pipeline Overview
 
-1. **Data generation (OLTP simulation)**
-   - Fake banking data is continuously generated into PostgreSQL (`customers`, `accounts`, `transactions`).
-2. **Change data capture (CDC)**
-   - Debezium captures PostgreSQL changes and publishes them to Kafka topics.
-3. **Streaming/object storage landing**
-   - A Kafka consumer batches CDC events and writes parquet files into MinIO.
-4. **Orchestration & warehouse loading**
-   - Airflow DAG pulls files from MinIO and loads them into Snowflake RAW tables.
-5. **Modeling for analytics**
-   - dbt staging/marts models and snapshots transform raw tables into analytics-ready dimensions/facts.
-6. **BI consumption**
-   - Power BI can connect to Snowflake marts to power dashboards and reporting.
+The pipeline is built as a layered architecture where each stage has a clear role:
 
----
+1. **Operational data simulation (PostgreSQL)**
+   - Synthetic banking records are generated continuously.
+   - Core entities include customers, accounts, and transactions.
+   - PostgreSQL acts as the OLTP source system.
 
-## Review summary
+2. **Change Data Capture (Debezium + Kafka)**
+   - Debezium monitors PostgreSQL write-ahead logs and captures inserts/updates/deletes.
+   - Captured changes are emitted as events into Kafka topics.
+   - Kafka provides durable event transport and decouples producers from downstream consumers.
 
-### ✅ Strengths
+3. **Streaming landing to object storage (Kafka Consumer + MinIO)**
+   - A Kafka consumer service reads CDC events from topic streams.
+   - Events are grouped into micro-batches and serialized as Parquet.
+   - Parquet files are written into MinIO in table-based folder paths.
 
-- **Strong modern stack choice**: PostgreSQL + Debezium + Kafka + MinIO + Airflow + Snowflake + dbt is a solid architecture for near-real-time analytical pipelines.
-- **Clear separation of concerns**:
-  - data generation,
-  - ingestion/landing,
-  - orchestration/loading,
-  - modeling.
-- **dbt dimensional modeling is present** (`staging`, `marts`, `snapshots`), which is excellent for BI usability and governance.
-- **Docker Compose integration** makes local/prototype deployment straightforward.
+4. **Orchestrated warehouse ingestion (Airflow + Snowflake)**
+   - Airflow coordinates scheduled ingestion tasks.
+   - DAG tasks fetch staged Parquet files from MinIO.
+   - Data is loaded into Snowflake RAW-layer tables for downstream transformation.
 
-### ⚠️ Key risks and gaps to address before production
+5. **Analytics transformation layer (dbt)**
+   - dbt models standardize and transform RAW data into curated analytical structures.
+   - The project includes:
+     - **staging** models for source-aligned cleaning and normalization,
+     - **marts** for business-facing fact and dimension outputs,
+     - **snapshots** for historical tracking of changing records.
 
-1. **Root documentation gap**
-   - The root `README.md` was empty, which makes onboarding and operations handoff hard.
-
-2. **Potential duplicate loads from MinIO to Snowflake**
-   - The loader DAG downloads **all** objects under each table prefix every run, then executes `PUT` + `COPY INTO` repeatedly. Without a loaded-file tracking mechanism, this can reprocess files and duplicate data.
-
-3. **No data quality tests visible for dbt models**
-   - Sources are declared, but no schema tests are defined for key constraints (e.g., unique/non-null keys, accepted transaction statuses/types).
-
-4. **Operational resilience**
-   - The consumer and loader scripts rely heavily on happy-path execution and minimal retry/backoff/error handling.
-
-5. **Security/config hygiene for production hardening**
-   - Good use of environment variables is present, but production controls (secrets manager, RBAC, network restrictions, encryption settings) are not yet codified here.
-
-6. **Scheduling and lifecycle consistency**
-   - Some DAG scheduling and start-date choices may not align with expected run cadence for a near-real-time pipeline and can create confusion in deployment.
+6. **Business intelligence consumption (Power BI)**
+   - Power BI connects to Snowflake curated models.
+   - Fact/dimension outputs support dashboarding, KPI analysis, and reporting workflows.
 
 ---
 
-## Prioritized improvement plan
+## Detailed Data Flow
 
-### P0 (do first)
+### 1) Data creation at the source
+- Data generator services create realistic banking activity patterns.
+- Records are committed into PostgreSQL tables representing customer lifecycle and financial activity.
 
-- Add **idempotency** to Snowflake loads:
-  - track processed object keys (manifest/control table), or
-  - use external stages with `COPY INTO ... PATTERN` + load history checks,
-  - enforce dedupe keys downstream if replay can happen.
-- Add **dbt tests** for primary keys, foreign-key relationships, accepted values, and freshness.
-- Add **monitoring/alerting** (Airflow task alerts, consumer lag visibility, pipeline failure notifications).
+### 2) CDC event production
+- Debezium connector captures row-level changes from PostgreSQL.
+- Each change is published to Kafka with event metadata and operation type.
 
-### P1
+### 3) Event consumption and file conversion
+- Consumer service subscribes to Kafka topics.
+- Incoming JSON CDC messages are transformed and batched.
+- Batches are converted into columnar Parquet format.
+- Files are persisted to MinIO as the landing zone.
 
-- Introduce a **bronze/silver/gold contract** (or RAW/STG/MART contracts) with explicit schema evolution handling.
-- Add robust retry logic and dead-letter strategy for malformed/poison messages.
-- Define data retention and partitioning strategy in MinIO/Snowflake to manage cost/performance.
+### 4) Workflow orchestration and loading
+- Airflow DAGs handle file retrieval and warehouse load sequencing.
+- Loaded data is persisted to Snowflake RAW tables to preserve ingestion fidelity.
 
-### P2
+### 5) Data modeling for analytics
+- dbt applies SQL-based transformations to generate analytics-ready tables.
+- Business entities are shaped into dimensions and facts for self-service BI.
+- Snapshot logic preserves point-in-time history for changing attributes.
 
-- Add CI checks (lint + unit checks + `dbt test` + SQL style checks).
-- Add reproducible local bootstrap scripts (`make up`, `make seed`, `make run-pipeline`).
-- Add Power BI semantic model guidance (star-schema usage, surrogate keys, incremental refresh).
-
----
-
-## Power BI readiness assessment
-
-Your project is a **very good foundation** for Power BI analytics:
-
-- You already have canonical dimensions/facts via dbt.
-- The stack supports both batch and CDC-style near-real-time updates.
-- With idempotent loading + dbt data tests + observability, this can be a robust analytics platform.
-
-**Overall maturity (current):** Prototype / early pre-production.
-
-**After P0 items:** Production-capable for moderate workloads.
+### 6) BI delivery
+- Power BI consumes modeled Snowflake outputs.
+- Reports can analyze customer behavior, account activity, and transaction trends.
 
 ---
 
-## Suggested next step (1-week sprint)
+## Repository Structure
 
-1. Implement file-level idempotent loading into Snowflake.
-2. Add dbt tests for all mart keys and critical business constraints.
-3. Add Airflow failure alerts + simple pipeline health dashboard.
-4. Document local runbook and operational runbook.
+- `data-generator/` — synthetic data generation logic for PostgreSQL source tables.
+- `kafka-debezium/` — connector and streaming setup for CDC.
+- `consumer/` — Kafka consumer that writes Parquet files to MinIO.
+- `docker/` and `docker-compose.yml` — local multi-service orchestration.
+- `banking_dbt/` — dbt project with staging, marts, snapshots, and sources.
+- `postgres/` — PostgreSQL initialization/config artifacts.
 
-If you want, I can do a follow-up pass and implement the P0 items directly in this repo.
+---
+
+## Technology Stack
+
+- **Database (OLTP):** PostgreSQL
+- **CDC:** Debezium
+- **Message Broker:** Kafka
+- **Object Storage:** MinIO
+- **Orchestration:** Apache Airflow
+- **Cloud Data Warehouse:** Snowflake
+- **Transformation Framework:** dbt
+- **BI Layer:** Power BI
+- **Local Runtime:** Docker Compose
+
+---
+
+## Pipeline Outcome
+
+This pipeline provides a complete path from operational event generation to analytics consumption:
+
+- transactional source data is captured in near real time,
+- landed as structured files,
+- ingested into a cloud warehouse,
+- transformed into analytical models,
+- and exposed to BI dashboards for decision support.
