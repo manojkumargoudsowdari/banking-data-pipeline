@@ -113,6 +113,22 @@ python python/ingestion/extract_postgres_to_raw.py --load-date 06-16-2026
 Get-ChildItem .\logs\ingestion\postgres_to_raw_summary_*.csv | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | Get-Content
 ```
 
+## Phase 4A Raw To Standardized
+
+Phase 4A uses PySpark to standardize raw Parquet extracts. Raw files from Phase 3 must exist before running.
+
+```powershell
+java -version
+pip install -r requirements.txt
+python -m py_compile spark\utils\spark_session.py spark\jobs\process_raw_to_standardized.py
+python python\ingestion\extract_postgres_to_raw.py --load-date 2026-06-16
+python spark\jobs\process_raw_to_standardized.py --tables customers --load-date 2026-06-16
+python spark\jobs\process_raw_to_standardized.py --load-date 2026-06-16
+$latestSummary = Get-ChildItem .\logs\spark\raw_to_standardized_summary_*.csv | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+Import-Csv $latestSummary.FullName | Format-Table
+Get-ChildItem .\data\standardized -Recurse | Select-Object -First 30
+```
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:

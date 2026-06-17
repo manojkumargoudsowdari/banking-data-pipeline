@@ -6,6 +6,7 @@ __pycache__/
 .pytest_cache/
 
 data/raw/
+data/standardized/
 data/curated/
 data/dq_results/
 
@@ -14,6 +15,7 @@ docker/minio/data/
 docker/logs/
 
 logs/ingestion/
+logs/spark/
 dbt_packages/
 target/
 logs/
