@@ -1,0 +1,4 @@
+# Phase 1 active dependencies
+faker
+psycopg2-binary
+python-dotenv
