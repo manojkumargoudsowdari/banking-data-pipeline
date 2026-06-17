@@ -66,9 +66,12 @@ def parse_args():
 
 def validate_load_date(load_date):
     try:
-        return date.fromisoformat(load_date).isoformat()
+        parsed_date = datetime.strptime(load_date, "%Y-%m-%d").date()
     except ValueError as exc:
         raise ValueError("--load-date must use YYYY-MM-DD format.") from exc
+    if parsed_date.isoformat() != load_date:
+        raise ValueError("--load-date must use YYYY-MM-DD format.")
+    return parsed_date.isoformat()
 
 
 def parse_tables(tables_arg):
@@ -121,12 +124,21 @@ def extract_table(engine, table_name, output_dir, load_date):
     output_path = table_output_dir / f"{table_name}.parquet"
     df.to_parquet(output_path, index=False, engine="pyarrow")
 
-    return len(df), output_path
+    parquet_df = pd.read_parquet(output_path, engine="pyarrow")
+
+    return len(df), len(parquet_df), output_path
 
 
 def write_summary_csv(summary_rows, log_dir, run_timestamp):
     summary_path = Path(log_dir) / f"postgres_to_raw_summary_{run_timestamp}.csv"
-    fieldnames = ["table_name", "row_count", "output_path", "status", "error"]
+    fieldnames = [
+        "table_name",
+        "status",
+        "extracted_row_count",
+        "parquet_row_count",
+        "output_path",
+        "error_message",
+    ]
 
     with summary_path.open("w", newline="", encoding="utf-8") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -151,6 +163,7 @@ def main():
 
     logger.info("PostgreSQL to raw Parquet extraction started.")
     logger.info("load_date=%s", load_date)
+    logger.info("load_date_validation=SUCCESS")
     logger.info("selected_tables=%s", ",".join(selected_tables))
     logger.info("output_dir=%s", args.output_dir)
     logger.info("log_file=%s", log_file)
@@ -162,10 +175,11 @@ def main():
         summary_rows.append(
             {
                 "table_name": "__connection__",
-                "row_count": 0,
-                "output_path": "",
                 "status": "FAILED",
-                "error": str(exc),
+                "extracted_row_count": 0,
+                "parquet_row_count": 0,
+                "output_path": "",
+                "error_message": str(exc),
             }
         )
         summary_path = write_summary_csv(summary_rows, args.log_dir, run_timestamp)
@@ -175,17 +189,37 @@ def main():
     for table_name in selected_tables:
         logger.info("Starting extraction for table=%s", table_name)
         try:
-            row_count, output_path = extract_table(engine, table_name, args.output_dir, load_date)
-            logger.info("table=%s row_count=%s", table_name, row_count)
+            extracted_row_count, parquet_row_count, output_path = extract_table(
+                engine,
+                table_name,
+                args.output_dir,
+                load_date,
+            )
+            logger.info("table=%s extracted_row_count=%s", table_name, extracted_row_count)
+            logger.info("table=%s parquet_row_count=%s", table_name, parquet_row_count)
             logger.info("table=%s output_path=%s", table_name, output_path)
-            logger.info("table=%s status=SUCCESS", table_name)
+
+            if extracted_row_count == parquet_row_count:
+                status = "SUCCESS"
+                error_message = ""
+                logger.info("table=%s row_count_match=TRUE", table_name)
+            else:
+                status = "FAILED"
+                error_message = (
+                    "Row count mismatch: "
+                    f"extracted={extracted_row_count}, parquet={parquet_row_count}"
+                )
+                logger.error("table=%s row_count_match=FALSE %s", table_name, error_message)
+
+            logger.info("table=%s status=%s", table_name, status)
             summary_rows.append(
                 {
                     "table_name": table_name,
-                    "row_count": row_count,
+                    "status": status,
+                    "extracted_row_count": extracted_row_count,
+                    "parquet_row_count": parquet_row_count,
                     "output_path": str(output_path),
-                    "status": "SUCCESS",
-                    "error": "",
+                    "error_message": error_message,
                 }
             )
         except Exception as exc:
@@ -193,29 +227,34 @@ def main():
             summary_rows.append(
                 {
                     "table_name": table_name,
-                    "row_count": 0,
-                    "output_path": "",
                     "status": "FAILED",
-                    "error": str(exc),
+                    "extracted_row_count": 0,
+                    "parquet_row_count": 0,
+                    "output_path": "",
+                    "error_message": str(exc),
                 }
             )
-            summary_path = write_summary_csv(summary_rows, args.log_dir, run_timestamp)
-            logger.info("summary_csv=%s", summary_path)
-            logger.error("Extraction failed.")
-            return 1
 
     summary_path = write_summary_csv(summary_rows, args.log_dir, run_timestamp)
+    failed_rows = [row for row in summary_rows if row["status"] != "SUCCESS"]
 
     logger.info("Final summary:")
     for row in summary_rows:
         logger.info(
-            "table=%s row_count=%s status=%s output_path=%s",
+            "table=%s extracted_row_count=%s parquet_row_count=%s status=%s output_path=%s",
             row["table_name"],
-            row["row_count"],
+            row["extracted_row_count"],
+            row["parquet_row_count"],
             row["status"],
             row["output_path"],
         )
     logger.info("summary_csv=%s", summary_path)
+
+    if failed_rows:
+        logger.error("final_run_result=FAILED failed_table_count=%s", len(failed_rows))
+        return 1
+
+    logger.info("final_run_result=SUCCESS")
     logger.info("PostgreSQL to raw Parquet extraction completed successfully.")
     return 0
 

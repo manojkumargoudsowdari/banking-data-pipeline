@@ -101,6 +101,18 @@ Optional single-table extraction:
 python python/ingestion/extract_postgres_to_raw.py --tables customers,accounts
 ```
 
+### Phase 3B Validation
+
+Phase 3B adds strict load-date validation, Parquet read-back row-count checks, and enhanced ingestion summary CSV output.
+
+```powershell
+python python/ingestion/extract_postgres_to_raw.py --tables customers --load-date 2026-06-16
+python python/ingestion/extract_postgres_to_raw.py --load-date 2026-06-16
+python python/ingestion/extract_postgres_to_raw.py --tables not_a_table
+python python/ingestion/extract_postgres_to_raw.py --load-date 06-16-2026
+Get-ChildItem .\logs\ingestion\postgres_to_raw_summary_*.csv | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | Get-Content
+```
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:
