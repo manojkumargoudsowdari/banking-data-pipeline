@@ -16,6 +16,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from spark.utils.spark_session import create_spark_session
+from spark.utils.schema_config import METADATA_COLUMNS, TABLE_SCHEMAS
 
 APPROVED_TABLES = [
     "branches",
@@ -143,12 +144,54 @@ def standardize_dataframe(df, table_name, load_date):
 
         df = df.withColumn(column_name, cleaned_col)
 
+    if "source_table" in df.columns:
+        df = df.withColumnRenamed("source_table", "source_table_name")
+
     return (
         df.withColumn("source_table", F.lit(table_name))
         .withColumn("source_load_date", F.lit(load_date).cast("date"))
         .withColumn("standardized_load_date", F.current_date())
         .withColumn("standardized_at_utc", F.current_timestamp())
     )
+
+
+def validate_required_columns(df, table_name):
+    required_columns = TABLE_SCHEMAS[table_name]["required_columns"]
+    return [column_name for column_name in required_columns if column_name not in df.columns]
+
+
+def apply_type_casts(df, table_name):
+    cast_errors = []
+    casted_df = df
+
+    for column_name, target_type in TABLE_SCHEMAS[table_name]["type_casts"].items():
+        if column_name not in casted_df.columns:
+            continue
+
+        previous_df = casted_df
+        source_has_values = previous_df.where(F.col(column_name).isNotNull()).limit(1).count() > 0
+        if source_has_values:
+            next_df = casted_df.withColumn(column_name, F.col(column_name).cast(target_type))
+        else:
+            next_df = casted_df.withColumn(column_name, F.lit(None).cast(target_type))
+
+        cast_has_values = next_df.where(F.col(column_name).isNotNull()).limit(1).count() > 0
+        if source_has_values and not cast_has_values:
+            cast_errors.append(f"{column_name} could not be cast to {target_type.simpleString()}")
+
+        casted_df = next_df
+
+    return casted_df, cast_errors
+
+
+def order_columns(df, table_name):
+    preferred_columns = TABLE_SCHEMAS[table_name]["column_order"] + METADATA_COLUMNS
+    ordered_columns = []
+    for column_name in preferred_columns:
+        if column_name in df.columns and column_name not in ordered_columns:
+            ordered_columns.append(column_name)
+    remaining_columns = [column_name for column_name in df.columns if column_name not in ordered_columns]
+    return df.select(*(ordered_columns + remaining_columns))
 
 
 def write_single_parquet(df, output_path):
@@ -202,13 +245,33 @@ def process_table(spark, table_name, load_date, input_dir, output_dir):
     try:
         raw_df, read_temp_path = read_raw_parquet(spark, input_path, read_temp_dir)
         raw_row_count = raw_df.count()
+        raw_column_count = len(raw_df.columns)
 
         standardized_df = standardize_dataframe(raw_df, table_name, load_date)
+        missing_required_columns = validate_required_columns(standardized_df, table_name)
+        if missing_required_columns:
+            missing = ",".join(missing_required_columns)
+            raise ValueError(f"Missing required column(s): {missing}")
+
+        standardized_df, cast_errors = apply_type_casts(standardized_df, table_name)
+        if cast_errors:
+            raise ValueError("; ".join(cast_errors))
+
+        standardized_df = order_columns(standardized_df, table_name)
+        standardized_column_count = len(standardized_df.columns)
         write_single_parquet(standardized_df, output_path)
 
         standardized_row_count = pq.ParquetFile(output_path).metadata.num_rows
 
-        return raw_row_count, standardized_row_count, input_path, output_path
+        return {
+            "raw_row_count": raw_row_count,
+            "standardized_row_count": standardized_row_count,
+            "raw_column_count": raw_column_count,
+            "standardized_column_count": standardized_column_count,
+            "missing_required_columns": "",
+            "input_path": input_path,
+            "output_path": output_path,
+        }
     finally:
         if read_temp_path and Path(read_temp_path).exists():
             shutil.rmtree(read_temp_path)
@@ -221,6 +284,9 @@ def write_summary_csv(summary_rows, log_dir, run_timestamp):
         "status",
         "raw_row_count",
         "standardized_row_count",
+        "raw_column_count",
+        "standardized_column_count",
+        "missing_required_columns",
         "input_path",
         "output_path",
         "error_message",
@@ -261,15 +327,34 @@ def main():
         for table_name in selected_tables:
             logger.info("Starting table=%s", table_name)
             try:
-                raw_count, standardized_count, input_path, output_path = process_table(
+                table_result = process_table(
                     spark=spark,
                     table_name=table_name,
                     load_date=load_date,
                     input_dir=args.input_dir,
                     output_dir=args.output_dir,
                 )
+                raw_count = table_result["raw_row_count"]
+                standardized_count = table_result["standardized_row_count"]
+                raw_column_count = table_result["raw_column_count"]
+                standardized_column_count = table_result["standardized_column_count"]
+                missing_required_columns = table_result["missing_required_columns"]
+                input_path = table_result["input_path"]
+                output_path = table_result["output_path"]
+
                 logger.info("table=%s raw_row_count=%s", table_name, raw_count)
                 logger.info("table=%s standardized_row_count=%s", table_name, standardized_count)
+                logger.info("table=%s raw_column_count=%s", table_name, raw_column_count)
+                logger.info(
+                    "table=%s standardized_column_count=%s",
+                    table_name,
+                    standardized_column_count,
+                )
+                logger.info(
+                    "table=%s missing_required_columns=%s",
+                    table_name,
+                    missing_required_columns,
+                )
                 logger.info("table=%s input_path=%s", table_name, input_path)
                 logger.info("table=%s output_path=%s", table_name, output_path)
 
@@ -290,6 +375,9 @@ def main():
                         "status": status,
                         "raw_row_count": raw_count,
                         "standardized_row_count": standardized_count,
+                        "raw_column_count": raw_column_count,
+                        "standardized_column_count": standardized_column_count,
+                        "missing_required_columns": missing_required_columns,
                         "input_path": str(input_path),
                         "output_path": str(output_path),
                         "error_message": error_message,
@@ -299,12 +387,20 @@ def main():
 
             except Exception as exc:
                 logger.exception("table=%s status=FAILED error=%s", table_name, exc)
+                missing_required_columns = ""
+                error_text = str(exc)
+                missing_prefix = "Missing required column(s): "
+                if error_text.startswith(missing_prefix):
+                    missing_required_columns = error_text.removeprefix(missing_prefix)
                 summary_rows.append(
                     {
                         "table_name": table_name,
                         "status": "FAILED",
                         "raw_row_count": 0,
                         "standardized_row_count": 0,
+                        "raw_column_count": 0,
+                        "standardized_column_count": 0,
+                        "missing_required_columns": missing_required_columns,
                         "input_path": str(
                             Path(args.input_dir)
                             / table_name
@@ -317,7 +413,7 @@ def main():
                             / f"load_date={load_date}"
                             / f"{table_name}.parquet"
                         ),
-                        "error_message": str(exc),
+                        "error_message": error_text,
                     }
                 )
 
@@ -331,10 +427,13 @@ def main():
     logger.info("Final summary:")
     for row in summary_rows:
         logger.info(
-            "table=%s raw_row_count=%s standardized_row_count=%s status=%s output_path=%s",
+            "table=%s raw_row_count=%s standardized_row_count=%s raw_column_count=%s standardized_column_count=%s missing_required_columns=%s status=%s output_path=%s",
             row["table_name"],
             row["raw_row_count"],
             row["standardized_row_count"],
+            row["raw_column_count"],
+            row["standardized_column_count"],
+            row["missing_required_columns"],
             row["status"],
             row["output_path"],
         )

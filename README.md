@@ -129,6 +129,18 @@ Import-Csv $latestSummary.FullName | Format-Table
 Get-ChildItem .\data\standardized -Recurse | Select-Object -First 30
 ```
 
+### Phase 4B Schema Handling
+
+Phase 4B adds required-column checks plus schema/type normalization in the standardized Spark layer. It does not execute final data quality rules.
+
+```powershell
+python -m py_compile spark\utils\spark_session.py spark\utils\schema_config.py spark\jobs\process_raw_to_standardized.py
+python spark\jobs\process_raw_to_standardized.py --load-date 2026-06-16
+$latestSummary = Get-ChildItem .\logs\spark\raw_to_standardized_summary_*.csv | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+Import-Csv $latestSummary.FullName | Format-Table
+Get-ChildItem .\data\standardized -Recurse | Select-Object -First 30
+```
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:
