@@ -141,6 +141,22 @@ Import-Csv $latestSummary.FullName | Format-Table
 Get-ChildItem .\data\standardized -Recurse | Select-Object -First 30
 ```
 
+## Phase 5A Curated Model Design
+
+Phase 5A defines the curated warehouse model configuration and design documentation. It does not create curated Parquet outputs; curated output generation starts in Phase 5B.
+
+Files added:
+
+- `spark/utils/model_config.py`
+- `docs/data_model_design.md`
+
+Validation:
+
+```powershell
+python -m py_compile spark\utils\model_config.py
+python -c "import importlib.util; spec=importlib.util.spec_from_file_location('model_config','spark/utils/model_config.py'); m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m); expected={'dim_customer','dim_account','dim_branch','dim_product','fact_transaction','fact_customer_risk_score','fact_daily_account_balance'}; actual=set(m.CURATED_MODEL_CONFIGS.keys()); assert actual==expected, f'Expected {expected}, got {actual}'; print('Curated model configs validated:', sorted(actual))"
+```
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:
