@@ -72,6 +72,16 @@ Future phases will add:
 
 The active Docker Compose setup is limited to the PostgreSQL source database for Phase 1. Legacy orchestration, streaming, warehouse, and BI services are not active in this version.
 
+## Phase 2 Run Commands
+
+Create a local `.env` file from `.env.example` before running the source system and generator.
+
+```powershell
+docker compose up -d
+Get-Content .\postgres\schema.sql | docker compose exec -T postgres psql -U banking_user -d banking
+python data-generator/faker_generator.py
+```
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:
