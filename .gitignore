@@ -13,6 +13,7 @@ docker/postgres/data/
 docker/minio/data/
 docker/logs/
 
+logs/ingestion/
 dbt_packages/
 target/
 logs/

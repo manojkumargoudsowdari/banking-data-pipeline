@@ -82,6 +82,25 @@ Get-Content .\postgres\schema.sql | docker compose exec -T postgres psql -U bank
 python data-generator/faker_generator.py
 ```
 
+## Phase 3A Raw Ingestion
+
+Phase 3A extracts the 10 PostgreSQL source/control tables to local raw Parquet files. Create `.env` from `.env.example` before running.
+
+```powershell
+pip install -r requirements.txt
+docker compose up -d
+Get-Content .\postgres\schema.sql | docker compose exec -T postgres psql -U banking_user -d banking
+python data-generator/faker_generator.py
+python python/ingestion/extract_postgres_to_raw.py
+Get-ChildItem -Recurse data/raw
+```
+
+Optional single-table extraction:
+
+```powershell
+python python/ingestion/extract_postgres_to_raw.py --tables customers,accounts
+```
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:

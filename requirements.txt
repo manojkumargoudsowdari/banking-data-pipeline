@@ -1,4 +1,7 @@
 # Phase 1 active dependencies
 faker
+pandas
+pyarrow
 psycopg2-binary
 python-dotenv
+sqlalchemy
