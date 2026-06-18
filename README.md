@@ -194,6 +194,20 @@ data/dq_results/sql/load_date=<load-date>/<check_name>_results.csv
 logs/sql/sql_validation_summary_YYYYMMDD_HHMMSS.csv
 ```
 
+### Phase 6B Reconciliation And Exceptions
+
+Phase 6B adds source-to-target reconciliation, control totals, and bounded row-level exception evidence.
+
+```powershell
+python python\validation\run_sql_validation.py --load-date 2026-06-16
+python python\validation\run_sql_validation.py --load-date 2026-06-16 --checks 05_source_target_reconciliation.sql 06_control_totals.sql 07_exception_records.sql
+Get-ChildItem .\data\dq_results\sql\load_date=2026-06-16
+$latestSummary = Get-ChildItem .\logs\sql\sql_validation_summary_*.csv | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+Import-Csv $latestSummary.FullName | Format-Table
+```
+
+See `docs/sql_data_quality_validation.md` for the validation categories and output behavior.
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:

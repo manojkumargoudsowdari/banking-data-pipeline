@@ -38,6 +38,15 @@ EXPECTED_RESULT_COLUMNS = [
     "details",
 ]
 
+EXCEPTION_RESULT_COLUMNS = [
+    "exception_category",
+    "exception_name",
+    "table_name",
+    "business_key",
+    "issue_description",
+    "severity",
+]
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -161,11 +170,14 @@ def create_all_views(connection, curated_dir, standardized_dir, load_date, logge
 
 def validate_result_columns(result_df, check_name):
     actual_columns = [column.lower() for column in result_df.columns]
-    if actual_columns != EXPECTED_RESULT_COLUMNS:
-        raise ValueError(
-            f"{check_name} returned columns {actual_columns}; "
-            f"expected {EXPECTED_RESULT_COLUMNS}"
-        )
+    if actual_columns == EXPECTED_RESULT_COLUMNS:
+        return "check_summary"
+    if actual_columns == EXCEPTION_RESULT_COLUMNS:
+        return "exception_records"
+    raise ValueError(
+        f"{check_name} returned columns {actual_columns}; expected either "
+        f"{EXPECTED_RESULT_COLUMNS} or {EXCEPTION_RESULT_COLUMNS}"
+    )
 
 
 def write_summary(summary_rows, log_dir, run_timestamp):
@@ -222,13 +234,17 @@ def main():
             try:
                 sql_text = check_path.read_text(encoding="utf-8")
                 result_df = connection.execute(sql_text).fetchdf()
-                validate_result_columns(result_df, check_path.name)
+                result_type = validate_result_columns(result_df, check_path.name)
                 result_df.to_csv(output_path, index=False)
 
-                failed_check_count = int(
-                    result_df["status"].astype(str).str.upper().eq("FAIL").sum()
-                )
+                if result_type == "check_summary":
+                    failed_check_count = int(
+                        result_df["status"].astype(str).str.upper().eq("FAIL").sum()
+                    )
+                else:
+                    failed_check_count = len(result_df)
                 logger.info("check_file=%s result_row_count=%s", check_path.name, len(result_df))
+                logger.info("check_file=%s result_type=%s", check_path.name, result_type)
                 logger.info(
                     "check_file=%s failed_check_count=%s",
                     check_path.name,
