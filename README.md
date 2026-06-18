@@ -228,6 +228,21 @@ logs/dq/pyspark_dq_summary_YYYYMMDD_HHMMSS.csv
 
 See `docs/pyspark_data_quality_validation.md` for profiling scope and result definitions.
 
+### Phase 7B PySpark Rules And Exceptions
+
+Phase 7B adds Spark accepted-value, range, referential-integrity, reconciliation, control-total, and bounded exception-record checks.
+
+```powershell
+python -m py_compile spark\dq\dq_config.py spark\dq\run_pyspark_dq_validation.py
+python spark\dq\run_pyspark_dq_validation.py --load-date 2026-06-16 --datasets fact_transaction
+python spark\dq\run_pyspark_dq_validation.py --load-date 2026-06-16
+Get-ChildItem .\data\dq_results\pyspark\load_date=2026-06-16
+$latestSummary = Get-ChildItem .\logs\dq\pyspark_dq_summary_*.csv | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+Import-Csv $latestSummary.FullName | Format-Table
+```
+
+Additional outputs are `business_rule_results` and `exception_records` in CSV and Parquet formats.
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:

@@ -119,3 +119,107 @@ PYSPARK_DQ_CONFIGS = {
         ],
     },
 }
+
+ACCEPTED_VALUE_RULES = {
+    "dim_customer": {
+        "customer_status": ["ACTIVE", "INACTIVE", "SUSPENDED", "CLOSED"],
+    },
+    "dim_account": {
+        "account_status": ["OPEN", "DORMANT", "FROZEN", "CLOSED"],
+    },
+    "fact_transaction": {
+        "transaction_type": [
+            "DEPOSIT", "WITHDRAWAL", "TRANSFER", "PAYMENT", "FEE", "INTEREST",
+        ],
+        "transaction_status": [
+            "PENDING", "COMPLETED", "FAILED", "REVERSED", "CANCELLED",
+        ],
+    },
+    "fact_customer_risk_score": {
+        "risk_band": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+    },
+}
+
+RANGE_RULES = {
+    "dim_account": {
+        "current_balance": {"minimum": 0, "maximum": 1_000_000_000},
+    },
+    "fact_transaction": {
+        "amount": {"minimum_exclusive": 0},
+    },
+    "fact_customer_risk_score": {
+        "risk_score": {"minimum": 0, "maximum": 1000},
+    },
+    "fact_daily_account_balance": {
+        "current_balance": {
+            "minimum": 0,
+            "maximum": 1_000_000_000,
+            "required": True,
+        },
+        "available_balance": {
+            "minimum": 0,
+            "maximum": 1_000_000_000,
+            "required": True,
+        },
+    },
+}
+
+REFERENTIAL_INTEGRITY_RULES = {
+    "fact_transaction": [
+        {
+            "column": "account_id",
+            "reference_dataset": "dim_account",
+            "reference_column": "account_id",
+            "allow_null": False,
+        },
+        {
+            "column": "customer_id",
+            "reference_dataset": "dim_customer",
+            "reference_column": "customer_id",
+            "allow_null": False,
+        },
+        {
+            "column": "branch_id",
+            "reference_dataset": "dim_branch",
+            "reference_column": "branch_id",
+            "allow_null": True,
+        },
+        {
+            "column": "product_id",
+            "reference_dataset": "dim_product",
+            "reference_column": "product_id",
+            "allow_null": True,
+        },
+    ],
+    "fact_customer_risk_score": [
+        {
+            "column": "customer_id",
+            "reference_dataset": "dim_customer",
+            "reference_column": "customer_id",
+            "allow_null": False,
+        },
+    ],
+    "fact_daily_account_balance": [
+        {
+            "column": "account_id",
+            "reference_dataset": "dim_account",
+            "reference_column": "account_id",
+            "allow_null": False,
+        },
+        {
+            "column": "customer_id",
+            "reference_dataset": "dim_customer",
+            "reference_column": "customer_id",
+            "allow_null": False,
+        },
+    ],
+}
+
+SOURCE_TO_TARGET_DATASETS = {
+    "dim_customer": "customers",
+    "dim_account": "accounts",
+    "dim_branch": "branches",
+    "dim_product": "products",
+    "fact_transaction": "transactions",
+    "fact_customer_risk_score": "customer_risk_scores",
+}

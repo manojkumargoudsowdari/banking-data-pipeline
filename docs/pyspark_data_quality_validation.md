@@ -83,3 +83,38 @@ logs/dq/pyspark_dq_summary_YYYYMMDD_HHMMSS.csv
 ```
 
 These outputs provide practical evidence for discussing profiling, schema drift, completeness, uniqueness, and logical keys in data quality interviews.
+
+## Phase 7B Business Rules
+
+Phase 7B extends the same PySpark runner with:
+
+- Accepted-value checks for customer, account, transaction, and risk classifications.
+- Numeric range checks for transaction amounts, account balances, and risk scores.
+- Referential-integrity checks implemented with Spark joins.
+- Standardized-to-curated row-count reconciliation.
+- Spark aggregation control totals for transaction amounts and grouped counts.
+- Bounded exception records, limited to 100 records per exception type.
+
+The implementation uses actual curated column names. For example, transaction value is stored in `amount`, account type is not present in `dim_account`, and risk scores use the source scale of 0 through 1000.
+
+Additional outputs:
+
+- `business_rule_results.csv`
+- `business_rule_results.parquet`
+- `exception_records.csv`
+- `exception_records.parquet`
+
+Business-rule failures are evidence and do not terminate the runner. Missing input files, invalid configuration, and Spark execution errors return a nonzero exit code.
+
+## PySpark Versus Phase 6 SQL
+
+Phase 6 uses DuckDB SQL to query Parquet directly and demonstrates SQL validation, reconciliation, and exception reporting.
+
+Phase 7 uses Spark DataFrames:
+
+- Referential checks use distributed joins.
+- Control totals use Spark aggregations and grouped comparisons.
+- Exceptions are selected from failed DataFrame conditions.
+- The framework can scale beyond the local practice data without rewriting checks as database SQL.
+
+The SQL and PySpark layers intentionally overlap in validation categories so the project demonstrates two common implementation approaches.
