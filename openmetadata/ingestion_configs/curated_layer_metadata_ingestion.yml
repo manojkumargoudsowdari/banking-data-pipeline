@@ -1,0 +1,72 @@
+# Phase 9B template only. Do not execute this file in Phase 9B.
+# This is a catalog representation design for local curated Parquet assets.
+# A compatible connector or custom publication adapter must be approved later.
+template:
+  name: banking_curated_layer_metadata_ingestion
+  status: NOT_EXECUTED
+  purpose: Represent curated warehouse-style Parquet models in OpenMetadata.
+  connector_status: CONNECTOR_SELECTION_REQUIRED
+  credential_policy: Environment variables or placeholders only.
+
+future_openmetadata_service:
+  service_name: banking_curated_parquet
+  service_type: "${OPENMETADATA_CURATED_SERVICE_TYPE}"
+  server_host_port: "${OPENMETADATA_HOST_PORT}"
+  authentication:
+    provider: openmetadata
+    jwt_token_env: OPENMETADATA_JWT_TOKEN
+  proposed_hierarchy:
+    database: banking_analytics
+    schema: curated
+
+catalog_source:
+  root_path: "${BANKING_CURATED_ROOT_PATH}"
+  default_local_path: data/curated
+  partition_pattern: "load_date=<YYYY-MM-DD>"
+  file_format: parquet
+  governance_asset_source: governance/catalog/data_assets.yml
+  model_definition_source: spark/utils/model_config.py
+
+assets:
+  - name: dim_customer
+    asset_type: dimension
+    path_template: "data/curated/dim_customer/load_date=<YYYY-MM-DD>/dim_customer.parquet"
+    logical_key:
+      - customer_id
+  - name: dim_account
+    asset_type: dimension
+    path_template: "data/curated/dim_account/load_date=<YYYY-MM-DD>/dim_account.parquet"
+    logical_key:
+      - account_id
+  - name: dim_branch
+    asset_type: dimension
+    path_template: "data/curated/dim_branch/load_date=<YYYY-MM-DD>/dim_branch.parquet"
+    logical_key:
+      - branch_id
+  - name: dim_product
+    asset_type: dimension
+    path_template: "data/curated/dim_product/load_date=<YYYY-MM-DD>/dim_product.parquet"
+    logical_key:
+      - product_id
+  - name: fact_transaction
+    asset_type: fact
+    path_template: "data/curated/fact_transaction/load_date=<YYYY-MM-DD>/fact_transaction.parquet"
+    logical_key:
+      - transaction_id
+  - name: fact_customer_risk_score
+    asset_type: fact
+    path_template: "data/curated/fact_customer_risk_score/load_date=<YYYY-MM-DD>/fact_customer_risk_score.parquet"
+    logical_key:
+      - risk_score_id
+  - name: fact_daily_account_balance
+    asset_type: fact
+    path_template: "data/curated/fact_daily_account_balance/load_date=<YYYY-MM-DD>/fact_daily_account_balance.parquet"
+    logical_key:
+      - account_id
+      - balance_date
+
+future_execution_requirements:
+  - Approve an OpenMetadata version and compatible Parquet or data lake connector.
+  - Decide whether local paths will be exposed directly or moved to supported object storage.
+  - Translate this catalog design into the connector schema for the approved version.
+  - Validate generated fully qualified names before publishing metadata.

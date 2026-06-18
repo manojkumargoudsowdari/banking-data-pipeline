@@ -78,6 +78,22 @@ ingestion YAML is created in Phase 9A.
 This sequence separates governance design, configuration, and installation so
 each can be reviewed independently.
 
+## Phase 9B Configuration Templates
+
+Phase 9B adds non-executed templates under `openmetadata/ingestion_configs/`:
+
+- `postgres_metadata_ingestion.yml` follows the external PostgreSQL metadata
+  workflow structure and uses environment-variable references only.
+- `curated_layer_metadata_ingestion.yml` describes the future catalog
+  representation of local curated Parquet assets. It requires an approved
+  compatible connector or publication adapter before execution.
+- `lineage_ingestion.yml` prepares lineage edges for future manual or API-based
+  publication, using `governance/lineage/lineage_mapping.yml` as the source of
+  truth.
+
+These templates are not run in Phase 9B. OpenMetadata installation, connector
+selection, credential provisioning, and metadata publication remain deferred.
+
 ## Phase 9A Out Of Scope
 
 Phase 9A does not include:

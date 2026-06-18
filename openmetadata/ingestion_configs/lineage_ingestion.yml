@@ -1,0 +1,84 @@
+# Phase 9B template only. Do not execute this file in Phase 9B.
+# Phase 8 manual lineage remains the source of truth.
+template:
+  name: banking_manual_lineage_publication
+  status: NOT_EXECUTED
+  purpose: Prepare future publication of governed lineage into OpenMetadata.
+  source_of_truth: governance/lineage/lineage_mapping.yml
+  supporting_mapping: governance/metadata/source_to_target_mapping.yml
+  credential_policy: Environment variables only; no authentication value is stored here.
+
+future_publication:
+  method: "${OPENMETADATA_LINEAGE_PUBLICATION_METHOD}"
+  allowed_methods:
+    - manual_ui
+    - lineage_api_adapter
+  openmetadata_server:
+    host_port: "${OPENMETADATA_HOST_PORT}"
+    auth_provider: openmetadata
+    jwt_token_env: OPENMETADATA_JWT_TOKEN
+  prerequisite: Source and curated assets must exist in OpenMetadata before lineage is published.
+
+lineage_edges:
+  - edge_id: customers_to_dim_customer
+    upstream:
+      - banking_postgres.banking.public.customers
+    downstream: banking_curated_parquet.banking_analytics.curated.dim_customer
+    mapping_reference: STM_DIM_CUSTOMER
+
+  - edge_id: accounts_to_dim_account
+    upstream:
+      - banking_postgres.banking.public.accounts
+    downstream: banking_curated_parquet.banking_analytics.curated.dim_account
+    mapping_reference: STM_DIM_ACCOUNT
+
+  - edge_id: branches_to_dim_branch
+    upstream:
+      - banking_postgres.banking.public.branches
+    downstream: banking_curated_parquet.banking_analytics.curated.dim_branch
+    mapping_reference: STM_DIM_BRANCH
+
+  - edge_id: products_to_dim_product
+    upstream:
+      - banking_postgres.banking.public.products
+    downstream: banking_curated_parquet.banking_analytics.curated.dim_product
+    mapping_reference: STM_DIM_PRODUCT
+
+  - edge_id: transactions_accounts_to_fact_transaction
+    upstream:
+      - banking_postgres.banking.public.transactions
+      - banking_postgres.banking.public.accounts
+    downstream: banking_curated_parquet.banking_analytics.curated.fact_transaction
+    mapping_reference: STM_FACT_TRANSACTION
+
+  - edge_id: risk_scores_to_fact_customer_risk_score
+    upstream:
+      - banking_postgres.banking.public.customer_risk_scores
+    downstream: banking_curated_parquet.banking_analytics.curated.fact_customer_risk_score
+    mapping_reference: STM_FACT_CUSTOMER_RISK_SCORE
+
+  - edge_id: accounts_transactions_to_fact_daily_account_balance
+    upstream:
+      - banking_postgres.banking.public.accounts
+      - banking_postgres.banking.public.transactions
+    downstream: banking_curated_parquet.banking_analytics.curated.fact_daily_account_balance
+    mapping_reference: STM_FACT_DAILY_ACCOUNT_BALANCE
+    implementation_note: The current curated model derives balances from account snapshots; transactions are related governance context and are not aggregated into an official ledger balance.
+
+field_lineage_examples:
+  - source: banking_postgres.banking.public.customers.customer_id
+    target: banking_curated_parquet.banking_analytics.curated.dim_customer.customer_id
+  - source: banking_postgres.banking.public.accounts.account_id
+    target: banking_curated_parquet.banking_analytics.curated.dim_account.account_id
+  - source: banking_postgres.banking.public.transactions.transaction_id
+    target: banking_curated_parquet.banking_analytics.curated.fact_transaction.transaction_id
+  - source: banking_postgres.banking.public.transactions.amount
+    target: banking_curated_parquet.banking_analytics.curated.fact_transaction.amount
+    business_field: transaction_amount
+  - source: banking_postgres.banking.public.transactions.transaction_at
+    target: banking_curated_parquet.banking_analytics.curated.fact_transaction.transaction_at
+    business_field: transaction_date
+  - source: banking_postgres.banking.public.customer_risk_scores.risk_score
+    target: banking_curated_parquet.banking_analytics.curated.fact_customer_risk_score.risk_score
+  - source: banking_postgres.banking.public.customer_risk_scores.risk_band
+    target: banking_curated_parquet.banking_analytics.curated.fact_customer_risk_score.risk_band
