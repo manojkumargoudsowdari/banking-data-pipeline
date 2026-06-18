@@ -1,0 +1,250 @@
+version: 1
+inventory_name: Banking Critical Data Elements
+critical_data_elements:
+  - name: customer_id
+    business_term: Customer
+    domain: Customer
+    classification: Confidential
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+    source_field: customers.customer_id
+    standardized_field: customers.customer_id
+    curated_field: dim_customer.customer_id
+    related_asset: dim_customer
+    dq_rule_categories:
+      - null_check
+      - duplicate_key_check
+      - referential_integrity_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: customer_number
+    business_term: Customer
+    domain: Customer
+    classification: Restricted
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+    source_field: customers.customer_number
+    standardized_field: customers.customer_number
+    curated_field: dim_customer.customer_number
+    related_asset: dim_customer
+    dq_rule_categories:
+      - null_check
+      - duplicate_key_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: email
+    business_term: Customer
+    domain: Customer
+    classification: Restricted
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+    source_field: customers.email
+    standardized_field: customers.email
+    curated_field: dim_customer.email
+    related_asset: dim_customer
+    dq_rule_categories:
+      - null_check
+      - duplicate_key_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: date_of_birth
+    business_term: Customer
+    domain: Customer
+    classification: Restricted
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+    source_field: customers.date_of_birth
+    standardized_field: customers.date_of_birth
+    curated_field: dim_customer.date_of_birth
+    related_asset: dim_customer
+    dq_rule_categories:
+      - null_check
+      - range_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: account_id
+    business_term: Account
+    domain: Account
+    classification: Confidential
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+    source_field: accounts.account_id
+    standardized_field: accounts.account_id
+    curated_field: dim_account.account_id
+    related_asset: dim_account
+    dq_rule_categories:
+      - null_check
+      - duplicate_key_check
+      - referential_integrity_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: account_number
+    business_term: Account
+    domain: Account
+    classification: Restricted
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+    source_field: accounts.account_number
+    standardized_field: accounts.account_number
+    curated_field: dim_account.account_number
+    related_asset: dim_account
+    dq_rule_categories:
+      - null_check
+      - duplicate_key_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: account_status
+    business_term: Account
+    domain: Account
+    classification: Confidential
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+    source_field: accounts.account_status
+    standardized_field: accounts.account_status
+    curated_field: dim_account.account_status
+    related_asset: dim_account
+    dq_rule_categories:
+      - null_check
+      - accepted_value_check
+      - source_to_target_reconciliation
+      - control_total_check
+      - exception_record_review
+
+  - name: current_balance
+    business_term: Account Balance
+    domain: Account
+    classification: Restricted
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+    source_field: accounts.current_balance
+    standardized_field: accounts.current_balance
+    curated_field: dim_account.current_balance
+    related_asset: dim_account
+    dq_rule_categories:
+      - null_check
+      - range_check
+      - source_to_target_reconciliation
+      - control_total_check
+      - exception_record_review
+
+  - name: transaction_id
+    business_term: Transaction
+    domain: Transaction
+    classification: Confidential
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    source_field: transactions.transaction_id
+    standardized_field: transactions.transaction_id
+    curated_field: fact_transaction.transaction_id
+    related_asset: fact_transaction
+    dq_rule_categories:
+      - null_check
+      - duplicate_key_check
+      - referential_integrity_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: transaction_reference
+    business_term: Transaction
+    domain: Transaction
+    classification: Confidential
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    source_field: transactions.transaction_reference
+    standardized_field: transactions.transaction_reference
+    curated_field: fact_transaction.transaction_reference
+    related_asset: fact_transaction
+    dq_rule_categories:
+      - null_check
+      - duplicate_key_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: transaction_amount
+    business_term: Transaction Amount
+    domain: Transaction
+    classification: Restricted
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    source_field: transactions.amount
+    standardized_field: transactions.amount
+    curated_field: fact_transaction.amount
+    related_asset: fact_transaction
+    dq_rule_categories:
+      - null_check
+      - range_check
+      - source_to_target_reconciliation
+      - control_total_check
+      - exception_record_review
+
+  - name: transaction_date
+    business_term: Transaction Date
+    domain: Transaction
+    classification: Confidential
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    source_field: transactions.transaction_at
+    standardized_field: transactions.transaction_at
+    curated_field: fact_transaction.transaction_at
+    related_asset: fact_transaction
+    dq_rule_categories:
+      - null_check
+      - range_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: transaction_type
+    business_term: Transaction Type
+    domain: Transaction
+    classification: Internal
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    source_field: transactions.transaction_type
+    standardized_field: transactions.transaction_type
+    curated_field: fact_transaction.transaction_type
+    related_asset: fact_transaction
+    dq_rule_categories:
+      - null_check
+      - accepted_value_check
+      - source_to_target_reconciliation
+      - control_total_check
+      - exception_record_review
+
+  - name: risk_score
+    business_term: Customer Risk Score
+    domain: Risk
+    classification: Restricted
+    owner: Enterprise Risk Owner
+    steward: Risk Data Steward
+    source_field: customer_risk_scores.risk_score
+    standardized_field: customer_risk_scores.risk_score
+    curated_field: fact_customer_risk_score.risk_score
+    related_asset: fact_customer_risk_score
+    dq_rule_categories:
+      - null_check
+      - range_check
+      - referential_integrity_check
+      - source_to_target_reconciliation
+      - exception_record_review
+
+  - name: risk_band
+    business_term: Risk Band
+    domain: Risk
+    classification: Restricted
+    owner: Enterprise Risk Owner
+    steward: Risk Data Steward
+    source_field: customer_risk_scores.risk_band
+    standardized_field: customer_risk_scores.risk_band
+    curated_field: fact_customer_risk_score.risk_band
+    related_asset: fact_customer_risk_score
+    dq_rule_categories:
+      - null_check
+      - accepted_value_check
+      - source_to_target_reconciliation
+      - exception_record_review
