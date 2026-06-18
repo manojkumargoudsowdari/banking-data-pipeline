@@ -1,0 +1,187 @@
+version: 1
+lineage_name: Banking Pipeline Manual Lineage
+lineage_status: manual_documentation
+
+stage_flow:
+  - sequence: 1
+    stage: PostgreSQL source
+    asset_pattern: "public.<table>"
+  - sequence: 2
+    stage: Raw Parquet
+    asset_pattern: "data/raw/<table>/load_date=<YYYY-MM-DD>/<table>.parquet"
+  - sequence: 3
+    stage: Standardized Parquet
+    asset_pattern: "data/standardized/<table>/load_date=<YYYY-MM-DD>/<table>.parquet"
+  - sequence: 4
+    stage: Curated model
+    asset_pattern: "data/curated/<model>/load_date=<YYYY-MM-DD>/<model>.parquet"
+  - sequence: 5
+    stage: SQL DQ results
+    asset_pattern: "data/dq_results/sql/load_date=<YYYY-MM-DD>/<check>_results.csv"
+  - sequence: 6
+    stage: PySpark DQ results
+    asset_pattern: "data/dq_results/pyspark/load_date=<YYYY-MM-DD>/"
+
+validation_dependency_note: SQL DQ and PySpark DQ are independent validation consumers of standardized and curated assets. Their sequence here represents the project phase flow, not a data dependency from SQL results into PySpark results.
+
+dataset_lineage:
+  - lineage_id: LIN_CUSTOMER
+    source_assets:
+      - public.customers
+    raw_assets:
+      - raw.customers
+    standardized_assets:
+      - standardized.customers
+    curated_assets:
+      - dim_customer
+    sql_dq_assets:
+      - null_check_results
+      - duplicate_check_results
+      - source_target_reconciliation_results
+    pyspark_dq_assets:
+      - dataset_profile_results
+      - column_profile_results
+      - rule_results
+      - business_rule_results
+      - exception_records
+
+  - lineage_id: LIN_ACCOUNT
+    source_assets:
+      - public.accounts
+    raw_assets:
+      - raw.accounts
+    standardized_assets:
+      - standardized.accounts
+    curated_assets:
+      - dim_account
+      - fact_daily_account_balance
+    sql_dq_assets:
+      - accepted_values_check_results
+      - source_target_reconciliation_results
+      - control_total_results
+    pyspark_dq_assets:
+      - dataset_profile_results
+      - rule_results
+      - business_rule_results
+      - exception_records
+
+  - lineage_id: LIN_TRANSACTION
+    source_assets:
+      - public.transactions
+      - public.accounts
+    raw_assets:
+      - raw.transactions
+      - raw.accounts
+    standardized_assets:
+      - standardized.transactions
+      - standardized.accounts
+    curated_assets:
+      - fact_transaction
+    sql_dq_assets:
+      - referential_integrity_check_results
+      - source_target_reconciliation_results
+      - control_total_results
+      - exception_records
+    pyspark_dq_assets:
+      - dataset_profile_results
+      - rule_results
+      - business_rule_results
+      - exception_records
+
+  - lineage_id: LIN_RISK
+    source_assets:
+      - public.customer_risk_scores
+    raw_assets:
+      - raw.customer_risk_scores
+    standardized_assets:
+      - standardized.customer_risk_scores
+    curated_assets:
+      - fact_customer_risk_score
+    sql_dq_assets:
+      - accepted_values_check_results
+      - referential_integrity_check_results
+      - source_target_reconciliation_results
+    pyspark_dq_assets:
+      - dataset_profile_results
+      - rule_results
+      - business_rule_results
+      - exception_records
+
+field_lineage_examples:
+  - business_field: customer_id
+    source_field: public.customers.customer_id
+    raw_field: raw.customers.customer_id
+    standardized_field: standardized.customers.customer_id
+    curated_field: dim_customer.customer_id
+    transformation: Type normalization followed by direct selection
+    validation_categories:
+      - null_check
+      - duplicate_key_check
+      - referential_integrity_check
+      - source_to_target_reconciliation
+
+  - business_field: account_id
+    source_field: public.accounts.account_id
+    raw_field: raw.accounts.account_id
+    standardized_field: standardized.accounts.account_id
+    curated_field: dim_account.account_id
+    transformation: Type normalization followed by direct selection
+    validation_categories:
+      - null_check
+      - duplicate_key_check
+      - referential_integrity_check
+      - source_to_target_reconciliation
+
+  - business_field: transaction_id
+    source_field: public.transactions.transaction_id
+    raw_field: raw.transactions.transaction_id
+    standardized_field: standardized.transactions.transaction_id
+    curated_field: fact_transaction.transaction_id
+    transformation: Type normalization followed by direct selection
+    validation_categories:
+      - null_check
+      - duplicate_key_check
+      - source_to_target_reconciliation
+
+  - business_field: transaction_amount
+    source_field: public.transactions.amount
+    raw_field: raw.transactions.amount
+    standardized_field: standardized.transactions.amount
+    curated_field: fact_transaction.amount
+    transformation: Decimal type normalization followed by direct selection
+    validation_categories:
+      - null_check
+      - range_check
+      - control_total_check
+
+  - business_field: transaction_date
+    source_field: public.transactions.transaction_at
+    raw_field: raw.transactions.transaction_at
+    standardized_field: standardized.transactions.transaction_at
+    curated_field: fact_transaction.transaction_at
+    transformation: Timestamp type normalization followed by direct selection
+    validation_categories:
+      - null_check
+      - range_check
+
+  - business_field: risk_score
+    source_field: public.customer_risk_scores.risk_score
+    raw_field: raw.customer_risk_scores.risk_score
+    standardized_field: standardized.customer_risk_scores.risk_score
+    curated_field: fact_customer_risk_score.risk_score
+    transformation: Integer type normalization followed by direct selection
+    validation_categories:
+      - null_check
+      - range_check
+      - source_to_target_reconciliation
+
+  - business_field: risk_band
+    source_field: public.customer_risk_scores.risk_band
+    raw_field: raw.customer_risk_scores.risk_band
+    standardized_field: standardized.customer_risk_scores.risk_band
+    curated_field: fact_customer_risk_score.risk_band
+    transformation: String normalization followed by direct selection
+    validation_categories:
+      - null_check
+      - accepted_value_check
+      - source_to_target_reconciliation

@@ -1,0 +1,183 @@
+version: 1
+catalog_name: Banking Data Governance Pipeline Asset Catalog
+catalog_status: manual_foundation
+
+asset_layers:
+  - layer: source
+    platform: PostgreSQL
+    location: public
+    owner: Banking Source System Owner
+    steward: Data Governance Steward
+    assets:
+      - name: branches
+        asset_type: source_table
+        domain: Branch
+      - name: products
+        asset_type: source_table
+        domain: Product
+      - name: reference_codes
+        asset_type: source_table
+        domain: Reference Data
+      - name: customers
+        asset_type: source_table
+        domain: Customer
+      - name: accounts
+        asset_type: source_table
+        domain: Account
+      - name: transactions
+        asset_type: source_table
+        domain: Transaction
+      - name: customer_risk_scores
+        asset_type: source_table
+        domain: Risk
+      - name: data_quality_rules
+        asset_type: source_table
+        domain: Data Quality
+      - name: stewardship_issues
+        asset_type: source_table
+        domain: Data Quality
+      - name: source_to_target_mappings
+        asset_type: source_table
+        domain: Data Governance
+
+  - layer: raw
+    platform: Local Parquet
+    location_pattern: "data/raw/<table>/load_date=<YYYY-MM-DD>/<table>.parquet"
+    owner: Data Engineering Owner
+    steward: Data Engineering Steward
+    assets:
+      - name: branches
+        asset_type: raw_dataset
+      - name: products
+        asset_type: raw_dataset
+      - name: reference_codes
+        asset_type: raw_dataset
+      - name: customers
+        asset_type: raw_dataset
+      - name: accounts
+        asset_type: raw_dataset
+      - name: transactions
+        asset_type: raw_dataset
+      - name: customer_risk_scores
+        asset_type: raw_dataset
+      - name: data_quality_rules
+        asset_type: raw_dataset
+      - name: stewardship_issues
+        asset_type: raw_dataset
+      - name: source_to_target_mappings
+        asset_type: raw_dataset
+
+  - layer: standardized
+    platform: Local Parquet
+    location_pattern: "data/standardized/<table>/load_date=<YYYY-MM-DD>/<table>.parquet"
+    owner: Data Engineering Owner
+    steward: Data Engineering Steward
+    assets:
+      - name: branches
+        asset_type: standardized_dataset
+      - name: products
+        asset_type: standardized_dataset
+      - name: reference_codes
+        asset_type: standardized_dataset
+      - name: customers
+        asset_type: standardized_dataset
+      - name: accounts
+        asset_type: standardized_dataset
+      - name: transactions
+        asset_type: standardized_dataset
+      - name: customer_risk_scores
+        asset_type: standardized_dataset
+      - name: data_quality_rules
+        asset_type: standardized_dataset
+      - name: stewardship_issues
+        asset_type: standardized_dataset
+      - name: source_to_target_mappings
+        asset_type: standardized_dataset
+
+  - layer: curated
+    platform: Local Parquet
+    location_pattern: "data/curated/<model>/load_date=<YYYY-MM-DD>/<model>.parquet"
+    owner: Analytics Data Owner
+    steward: Analytics Data Steward
+    assets:
+      - name: dim_customer
+        asset_type: dimension
+        domain: Customer
+        grain: One row per customer
+        logical_key:
+          - customer_id
+      - name: dim_account
+        asset_type: dimension
+        domain: Account
+        grain: One row per account
+        logical_key:
+          - account_id
+      - name: dim_branch
+        asset_type: dimension
+        domain: Branch
+        grain: One row per branch
+        logical_key:
+          - branch_id
+      - name: dim_product
+        asset_type: dimension
+        domain: Product
+        grain: One row per product
+        logical_key:
+          - product_id
+      - name: fact_transaction
+        asset_type: fact
+        domain: Transaction
+        grain: One row per transaction
+        logical_key:
+          - transaction_id
+      - name: fact_customer_risk_score
+        asset_type: fact
+        domain: Risk
+        grain: One row per customer risk score record
+        logical_key:
+          - risk_score_id
+      - name: fact_daily_account_balance
+        asset_type: fact
+        domain: Account
+        grain: One row per account per balance date
+        logical_key:
+          - account_id
+          - balance_date
+
+  - layer: sql_data_quality_results
+    platform: DuckDB and CSV
+    location_pattern: "data/dq_results/sql/load_date=<YYYY-MM-DD>/<check>_results.csv"
+    owner: Data Quality Owner
+    steward: Data Quality Steward
+    assets:
+      - name: null_check_results
+        source_definition: sql/validation/01_null_checks.sql
+      - name: duplicate_check_results
+        source_definition: sql/validation/02_duplicate_checks.sql
+      - name: accepted_values_check_results
+        source_definition: sql/validation/03_accepted_values_checks.sql
+      - name: referential_integrity_check_results
+        source_definition: sql/validation/04_referential_integrity_checks.sql
+      - name: source_target_reconciliation_results
+        source_definition: sql/validation/05_source_target_reconciliation.sql
+      - name: control_total_results
+        source_definition: sql/validation/06_control_totals.sql
+      - name: exception_records
+        source_definition: sql/validation/07_exception_records.sql
+
+  - layer: pyspark_data_quality_results
+    platform: PySpark, CSV, and Parquet
+    location_pattern: "data/dq_results/pyspark/load_date=<YYYY-MM-DD>/"
+    owner: Data Quality Owner
+    steward: Data Quality Steward
+    assets:
+      - name: dataset_profile_results
+        asset_type: profile_result
+      - name: column_profile_results
+        asset_type: profile_result
+      - name: rule_results
+        asset_type: foundational_rule_result
+      - name: business_rule_results
+        asset_type: business_rule_result
+      - name: exception_records
+        asset_type: exception_result

@@ -1,0 +1,254 @@
+version: 1
+catalog_name: Banking Data Quality Rule Catalog
+catalog_status: manual_governance_mapping
+execution_note: This catalog documents implemented validation expectations. It does not execute rules or change pipeline behavior.
+
+allowed_categories:
+  - null_check
+  - duplicate_key_check
+  - accepted_value_check
+  - range_check
+  - referential_integrity_check
+  - source_to_target_reconciliation
+  - control_total_check
+  - exception_record_review
+
+rules:
+  - rule_id: DQ_NULL_CUSTOMER_ID
+    category: null_check
+    asset: dim_customer
+    fields:
+      - customer_id
+    expectation: Customer identifiers must not be null
+    severity: CRITICAL
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+
+  - rule_id: DQ_NULL_CUSTOMER_EMAIL
+    category: null_check
+    asset: dim_customer
+    fields:
+      - email
+    expectation: Customer email must not be null
+    severity: HIGH
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+
+  - rule_id: DQ_NULL_ACCOUNT_ID
+    category: null_check
+    asset: dim_account
+    fields:
+      - account_id
+    expectation: Account identifiers must not be null
+    severity: CRITICAL
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+
+  - rule_id: DQ_NULL_TRANSACTION_FIELDS
+    category: null_check
+    asset: fact_transaction
+    fields:
+      - transaction_id
+      - account_id
+      - amount
+      - transaction_type
+    expectation: Critical transaction fields must not be null
+    severity: CRITICAL
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_DUPLICATE_CUSTOMER_ID
+    category: duplicate_key_check
+    asset: dim_customer
+    fields:
+      - customer_id
+    expectation: Customer logical keys must be unique
+    severity: CRITICAL
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+
+  - rule_id: DQ_DUPLICATE_ACCOUNT_ID
+    category: duplicate_key_check
+    asset: dim_account
+    fields:
+      - account_id
+    expectation: Account logical keys must be unique
+    severity: CRITICAL
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+
+  - rule_id: DQ_DUPLICATE_TRANSACTION_ID
+    category: duplicate_key_check
+    asset: fact_transaction
+    fields:
+      - transaction_id
+    expectation: Transaction logical keys must be unique
+    severity: CRITICAL
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_ACCEPTED_CUSTOMER_STATUS
+    category: accepted_value_check
+    asset: dim_customer
+    fields:
+      - customer_status
+    expectation: "Value must be one of: ACTIVE, INACTIVE, SUSPENDED, CLOSED"
+    severity: HIGH
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+
+  - rule_id: DQ_ACCEPTED_ACCOUNT_STATUS
+    category: accepted_value_check
+    asset: dim_account
+    fields:
+      - account_status
+    expectation: "Value must be one of: OPEN, DORMANT, FROZEN, CLOSED"
+    severity: HIGH
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+
+  - rule_id: DQ_ACCEPTED_TRANSACTION_TYPE
+    category: accepted_value_check
+    asset: fact_transaction
+    fields:
+      - transaction_type
+    expectation: "Value must be one of: DEPOSIT, WITHDRAWAL, TRANSFER, PAYMENT, FEE, INTEREST"
+    severity: HIGH
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_ACCEPTED_RISK_BAND
+    category: accepted_value_check
+    asset: fact_customer_risk_score
+    fields:
+      - risk_band
+    expectation: "Value must be one of: LOW, MEDIUM, HIGH, CRITICAL"
+    severity: HIGH
+    owner: Enterprise Risk Owner
+    steward: Risk Data Steward
+
+  - rule_id: DQ_RANGE_TRANSACTION_AMOUNT
+    category: range_check
+    asset: fact_transaction
+    fields:
+      - amount
+    expectation: Transaction amount must be greater than zero
+    severity: CRITICAL
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_RANGE_ACCOUNT_BALANCE
+    category: range_check
+    asset: dim_account
+    fields:
+      - current_balance
+    expectation: Current balance must be between 0 and 1000000000 inclusive
+    severity: HIGH
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+
+  - rule_id: DQ_RANGE_RISK_SCORE
+    category: range_check
+    asset: fact_customer_risk_score
+    fields:
+      - risk_score
+    expectation: Risk score must be between 0 and 1000 inclusive
+    severity: HIGH
+    owner: Enterprise Risk Owner
+    steward: Risk Data Steward
+
+  - rule_id: DQ_RI_TRANSACTION_ACCOUNT
+    category: referential_integrity_check
+    asset: fact_transaction
+    fields:
+      - account_id
+    reference_asset: dim_account
+    reference_fields:
+      - account_id
+    expectation: Every transaction account must resolve to an account dimension record
+    severity: CRITICAL
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_RI_TRANSACTION_CUSTOMER
+    category: referential_integrity_check
+    asset: fact_transaction
+    fields:
+      - customer_id
+    reference_asset: dim_customer
+    reference_fields:
+      - customer_id
+    expectation: Every transaction customer must resolve to a customer dimension record
+    severity: CRITICAL
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_RI_RISK_CUSTOMER
+    category: referential_integrity_check
+    asset: fact_customer_risk_score
+    fields:
+      - customer_id
+    reference_asset: dim_customer
+    reference_fields:
+      - customer_id
+    expectation: Every customer risk record must resolve to a customer dimension record
+    severity: CRITICAL
+    owner: Enterprise Risk Owner
+    steward: Risk Data Steward
+
+  - rule_id: DQ_RECON_CUSTOMER_COUNT
+    category: source_to_target_reconciliation
+    asset: dim_customer
+    source_asset: standardized.customers
+    expectation: Standardized customer row count must equal curated customer row count
+    severity: HIGH
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+
+  - rule_id: DQ_RECON_ACCOUNT_COUNT
+    category: source_to_target_reconciliation
+    asset: dim_account
+    source_asset: standardized.accounts
+    expectation: Standardized account row count must equal curated account row count
+    severity: HIGH
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+
+  - rule_id: DQ_RECON_TRANSACTION_COUNT
+    category: source_to_target_reconciliation
+    asset: fact_transaction
+    source_asset: standardized.transactions
+    expectation: Standardized transaction row count must equal curated transaction row count
+    severity: CRITICAL
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_CONTROL_TRANSACTION_AMOUNT
+    category: control_total_check
+    asset: fact_transaction
+    source_asset: standardized.transactions
+    fields:
+      - amount
+    expectation: Standardized and curated total transaction amounts must match
+    severity: CRITICAL
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_CONTROL_TRANSACTION_TYPE_COUNT
+    category: control_total_check
+    asset: fact_transaction
+    source_asset: standardized.transactions
+    fields:
+      - transaction_type
+    expectation: Standardized and curated transaction counts by type must match
+    severity: HIGH
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+
+  - rule_id: DQ_EXCEPTION_REVIEW
+    category: exception_record_review
+    asset: data_quality_exception_results
+    expectation: Bounded SQL and PySpark exception records must be reviewed and triaged by the assigned steward
+    severity: HIGH
+    owner: Data Quality Owner
+    steward: Data Quality Steward

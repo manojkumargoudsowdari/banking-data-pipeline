@@ -1,0 +1,89 @@
+version: 1
+register_name: Sample Data Quality Stewardship Issues
+record_status: SAMPLE_RECORDS_NOT_ACTUAL_FAILURES
+disclaimer: These examples demonstrate stewardship documentation only. They are not current pipeline failures and were not generated from runtime DQ results.
+
+sample_issues:
+  - issue_reference: SAMPLE-DQ-001
+    sample_record: true
+    title: Missing customer email
+    affected_asset: dim_customer
+    affected_field: email
+    related_rule_id: DQ_NULL_CUSTOMER_EMAIL
+    category: null_check
+    severity: HIGH
+    status: OPEN
+    owner: Customer Data Owner
+    steward: Customer Data Steward
+    issue_description: Example of a required customer contact field arriving without a value.
+    expected_action: Confirm source-system cause, assess customer impact, and document remediation evidence.
+
+  - issue_reference: SAMPLE-DQ-002
+    sample_record: true
+    title: Duplicate transaction identifier
+    affected_asset: fact_transaction
+    affected_field: transaction_id
+    related_rule_id: DQ_DUPLICATE_TRANSACTION_ID
+    category: duplicate_key_check
+    severity: CRITICAL
+    status: IN_PROGRESS
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    issue_description: Example of more than one curated record sharing the same transaction logical key.
+    expected_action: Trace duplicates to source ingestion or model processing and prevent double counting.
+
+  - issue_reference: SAMPLE-DQ-003
+    sample_record: true
+    title: Unsupported account status
+    affected_asset: dim_account
+    affected_field: account_status
+    related_rule_id: DQ_ACCEPTED_ACCOUNT_STATUS
+    category: accepted_value_check
+    severity: HIGH
+    status: OPEN
+    owner: Deposit Products Owner
+    steward: Account Data Steward
+    issue_description: Example of an account status outside the approved controlled values.
+    expected_action: Validate the source value and coordinate an approved reference-value or source correction.
+
+  - issue_reference: SAMPLE-DQ-004
+    sample_record: true
+    title: Transaction account does not resolve
+    affected_asset: fact_transaction
+    affected_field: account_id
+    related_rule_id: DQ_RI_TRANSACTION_ACCOUNT
+    category: referential_integrity_check
+    severity: CRITICAL
+    status: OPEN
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    issue_description: Example of a transaction referencing an account absent from the account dimension.
+    expected_action: Compare source arrival timing, account extraction, and curated join behavior before remediation.
+
+  - issue_reference: SAMPLE-DQ-005
+    sample_record: true
+    title: Transaction amount control total mismatch
+    affected_asset: fact_transaction
+    affected_field: amount
+    related_rule_id: DQ_CONTROL_TRANSACTION_AMOUNT
+    category: control_total_check
+    severity: CRITICAL
+    status: RESOLVED
+    owner: Payments Operations Owner
+    steward: Transaction Data Steward
+    issue_description: Example of standardized and curated transaction amount totals not matching for a load date.
+    expected_action: Reconcile missing or duplicated transaction keys and attach rerun evidence before closure.
+
+  - issue_reference: SAMPLE-DQ-006
+    sample_record: true
+    title: Risk score outside approved scale
+    affected_asset: fact_customer_risk_score
+    affected_field: risk_score
+    related_rule_id: DQ_RANGE_RISK_SCORE
+    category: range_check
+    severity: HIGH
+    status: CLOSED
+    owner: Enterprise Risk Owner
+    steward: Risk Data Steward
+    issue_description: Example of a risk score outside the implemented 0 to 1000 scale.
+    expected_action: Confirm scoring-model output scale, correct the source record, and retain validation evidence.

@@ -1,0 +1,149 @@
+version: 1
+mapping_name: Banking Standardized To Curated Mappings
+mapping_status: manual_documentation
+source_layer: standardized
+target_layer: curated
+
+mappings:
+  - mapping_id: STM_DIM_CUSTOMER
+    source_tables:
+      - customers
+    target_model: dim_customer
+    grain: One row per customer
+    join_logic: No join
+    key_mapping:
+      customers.customer_id: dim_customer.customer_id
+    field_examples:
+      - source: customers.customer_number
+        target: dim_customer.customer_number
+        transformation: Direct selection
+      - source: customers.email
+        target: dim_customer.email
+        transformation: Direct selection after standardized-layer normalization
+      - source: customers.branch_id
+        target: dim_customer.branch_id
+        transformation: Direct selection
+
+  - mapping_id: STM_DIM_ACCOUNT
+    source_tables:
+      - accounts
+    target_model: dim_account
+    grain: One row per account
+    join_logic: No join
+    key_mapping:
+      accounts.account_id: dim_account.account_id
+    field_examples:
+      - source: accounts.account_number
+        target: dim_account.account_number
+        transformation: Direct selection
+      - source: accounts.account_status
+        target: dim_account.account_status
+        transformation: Direct selection after standardized-layer normalization
+      - source: accounts.current_balance
+        target: dim_account.current_balance
+        transformation: Direct selection
+
+  - mapping_id: STM_DIM_BRANCH
+    source_tables:
+      - branches
+    target_model: dim_branch
+    grain: One row per branch
+    join_logic: No join
+    key_mapping:
+      branches.branch_id: dim_branch.branch_id
+    field_examples:
+      - source: branches.branch_code
+        target: dim_branch.branch_code
+        transformation: Direct selection
+      - source: branches.branch_name
+        target: dim_branch.branch_name
+        transformation: Direct selection
+      - source: branches.status
+        target: dim_branch.status
+        transformation: Direct selection after standardized-layer normalization
+
+  - mapping_id: STM_DIM_PRODUCT
+    source_tables:
+      - products
+    target_model: dim_product
+    grain: One row per product
+    join_logic: No join
+    key_mapping:
+      products.product_id: dim_product.product_id
+    field_examples:
+      - source: products.product_code
+        target: dim_product.product_code
+        transformation: Direct selection
+      - source: products.product_type
+        target: dim_product.product_type
+        transformation: Direct selection after standardized-layer normalization
+      - source: products.status
+        target: dim_product.status
+        transformation: Direct selection after standardized-layer normalization
+
+  - mapping_id: STM_FACT_TRANSACTION
+    source_tables:
+      - transactions
+      - accounts
+    target_model: fact_transaction
+    grain: One row per transaction
+    join_logic: Left join transactions to accounts on account_id
+    key_mapping:
+      transactions.transaction_id: fact_transaction.transaction_id
+      transactions.account_id: fact_transaction.account_id
+      accounts.customer_id: fact_transaction.customer_id
+      accounts.product_id: fact_transaction.product_id
+    field_examples:
+      - source: transactions.amount
+        target: fact_transaction.amount
+        business_term: Transaction Amount
+        transformation: Direct selection
+      - source: transactions.transaction_at
+        target: fact_transaction.transaction_at
+        business_term: Transaction Date
+        transformation: Direct selection
+      - source: transactions.transaction_type
+        target: fact_transaction.transaction_type
+        transformation: Direct selection after standardized-layer normalization
+
+  - mapping_id: STM_FACT_CUSTOMER_RISK_SCORE
+    source_tables:
+      - customer_risk_scores
+    target_model: fact_customer_risk_score
+    grain: One row per customer risk score record
+    join_logic: No join
+    key_mapping:
+      customer_risk_scores.risk_score_id: fact_customer_risk_score.risk_score_id
+      customer_risk_scores.customer_id: fact_customer_risk_score.customer_id
+    field_examples:
+      - source: customer_risk_scores.risk_score
+        target: fact_customer_risk_score.risk_score
+        transformation: Direct selection
+      - source: customer_risk_scores.risk_band
+        target: fact_customer_risk_score.risk_band
+        transformation: Direct selection after standardized-layer normalization
+
+  - mapping_id: STM_FACT_DAILY_ACCOUNT_BALANCE
+    source_tables:
+      - accounts
+      - transactions
+    target_model: fact_daily_account_balance
+    grain: One row per account per balance date
+    join_logic: Current implementation does not join transactions; account snapshots are deduplicated by account_id and balance_date
+    key_mapping:
+      accounts.account_id: fact_daily_account_balance.account_id
+      accounts.source_load_date: fact_daily_account_balance.balance_date
+    field_examples:
+      - source: accounts.current_balance
+        target: fact_daily_account_balance.current_balance
+        transformation: Direct account snapshot value
+      - source: accounts.available_balance
+        target: fact_daily_account_balance.available_balance
+        transformation: Direct account snapshot value
+      - source: accounts.source_load_date
+        target: fact_daily_account_balance.balance_date
+        transformation: Cast source load date to date
+      - source: transactions.account_id
+        target: fact_daily_account_balance.account_id
+        transformation: Related transaction-activity context; not used to calculate the current balance output
+    implementation_note: The current model is a derived account-day snapshot, not an official ledger balance. Transactions are documented as related source context and are not aggregated into the current output.
