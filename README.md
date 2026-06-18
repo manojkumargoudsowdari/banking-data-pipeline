@@ -208,6 +208,26 @@ Import-Csv $latestSummary.FullName | Format-Table
 
 See `docs/sql_data_quality_validation.md` for the validation categories and output behavior.
 
+## Phase 7A PySpark DQ Profiling
+
+Phase 7A profiles curated datasets with PySpark and records schema, required-column, null, distinct-value, and duplicate-key results.
+
+```powershell
+python -m py_compile spark\dq\dq_config.py spark\dq\run_pyspark_dq_validation.py
+python spark\dq\run_pyspark_dq_validation.py --load-date 2026-06-16 --datasets dim_customer
+python spark\dq\run_pyspark_dq_validation.py --load-date 2026-06-16
+python spark\dq\run_pyspark_dq_validation.py --load-date 2026-06-16 --datasets not_a_dataset
+```
+
+Outputs:
+
+```text
+data/dq_results/pyspark/load_date=<load-date>/
+logs/dq/pyspark_dq_summary_YYYYMMDD_HHMMSS.csv
+```
+
+See `docs/pyspark_data_quality_validation.md` for profiling scope and result definitions.
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:
