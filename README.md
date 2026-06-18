@@ -176,6 +176,24 @@ Get-ChildItem .\data\curated -Recurse | Select-Object -First 30
 
 Phase 5B performs lightweight build sanity checks only. Formal SQL data quality begins in Phase 6, and PySpark data quality begins in Phase 7.
 
+## Phase 6A DuckDB SQL Validation
+
+Phase 6A runs lightweight SQL data quality checks directly against curated and standardized Parquet files using in-memory DuckDB. Check results are reported but do not cause runner failure unless configuration or SQL execution fails.
+
+```powershell
+pip install -r requirements.txt
+python -m py_compile python\validation\run_sql_validation.py
+python python\validation\run_sql_validation.py --load-date 2026-06-16
+python python\validation\run_sql_validation.py --load-date 2026-06-16 --checks 01_null_checks.sql 04_referential_integrity_checks.sql
+```
+
+Outputs:
+
+```text
+data/dq_results/sql/load_date=<load-date>/<check_name>_results.csv
+logs/sql/sql_validation_summary_YYYYMMDD_HHMMSS.csv
+```
+
 ## Legacy Scope
 
 The following copied components are retained only as reference:

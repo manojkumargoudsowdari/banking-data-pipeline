@@ -16,6 +16,7 @@ docker/logs/
 
 logs/ingestion/
 logs/spark/
+logs/sql/
 dbt_packages/
 target/
 logs/

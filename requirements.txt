@@ -1,4 +1,5 @@
 # Phase 1 active dependencies
+duckdb
 faker
 pandas
 pyarrow
