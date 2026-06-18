@@ -94,6 +94,17 @@ Phase 9B adds non-executed templates under `openmetadata/ingestion_configs/`:
 These templates are not run in Phase 9B. OpenMetadata installation, connector
 selection, credential provisioning, and metadata publication remain deferred.
 
+## Phase 9C Local Runbook
+
+Phase 9C adds a documentation-only local operations guide at
+[`local_runbook.md`](local_runbook.md). It covers prerequisites, runtime
+environment variables, a safe future execution sequence, UI validation, and
+troubleshooting.
+
+The runbook does not install or start OpenMetadata and does not authorize
+ingestion. Any future local run requires explicit approval and a pinned,
+reviewed OpenMetadata release.
+
 ## Phase 9A Out Of Scope
 
 Phase 9A does not include:
