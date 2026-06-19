@@ -1,0 +1,140 @@
+program_name: Banking Data Governance and Data Quality Pipeline
+backlog_type: completed_governance_program
+delivery_model: Scrum
+documentation_phase: Phase 10A
+status_note: This backlog documents completed work from prior phases and does not introduce new technical scope.
+
+sprints:
+  - sprint_id: SPRINT-001
+    sprint_name: Governance Foundation
+    sprint_goal: Establish core governance policy, glossary, CDEs, and functional accountability for the banking data platform.
+    stories:
+      - story_id: GOV-001
+        title: Define Banking Governance Policy
+        priority: High
+        owner: Data Governance Lead
+        status: Done
+        story_points: 5
+      - story_id: GOV-002
+        title: Document Business Glossary
+        priority: High
+        owner: Data Steward
+        status: Done
+        story_points: 3
+      - story_id: GOV-003
+        title: Define Critical Data Elements
+        priority: High
+        owner: Data Steward
+        status: Done
+        story_points: 5
+      - story_id: GOV-004
+        title: Assign Functional Ownership And Stewardship
+        priority: Medium
+        owner: Data Governance Lead
+        status: Done
+        story_points: 3
+
+  - sprint_id: SPRINT-002
+    sprint_name: Catalog and Lineage
+    sprint_goal: Document catalog assets, ownership, classifications, source-to-target mappings, and lineage traceability.
+    stories:
+      - story_id: CAT-001
+        title: Catalog Banking Data Assets
+        priority: High
+        owner: Metadata Administrator
+        status: Done
+        story_points: 5
+      - story_id: CAT-002
+        title: Register Metadata For Curated Models
+        priority: Medium
+        owner: Metadata Administrator
+        status: Done
+        story_points: 3
+      - story_id: CAT-003
+        title: Document Asset Ownership
+        priority: Medium
+        owner: Data Governance Lead
+        status: Done
+        story_points: 3
+      - story_id: CAT-004
+        title: Apply Classification Expectations
+        priority: Medium
+        owner: Data Steward
+        status: Done
+        story_points: 3
+      - story_id: LIN-001
+        title: Document Source-To-Target Mappings
+        priority: High
+        owner: Data Engineer
+        status: Done
+        story_points: 5
+      - story_id: LIN-002
+        title: Document End-To-End Asset Lineage
+        priority: High
+        owner: Metadata Administrator
+        status: Done
+        story_points: 5
+      - story_id: LIN-003
+        title: Capture Field-Level Lineage Examples
+        priority: Medium
+        owner: Data Steward
+        status: Done
+        story_points: 3
+
+  - sprint_id: SPRINT-003
+    sprint_name: Data Quality
+    sprint_goal: Document SQL and PySpark DQ coverage, evidence outputs, and stewardship exception-review expectations.
+    stories:
+      - story_id: DQ-001
+        title: Document SQL Data Quality Validation
+        priority: High
+        owner: Data Quality Engineer
+        status: Done
+        story_points: 5
+      - story_id: DQ-002
+        title: Document PySpark Data Quality Validation
+        priority: High
+        owner: Data Quality Engineer
+        status: Done
+        story_points: 5
+      - story_id: DQ-003
+        title: Capture DQ Evidence Outputs
+        priority: Medium
+        owner: Data Steward
+        status: Done
+        story_points: 3
+      - story_id: DQ-004
+        title: Define Exception Review Expectations
+        priority: Medium
+        owner: Data Steward
+        status: Done
+        story_points: 3
+
+  - sprint_id: SPRINT-004
+    sprint_name: OpenMetadata
+    sprint_goal: Document the OpenMetadata integration approach, metadata templates, ownership mapping, catalog representation, and local runbook.
+    stories:
+      - story_id: OM-001
+        title: Document OpenMetadata Integration Design
+        priority: High
+        owner: Metadata Administrator
+        status: Done
+        story_points: 3
+      - story_id: OM-002
+        title: Create Metadata Ingestion Templates
+        priority: Medium
+        owner: Metadata Administrator
+        status: Done
+        story_points: 5
+      - story_id: OM-003
+        title: Map Ownership And Classification Concepts
+        priority: Medium
+        owner: Data Governance Lead
+        status: Done
+        story_points: 3
+      - story_id: OM-004
+        title: Prepare Local OpenMetadata Runbook
+        priority: Low
+        owner: Metadata Administrator
+        status: Done
+        story_points: 5
