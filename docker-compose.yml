@@ -122,9 +122,9 @@ services:
     container_name: airflow-postgres
     restart: always
     environment:
-      POSTGRES_USER: ${AIRFLOW_DB_USER}
-      POSTGRES_PASSWORD: ${AIRFLOW_DB_PASSWORD}
-      POSTGRES_DB: ${AIRFLOW_DB_NAME}
+      POSTGRES_USER: ${AIRFLOW_DB_USER:-airflow}
+      POSTGRES_PASSWORD: ${AIRFLOW_DB_PASSWORD:-airflow}
+      POSTGRES_DB: ${AIRFLOW_DB_NAME:-airflow}
     volumes:
       - airflow_postgres_data:/var/lib/postgresql/data
     ports:
